@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { CorroborationDots, EvidenceBadge, TierBadge } from './badges';
 import {
   TIERS,
@@ -6,6 +7,7 @@ import {
   isStale,
 } from '@/lib/tiers';
 import type { Signal } from '@/lib/signals';
+import type { Scored } from '@/lib/relevance';
 
 /**
  * One item in the feed.
@@ -19,9 +21,11 @@ import type { Signal } from '@/lib/signals';
 export function SignalCard({
   signal,
   onSelect,
+  scored,
 }: {
   signal: Signal;
   onSelect?: (s: Signal) => void;
+  scored?: Scored;
 }) {
   const t = TIERS[signal.tier];
   const stale = isStale(signal.observedAt);
@@ -31,10 +35,13 @@ export function SignalCard({
     : null;
 
   return (
-    <button
+    <div
       onClick={() => onSelect?.(signal)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && onSelect?.(signal)}
       className={[
-        'w-full border-l-4 bg-white px-3 py-2.5 text-left',
+        'w-full cursor-pointer border-l-4 bg-white px-3 py-2.5 text-left',
         'border-y border-r border-slate-200',
         'transition hover:bg-slate-50',
         isCommunity ? 'edge-dashed' : '',
@@ -93,6 +100,8 @@ export function SignalCard({
         </div>
       )}
 
+      {scored?.actionLine && <ActionLine scored={scored} />}
+
       <div className="mt-1.5 flex flex-wrap items-center gap-x-2 text-[11px] text-slate-500">
         <span className="font-medium">{signal.sourceName}</span>
         <span aria-hidden>·</span>
@@ -105,6 +114,60 @@ export function SignalCard({
           </span>
         )}
       </div>
-    </button>
+    </div>
+  );
+}
+
+/**
+ * The suggestion, and the arithmetic behind it.
+ *
+ * The brief asks that anything the prototype infers is declared as inferred in
+ * the interface. So the suggestion is labelled as generated, and the trace is
+ * one click away showing every constant that contributed. There is no model
+ * here — a reader can check the sum.
+ */
+export function ActionLine({ scored }: { scored: Scored }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="mt-2 rounded border border-slate-200 bg-slate-50 p-2">
+      <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+        Suggested for you — generated from your answers, not official advice
+      </p>
+      <p className="mt-0.5 text-xs font-medium leading-relaxed text-slate-800">
+        {scored.actionLine}
+      </p>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen((o) => !o);
+        }}
+        className="mt-1 text-[11px] font-medium text-council underline"
+      >
+        {open ? 'Hide why' : `Why you're seeing this (${scored.score}/100)`}
+      </button>
+
+      {open && (
+        <table className="mt-1.5 w-full text-[11px]">
+          <tbody>
+            {scored.reasons.map((r, i) => (
+              <tr key={i} className="border-t border-slate-200">
+                <td className="py-0.5 pr-2 text-slate-600">{r.text}</td>
+                <td className="w-12 py-0.5 text-right font-mono font-semibold text-slate-800">
+                  {r.points > 0 ? `+${r.points}` : r.points}
+                </td>
+              </tr>
+            ))}
+            <tr className="border-t-2 border-slate-300">
+              <td className="py-0.5 pr-2 font-semibold text-slate-700">Relevance</td>
+              <td className="py-0.5 text-right font-mono font-bold text-slate-900">
+                {scored.score}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      )}
+    </div>
   );
 }

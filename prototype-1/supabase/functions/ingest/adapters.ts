@@ -608,6 +608,21 @@ const outages: Adapter = {
   },
 };
 
+/**
+ * NEMA CAP alerts — Emergency Mobile Alert broadcast areas.
+ *
+ * This layer holds live AND historic records, and the supplementary catalogue
+ * warns as much. Left unfiltered it hands you a three-week-old "TSUNAMI —
+ * Evacuate Immediately" and a "Nationwide Test 2026" as though both were in
+ * force right now. On a project about telling people which information to
+ * trust, presenting an expired evacuation order as current would be the single
+ * worst thing this app could do.
+ *
+ * So three filters, all on the publisher's own fields:
+ *   status = 'Actual'  drops Test, Exercise, Draft and System messages
+ *   historic           drops anything NEMA has already retired
+ *   expires >= now     drops alerts that are no longer in force
+ */
 const nemaCap: Adapter = {
   sourceId: 'nema-cap-alerts',
   host: 'services5.arcgis.com',
@@ -616,29 +631,46 @@ const nemaCap: Adapter = {
       'https://services5.arcgis.com/cJn6oR1QqErYBL5d/arcgis/rest/services/NZ_CAP_Alerts_(Read_only)/FeatureServer/0',
       bboxQuery(),
     );
-    return (fc.features ?? []).map((f: any, i: number) => {
-      const p = f.properties ?? {};
-      const c = centroid(f.geometry);
-      return {
-        ...blank,
-        source_id: 'nema-cap-alerts',
-        external_id: String(p.identifier ?? p.OBJECTID ?? i),
-        tier: 'official' as const,
-        category: 'emergency_alert',
-        evidence_basis: 'observed' as const,
-        headline: p.headline ?? p.event ?? 'Emergency Mobile Alert area',
-        detail: [p.description, p.areaDesc].filter(Boolean).join(' · ') || null,
-        severity: severityRank(p.severity),
-        severity_label: [p.severity, p.event].filter(Boolean).join(' · ') || null,
-        observed_at: iso(p.sent) ?? iso(p.effective) ?? null,
-        valid_to: iso(p.expires) ?? null,
-        lng: c?.[0] ?? null,
-        lat: c?.[1] ?? null,
-        area_hint: c ? areaFor(c[0], c[1]) : null,
-        geometry: f.geometry ?? null,
-        url: 'https://getready.govt.nz',
-      } as SignalRow;
-    });
+    const now = Date.now();
+
+    return (fc.features ?? [])
+      .map((f: any, i: number) => {
+        const p = f.properties ?? {};
+
+        // Real alerts only — never a test or an exercise.
+        if (String(p.status ?? '').toLowerCase() !== 'actual') return null;
+        if (p.historic === 1 || p.historic === true) return null;
+        if (/\btest\b|\bexercise\b/i.test(String(p.headline ?? '') + String(p.event ?? ''))) return null;
+
+        // Still in force. A zero-duration record (expires == sent) has already
+        // lapsed and is history, not news.
+        const expires = typeof p.expires === 'number' ? p.expires : null;
+        const sent = typeof p.sent === 'number' ? p.sent : null;
+        if (expires == null || expires <= now) return null;
+        if (sent != null && expires <= sent) return null;
+
+        const c = centroid(f.geometry);
+        return {
+          ...blank,
+          source_id: 'nema-cap-alerts',
+          external_id: String(p.identifier ?? p.OBJECTID ?? i),
+          tier: 'official' as const,
+          category: 'emergency_alert',
+          evidence_basis: 'observed' as const,
+          headline: p.headline ?? p.event ?? 'Emergency Mobile Alert area',
+          detail: [p.description, p.sender_name].filter(Boolean).join(' · ') || null,
+          severity: severityRank(p.severity),
+          severity_label: [p.severity, p.event].filter(Boolean).join(' · ') || null,
+          observed_at: iso(sent) ?? iso(p.effective) ?? null,
+          valid_to: iso(expires),
+          lng: c?.[0] ?? null,
+          lat: c?.[1] ?? null,
+          area_hint: c ? areaFor(c[0], c[1]) : null,
+          geometry: f.geometry ?? null,
+          url: 'https://getready.govt.nz',
+        } as SignalRow;
+      })
+      .filter(Boolean) as SignalRow[];
   },
 };
 
