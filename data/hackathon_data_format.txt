@@ -1,0 +1,461 @@
+NZTA
+    "https://services.arcgis.com/CXBb7LAjgIIdcsPt/ArcGIS/rest/services"
+    "/TMS_Telemetry_Sites/FeatureServer/0/query"
+	
+==================
+TICKET_DETAIL 
+TICKET_ID,
+INCIDENT_ADDRESS,
+LOCATION,
+GEO_LONG                                                                AS LONGITUDE,
+GEO_LAT                                                                 AS LATITUDE,
+TICKET_CREATED_TS                                                       AS CREATED_AT,
+LAST_UPDATED_TS                                                         AS TRIAGED_AT,
+DUE_BY_TIME,
+CURRENT_STATUS,
+CASE WHEN CURRENT_STATUS = 'Closed' THEN LAST_UPDATED_TS END           AS CLOSED_AT, 
+SERVICE_ITEM,
+SERVICE_ITEM_L2,                                                            
+SUBJECT||case when TICKET_DESCRIPTION is not null then ' '||TICKET_DESCRIPTION else '' end  as TICKET_DESCRIPTION, 
+PRIORITY,    
+GROUP_NAME,  
+REQUESTER_NAME,  
+SOURCE_DERIVED,
+TICKET_TAGS, 
+
+==================
+CURRENT_STATUS
+CLOSED
+OPEN
+PENDING
+ENHANCEMENT
+ACTIVE
+UNKNOWN
+
+===============
+SERVICE_ITEM
+Melrose
+Water Rates
+Johnsonville
+Payment/Billing query
+Churton Park
+Parks Maintenance and Cleaning
+Facility Maintenance
+Responded with by Requester
+Street cleaning and growth
+BNW2024
+Official Information and Privacy
+Kilbirnie
+Thorndon
+Khandallah
+Property
+Hataitai
+Brooklyn
+Compliment
+Rates Email
+Paparangi
+Water and drainage
+Parking
+Report a dog attack
+Newtown
+Slips
+Tawa
+Seatoun
+Karaka Bays
+Crofton Downs
+Te Aro
+Let us know you've secured a lost dog
+Road and footpath maintenance
+Flamingo
+Trees
+Dog
+Island Bay
+City Events and Projects
+Make a dog registration enquiry
+Report an aggressive dog
+Owhiro Bay
+NE2025
+Clifton Terrace Area
+Building and Development
+Query for a council officer
+Kelburn
+Street improvement
+Miramar
+Report a barking dog
+Rates Rebate
+Cemeteries
+Northland
+Community Services
+Broadmeadows
+Roseneath
+Strathmore Park
+Graffiti
+City Safety
+Facility Cleaning
+Closed Response
+Public Health
+Complaint
+Road and Footpath Usage
+Waterfront
+Karori
+Not sure
+Animal Services
+Rates
+chipseal
+Mount Victoria
+Newlands
+Mount Cook
+Direct Debit
+Ngaio
+Report an empty dog poo bag dispenser
+Pipitea
+Noise control
+Street lights and traffic signals
+Parks Enquiry
+Pools and Recreation Centres
+Customer feedback, mail out requests and insurance claims
+Rates Query
+Rubbish and Recycling
+Enquiry for an Animal Control Officer
+escalation
+Weather Event
+Berhampore
+
+
+===============
+SERVICE_ITEM_L2
+Traffic count enquiry or a data request
+Information request
+Waste minimisation
+Request a tow
+Report a leak
+Other enquiry
+Turf, grass
+Building related enquiry
+Stereo & people
+Make an enquiry for a Council noise officer
+Traffic light timing issue or suggestion
+Appeal enquiry
+Other meter fault
+Anti social behaviour
+Swimwell enquiry
+Alarm
+Southern Landfill enquiry
+Enquiry
+Event
+Light
+Intersection safety
+Covers, drains, or sumps
+Busking
+Refill supplies
+General enquiries
+Manhole cover damaged, dislodged, bouncing or lifting
+Ask about our botanic gardens
+Swimming Pool
+Dumped rubbish (including furniture)
+Bus shelter
+Barbecue
+Selling at an event, for vendors or food sellers
+Reserve on-street parking
+Community Centre enquiry
+Report vandalism of a tree
+Other
+Query for a council officer
+Maintenance
+Works on the road
+Slips
+Report a barking dog
+Temporary structure on footpath or road
+Water duplicate
+Construction
+Credit Control Services
+Request maintenance of tree cage or surrounds
+Litter bin
+Loss of water service
+Report a collection issue
+Weed control
+Boat ramp, wharf or jetty
+Road reserve or berm
+Urgent afterhours job
+Privacy Act
+Water restriction breach
+Maintenance in a CBD Park
+Signs
+Water toby fault report
+Lock maintenance
+Recycling mixed collection
+Report a tree growing into overhead lines
+Request recycling bags or crate
+Parking rules enquiry
+Complaint about how a vehicle is parked
+Signage
+General enquiry
+Parking buildings
+Parking issues
+Cleaning in a park or beach
+Street light damage
+Report a nuisance issue
+Street furniture
+Report an empty dog poo bag dispenser
+Ask for something new in a park
+Urgent road crew attendance
+General enquiry about street cleaning
+General health enquiry
+Alcohol licensing enquiry
+E-scooters / E-bikes
+Track
+Report an aggressive dog
+Decking or boardwalk
+Gate
+Cleaning of shared spaces
+Leisure Card
+A landslip in a park
+Bollard
+New bus shelter at an existing stop
+Traffic light outage or damage
+Inside a sump or removal of item from sump
+Report a bad smell
+Rubbish bin needs to be emptied or cleaned
+Footpath condition
+Septic tank empty or water tank refill (mentioned locations only)
+Report a fallen or dangerous tree
+Enquiry for an Animal Control Officer
+Fence
+Detour of footpath or road
+Spill
+Official information request
+CBD rubbish and recycling
+Outdoor dining enquiry
+Bag quality enquiry
+Flooding in a park or reserve
+Ask about signage in our parks
+Events
+Request check of temporary parking signs
+Sprinkler or irrigation system
+Stereo
+Report illegal littering
+Rubbish collection
+Wheelie bin enquiry
+Report a dog attack
+Parking payment enquiry
+Permit Enquiry
+Report a dead or unstable tree in a park or reserve
+Event advice and enquiries
+Abandoned and derelict vehicles
+Rates Services
+Traffic management plans (TMP)
+Drain or sump in a park
+Tree overhanging the road
+Food premises issue
+Request a roadworks tow
+Report drainage odours
+Markings on the road
+New seat or litter bin
+Refund a parking space payment
+Bus stop or shelter
+Report an issue with a street light
+Blocked sewer
+Private rubbish and recycling collection noise
+Drinking fountain
+Make a parks booking enquiry
+Busking complaint
+Construction parking
+Report a vehicle accident
+Drinking water or tap water
+Road or footpath
+Road condition
+Growth or overgrown parks land
+Make a dog registration enquiry
+Soap or Toilet paper dispenser maintenance
+Report a towed vehicle
+Playarea
+Pollution
+Footpath obstruction
+Walls, bridges, and tunnels
+Water toby locate request
+City safety camera faults and location enquiries
+Flooding
+Fences, handrails, or barriers
+Create or modify a vehicle accessway
+Parking a food truck
+Concern about a works site
+Feedback about a parking officer
+Recreation Centre
+Bridge
+Parking meter not accepting coins
+Ask for other advice about trees
+Order bags or glass crate stock
+People
+Recycling glass collection
+Food registration enquiry 
+Cycle lanes
+Cleaning
+Open or close
+Report a roaming or an uncontrolled animal
+Seat, bench or picnic table
+Water Rates Services
+Water quality
+Open or close request (check bookings list)
+Cycling and walking
+Report a tree grown close to a traffic light
+Let us know you've secured a lost dog
+Order parking coupons
+IT Land & Customer Property Information Services
+Wall
+Wanting to buy WCC land
+Request for tree removal
+Wastewater or sewerage
+Fault
+Report a street light out
+Homelessness
+Cones on road
+Related to planning, development and resource consents
+Growth or vegetation
+Complaint about a trailer parked on the road
+Stormwater or rainwater
+City safety enquiries
+Mowing grass
+Road marking
+Skip bins and waste bins
+Meter out of order or service outage
+General WCC owned property enquiries
+Beach shower or tap
+Lost property
+Carpark, road or footpath
+Traffic speed or volume
+New roadside fence
+Sculpture
+General street light enquiry
+
+
+===============================
+PRIORITY
+4
+3
+2
+1
+
+===============================
+
+SOURCE_DERIVED
+Phone
+FIXiT
+Website
+Email
+===============================
+
+TICKET_TAG (ARRAY of these 1+ values)
+Animal Services
+Building and Development V2
+Street cleaning and growth
+Street lights and traffic signals
+Rates Query
+Rates Rebate
+Karori
+Public
+Complaint
+Ngaio
+Kelburn
+Mount Cook
+LGOIMA - City Consenting & Compliance
+Missing or invalid location
+Parks Enquiry
+Public Health
+Miramar
+Northland
+Crofton Downs
+Report a dog attack
+City Housing cleaning
+Hataitai
+Island Bay
+Not sure
+Mount Victoria
+NE2025
+Wilton
+Direct Debit Query
+parking
+Road and footpath maintenance v2
+Johnsonville
+Facility Cleaning
+Public toilet cleaning service
+Report a roaming or uncontrolled animal
+Weather Event
+Compliment
+Direct Debit Cancellation
+Footpath
+Te Aro
+Kilbirnie
+Thorndon
+asphalt
+Let us know you've secured a lost dog
+LGOIMA - Parks Sport & Recreation
+Request a Tow - Parking Carparks
+Clifton Terrace Area
+Water and drainage
+Waterfront
+Parks Maintenance and Cleaning
+City Events
+Dog
+Newtown
+Direct Debit
+Wadestown
+Direct Debit changing frequency
+Newlands
+Paparangi
+Rates v4
+E-scooter
+Enquiry for an Animal Control Officer
+Slips
+Payment/Billing query
+Responded with by Requester
+Pools and Recreation Centres
+Cemeteries
+Riding Behaviour
+Park or reserve
+Brooklyn
+Berhampore
+Make a dog registration enquiry
+Churton Park
+Broadmeadows
+Owhiro Bay
+Inquiry for a Micro-mobility Officer
+LGOIMA - Property
+Pipitea
+Rubbish and Recycling
+Closed Response
+Query for a council officer
+BNW2024
+Parking Behaviour
+Graffiti v2
+water duplicate
+Report a barking dog
+Changing room cleaning
+Karaka Bays
+Seatoun
+TTM Graffiti
+Direct Debit Suffix
+Council vehicle fleet and driver behaviour
+Strathmore Park
+Melrose
+Community Services
+Roseneath
+E-bike
+Noise control
+Road and Footpath Usage v2
+City Safety
+trees
+Flamingo
+Street improvement
+Facility Maintenance v2
+escalation
+Tawa
+Report an aggressive dog
+Khandallah
+Rates Email
+Report an empty dog poo bag dispenser
+LGOIMA - Parking Services
+Payment Plan
+Property
+Water Rates
+chipseal
+On my own property

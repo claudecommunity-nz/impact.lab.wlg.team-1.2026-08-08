@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-white text-slate-900 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+}
+
+@layer components {
+  /* Community items only. Dashed is reserved for unverified, solid for
+     attributed sources, so the border style alone tells you which you have. */
+  .edge-dashed { border-left-style: dashed; }
+  .hatch {
+    background-image: repeating-linear-gradient(
+      45deg, rgba(71,84,103,.10) 0 6px, transparent 6px 12px);
+  }
+  .hatch-sim {
+    background-image: repeating-linear-gradient(
+      45deg, rgba(247,144,9,.22) 0 8px, transparent 8px 16px);
+  }
+}
