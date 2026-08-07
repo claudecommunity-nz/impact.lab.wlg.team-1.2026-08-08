@@ -36,10 +36,11 @@ attaches to.
 ## Project Status
 
 ### Overall Completion
-Unit 01 complete. Dev server and build confirmed working.
+Units 01–02 complete. Interactive Wellington basemap rendering in browser.
 
 ### Completed Features
-- Vite 6 + React 19 scaffold with maplibre-gl 5 installed
+- Vite 6 + React 19 scaffold with maplibre-gl 5
+- Full-viewport interactive map centred on Wellington (CARTO Positron basemap)
 
 ## Units
 
@@ -57,7 +58,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | _id    | Status  | Title         | Description                                                                  | File             |
 |--------|---------|---------------|-------------------------------------------------------------------------------|------------------|
 | 7f3k2q | done    | 01 Foundation | Scaffold the project (Vite + React + maplibre-gl) with a working dev server   | 01_foundation.md |
-| m9x1lb | doing   | 02 Basemap    | Render an interactive base map centered on Wellington                        | 02_basemap.md    |
+| m9x1lb | done    | 02 Basemap    | Render an interactive base map centered on Wellington                        | 02_basemap.md    |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.
