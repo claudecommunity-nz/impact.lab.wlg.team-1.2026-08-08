@@ -1,5 +1,7 @@
 # Lyall Bay weather dashboard
 
+Published app: https://claudecommunity-nz.github.io/impact.lab.wlg.team-1.2026-08-08/
+
 A single-file HTML mockup/dashboard built as a Claude Cowork artifact. Shows current
 conditions for Lyall Bay, Wellington, aggregates real official data sources, and
 answers "what does this mean for me" questions with a mostly-free rule engine
