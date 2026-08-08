@@ -1,4 +1,4 @@
-# Lyall Bay weather dashboard
+# WCC Alert Dashboard - Claude Impact Lab | Wellington - Aug 2026
 
 Published app: https://claudecommunity-nz.github.io/impact.lab.wlg.team-1.2026-08-08/
 
