@@ -5,15 +5,36 @@ html, body, #root {
   padding: 0;
   width: 100%;
   height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  /* Dragging the map must not pull-to-refresh the page. */
+  overscroll-behavior: none;
 }
 
 #root {
   display: flex;
   flex-direction: column;
+  /* dvh, so a phone address bar sliding away does not clip the timeline. */
+  height: 100dvh;
 }
 
 #map-root {
   flex: 1;
   position: relative;
   overflow: hidden;
+}
+
+/* The thank-you that replaces the confirm buttons in NearbyReport, before the
+   card collapses. Inline styles cannot express keyframes. */
+@keyframes nearby-thanks-in {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.nearby-thanks { animation: nearby-thanks-in 0.25s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nearby-thanks { animation: none; }
 }

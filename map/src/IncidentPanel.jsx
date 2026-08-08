@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { CATEGORIES } from './incidents.js'
 import ShareModal from './ShareModal.jsx'
 import { overlay } from './styles.js'
+import useIsMobile from './useIsMobile.js'
 
 const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]))
 
@@ -11,6 +12,7 @@ const SEVERITY = {
 }
 
 export default function IncidentPanel({ incident, onClose }) {
+  const mobile = useIsMobile()
   const [sharing, setSharing] = useState(false)
 
   // Escape closes the share modal first, then the panel.
@@ -30,15 +32,20 @@ export default function IncidentPanel({ incident, onClose }) {
 
   return (
     <>
+    {/*
+      A phone gets a bottom sheet rather than a floating card: full width,
+      anchored to the bottom edge, and capped at 72% so the pin you just tapped
+      stays visible above it. Sits above the conditions sheet, which is a
+      standing overlay — this one is a direct answer to a tap.
+    */}
     <div style={{
       ...overlay,
       position: 'absolute',
-      top: 16,
-      right: 16,
-      width: 320,
-      maxHeight: 'calc(100vh - 32px)',
-      overflowY: 'auto',
-      zIndex: 10,
+      ...(mobile
+        // bottom: 26 clears the timeline bar, which owns the foot of the map.
+        ? { left: 0, right: 0, bottom: 26, maxHeight: '72%', borderRadius: '14px 14px 0 0',
+            background: '#fff', boxShadow: '0 -4px 20px rgba(0,0,0,0.18)', zIndex: 20 }
+        : { top: 16, right: 16, width: 320, maxHeight: 'calc(100% - 32px)', zIndex: 10 }),
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
@@ -47,7 +54,7 @@ export default function IncidentPanel({ incident, onClose }) {
       <div style={{
         background: cat.colour,
         height: 4,
-        borderRadius: '12px 12px 0 0',
+        borderRadius: mobile ? '14px 14px 0 0' : '12px 12px 0 0',
         flexShrink: 0,
       }} />
 
@@ -62,9 +69,10 @@ export default function IncidentPanel({ incident, onClose }) {
               {incident.description}
             </div>
           </div>
-          <button onClick={onClose} style={{
+          <button onClick={onClose} aria-label="Close" style={{
             border: 'none', background: 'none', cursor: 'pointer',
-            fontSize: 18, color: '#9ca3af', lineHeight: 1, padding: '0 0 0 8px', flexShrink: 0,
+            fontSize: mobile ? 26 : 18, color: '#9ca3af', lineHeight: 1,
+            padding: mobile ? '0 4px 10px 14px' : '0 0 0 8px', flexShrink: 0,
           }}>×</button>
         </div>
 

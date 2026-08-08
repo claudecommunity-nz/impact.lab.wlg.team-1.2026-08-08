@@ -1,8 +1,15 @@
+import { useState } from 'react'
 import { CATEGORIES } from './incidents.js'
+import { REGIONS_BY_ID } from './areas.js'
 import AreaPicker from './AreaPicker.jsx'
+import NearbyReport from './NearbyReport.jsx'
 import { overlay } from './styles.js'
+import useIsMobile from './useIsMobile.js'
 
 const font = "'Public Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+
+/** Height of the timeline bar the sheets must sit above — see Timeline.jsx. */
+const TIMELINE_H = 26
 
 const card = {
   ...overlay,
@@ -18,7 +25,71 @@ const ALL_ITEMS = [
 
 export default function InfoPanel({
   layers, onToggle, weather, areaId, onArea, activeSuburbs, onToggleSuburb, onSetAll,
+  pins, currentTime, locationStatus, locationError, outsideCity,
 }) {
+  const mobile = useIsMobile()
+  const [open, setOpen] = useState(false)
+
+  const cards = (
+    <>
+      <AreaPicker
+        areaId={areaId}
+        onArea={onArea}
+        activeSuburbs={activeSuburbs}
+        onToggleSuburb={onToggleSuburb}
+        onSetAll={onSetAll}
+        locationStatus={locationStatus}
+        locationError={locationError}
+        outsideCity={outsideCity}
+      />
+      <NearbyReport
+        pins={pins}
+        activeSuburbs={activeSuburbs}
+        regionLabel={REGIONS_BY_ID[areaId]?.label ?? 'Wellington'}
+        currentTime={currentTime}
+      />
+      <ConditionsCard />
+      <WeatherCard weather={weather} />
+      <StatsRow weather={weather} />
+      <SeaTempCard weather={weather} />
+      <FilterBar layers={layers} onToggle={onToggle} />
+    </>
+  )
+
+  // On a phone the panel is a bottom sheet: collapsed to a handle by default,
+  // because the map is what someone opened this for. The handle still says
+  // which area is loaded and what the temperature is.
+  if (mobile) {
+    return (
+      <div style={{
+        position: 'absolute',
+        // Clear of the timeline bar, which owns the bottom 26px of the map.
+        left: 0, right: 0, bottom: TIMELINE_H,
+        zIndex: 15,
+        background: '#fff',
+        borderRadius: '14px 14px 0 0',
+        boxShadow: '0 -4px 20px rgba(0,0,0,0.16)',
+        fontFamily: font,
+      }}>
+        <SheetHandle
+          open={open}
+          onClick={() => setOpen(o => !o)}
+          areaId={areaId}
+          weather={weather}
+        />
+        {open && (
+          <div style={{
+            maxHeight: '70vh', overflowY: 'auto',
+            padding: '0 12px 12px',
+            WebkitOverflowScrolling: 'touch',
+          }}>
+            {cards}
+          </div>
+        )}
+      </div>
+    )
+  }
+
   return (
     <div style={{
       position: 'absolute',
@@ -29,19 +100,42 @@ export default function InfoPanel({
       zIndex: 5,
       overflowY: 'auto',
     }}>
-      <AreaPicker
-        areaId={areaId}
-        onArea={onArea}
-        activeSuburbs={activeSuburbs}
-        onToggleSuburb={onToggleSuburb}
-        onSetAll={onSetAll}
-      />
-      <ConditionsCard />
-      <WeatherCard weather={weather} />
-      <StatsRow weather={weather} />
-      <SeaTempCard weather={weather} />
-      <FilterBar layers={layers} onToggle={onToggle} />
+      {cards}
     </div>
+  )
+}
+
+function SheetHandle({ open, onClick, areaId, weather }) {
+  const region = REGIONS_BY_ID[areaId]
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-expanded={open}
+      style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        gap: 10, width: '100%', minHeight: 46,
+        border: 'none', background: 'none', cursor: 'pointer',
+        padding: '10px 14px', fontFamily: font, textAlign: 'left',
+      }}
+    >
+      <span style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+        <span style={{
+          fontSize: 11, color: '#757570', flexShrink: 0,
+          transform: open ? 'rotate(180deg)' : 'none',
+          transition: 'transform 0.15s', display: 'inline-block',
+        }}>▲</span>
+        <span style={{
+          fontSize: 13, fontWeight: 700, color: '#14140f',
+          whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+        }}>
+          {region?.label ?? 'Choose an area'}
+        </span>
+      </span>
+      <span style={{ fontSize: 12.5, color: '#55554f', flexShrink: 0 }}>
+        {weather ? `${weather.tempC}° · ${weather.windKph} km/h` : 'Conditions'}
+      </span>
+    </button>
   )
 }
 

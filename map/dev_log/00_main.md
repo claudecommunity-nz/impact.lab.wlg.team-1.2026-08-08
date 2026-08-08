@@ -81,6 +81,8 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | p9q3vw | done    | 21 Data 1000      | Conversion script maps 389 relevant tickets to incidents.json          | 21_data_1000.md       |
 | k8n2tv | done    | 22 Visual Timeline | Full-width heatmap bar showing incident density and category colour over time | 22_visual_timeline.md |
 | z2r8gv | done    | 23 Dynamic Notice  | Notice bar text driven by current weather + incidents; click for detail modal | 23_dynamic_notice.md  |
+| z6b4nk | done    | 24 Responsive     | Phone layout — bottom sheets, stacked header, touch targets            | 24_responsive.md      |
+| s8g5tv | done    | 25 Nearby Report  | Newest community report for the area on screen, with a confirmation that collapses after 3s | 25_nearby_report.md |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.

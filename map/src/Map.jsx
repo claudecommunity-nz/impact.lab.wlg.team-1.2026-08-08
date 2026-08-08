@@ -34,9 +34,17 @@ function flyToArea(map, area) {
   // to Wadestown, and a circle around that covers most of the harbour.
   if (area.bbox) {
     const [w, s, e, n] = area.bbox
+    const box = map.getContainer()
+    const compact = box.clientWidth < 720
+
     map.fitBounds([[w, s], [e, n]], {
-      // Room for the sidebar, which sits over the left of the map.
-      padding: { top: 40, right: 40, bottom: 60, left: 340 },
+      // Room for whichever overlay is covering the map. On a wide screen that
+      // is the sidebar down the left; on a phone it is the sheet and timeline
+      // along the bottom, sized as a fraction of height so fitBounds is never
+      // handed more padding than there is viewport.
+      padding: compact
+        ? { top: 24, right: 24, bottom: Math.round(box.clientHeight * 0.25), left: 24 }
+        : { top: 40, right: 40, bottom: 60, left: 340 },
       duration: 900,
       essential: true,
     })

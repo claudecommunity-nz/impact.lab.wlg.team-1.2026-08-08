@@ -47,21 +47,48 @@ function toFeature(pos) {
   }
 }
 
+/**
+ * Why a failure is reported rather than swallowed.
+ *
+ * The interface uses this to decide where the map opens. If we quietly fall
+ * back to a default region when we cannot locate someone, they cannot tell the
+ * difference between "you are here" and "we gave up and guessed" — which is
+ * the exact failure mode this whole project is meant to avoid. So the reason
+ * comes back with the result and the panel says it out loud.
+ */
+const REASONS = {
+  1: 'Location permission was declined.',
+  2: 'Your device could not provide a location.',
+  3: 'Locating timed out.',
+}
+
 export default function useGeolocation() {
-  const [feature, setFeature] = useState(null)
+  const [state, setState] = useState({ feature: null, status: 'locating', error: null })
 
   useEffect(() => {
-    if (!navigator.geolocation) return
+    if (!navigator.geolocation) {
+      setState({ feature: null, status: 'failed', error: 'This browser has no location support.' })
+      return
+    }
 
     let cancelled = false
-    const accept = pos => { if (!cancelled) setFeature(toFeature(pos)) }
-    // Deliberately empty: a failed fix leaves whatever we already had. The
-    // caller treats a null feature as "we do not know", which is correct both
-    // before the first fix and after a refusal.
-    const ignore = () => {}
 
-    navigator.geolocation.getCurrentPosition(accept, ignore, OPTIONS)
-    const id = navigator.geolocation.watchPosition(accept, ignore, OPTIONS)
+    const accept = pos => {
+      if (!cancelled) setState({ feature: toFeature(pos), status: 'located', error: null })
+    }
+
+    const reject = err => {
+      // A later failure never discards a fix we already have. watchPosition
+      // reports POSITION_UNAVAILABLE routinely — a lid closing, wifi changing —
+      // and blinking the pin out for that would be noise, not information.
+      if (cancelled) return
+      setState(prev => prev.feature
+        ? prev
+        : { feature: null, status: 'failed', error: REASONS[err.code] ?? 'Could not get a location.' })
+    }
+
+    navigator.geolocation.getCurrentPosition(accept, reject, OPTIONS)
+    const id = navigator.geolocation.watchPosition(accept, reject, OPTIONS)
 
     return () => {
       cancelled = true
@@ -69,5 +96,5 @@ export default function useGeolocation() {
     }
   }, [])
 
-  return feature
+  return state
 }

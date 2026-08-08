@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { REGIONS, REGIONS_BY_ID, AREAS_BY_ID } from './areas.js'
 import { overlay } from './styles.js'
+import useIsMobile from './useIsMobile.js'
 
 /**
  * Choose a part of Wellington, then narrow it.
@@ -44,7 +45,11 @@ function labelOf(suburb) {
   return areaOf(suburb)?.label ?? suburb
 }
 
-export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSuburb, onSetAll }) {
+export default function AreaPicker({
+  areaId, onArea, activeSuburbs, onToggleSuburb, onSetAll,
+  locationStatus, locationError, outsideCity,
+}) {
+  const mobile = useIsMobile()
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [active, setActive] = useState(0)
@@ -139,6 +144,9 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
         Which part of Pōneke?
       </label>
 
+      {/* The list hangs off this wrapper, not off the card, so it stays glued
+          to the input's bottom edge whatever font size the input is using. */}
+      <div style={{ position: 'relative' }}>
       <input
         ref={inputRef}
         id="map-area-picker"
@@ -149,15 +157,19 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
         aria-autocomplete="list"
         autoComplete="off"
         value={open ? query : (region?.label ?? '')}
-        placeholder={open ? 'Region, suburb or postcode…' : 'Choose an area'}
+        placeholder={open ? 'Region, suburb or postcode…' : 'Select region'}
         onChange={e => { setQuery(e.target.value); setOpen(true) }}
         onFocus={() => setOpen(true)}
         onKeyDown={onKeyDown}
         style={{
           width: '100%', boxSizing: 'border-box',
-          padding: '7px 10px', borderRadius: 6,
+          padding: mobile ? '9px 10px' : '7px 10px', borderRadius: 6,
           border: '1px solid rgba(0,0,0,0.14)', background: '#fff',
-          fontFamily: font, fontSize: 12.5, fontWeight: 600, color: '#14140f',
+          fontFamily: font,
+          // 16px on a phone. Anything smaller and iOS Safari zooms the page in
+          // on focus, and never zooms it back out.
+          fontSize: mobile ? 16 : 12.5,
+          fontWeight: 600, color: '#14140f',
           outline: 'none',
         }}
       />
@@ -169,8 +181,8 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
           role="listbox"
           style={{
             position: 'absolute', zIndex: 20,
-            top: 68, left: 16, right: 16,
-            maxHeight: 300, overflowY: 'auto',
+            top: 'calc(100% + 4px)', left: 0, right: 0,
+            maxHeight: mobile ? 240 : 300, overflowY: 'auto',
             listStyle: 'none', margin: 0, padding: '4px 0',
             background: '#fff', border: '1px solid rgba(0,0,0,0.12)',
             borderRadius: 8, boxShadow: '0 8px 24px rgba(0,0,0,0.16)',
@@ -200,7 +212,7 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
                   onMouseEnter={() => setActive(i)}
                   style={{
                     display: 'block', width: '100%', textAlign: 'left',
-                    padding: '6px 12px', border: 'none',
+                    padding: mobile ? '10px 12px' : '6px 12px', border: 'none',
                     background: isActive ? 'rgba(0,0,0,0.05)' : 'transparent',
                     fontFamily: font, cursor: 'pointer',
                   }}
@@ -226,6 +238,29 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
             )
           })}
         </ul>
+      )}
+      </div>
+
+      {/*
+        With no region chosen, say what we are doing about it. The picker used
+        to open on the south coast whether or not we had located anyone, so a
+        refused or failed lookup looked exactly like a correct answer. Saying
+        "still looking" or naming the reason is the difference between the map
+        knowing where you are and the map guessing.
+      */}
+      {!region && (
+        <p style={{
+          margin: '6px 0 0', fontSize: 11.5, lineHeight: 1.35,
+          color: locationStatus === 'failed' || outsideCity ? '#a3450c' : '#757570',
+        }}>
+          {outsideCity
+            ? 'You appear to be outside Wellington City. Choose a region above.'
+            : locationStatus === 'locating'
+              ? 'Finding your region…'
+              : locationStatus === 'failed'
+                ? `${locationError} Choose a region above.`
+                : 'Choose a region above.'}
+        </p>
       )}
 
       {/*
@@ -265,10 +300,11 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
                 <label
                   key={s}
                   style={{
-                    display: 'flex', alignItems: 'center', gap: 6,
+                    display: 'flex', alignItems: 'center', gap: 8,
                     // Long names wrap in a 2-up column at this width
                     // ("Strathmore Park"), so keep wrapped rows tight.
-                    fontSize: 13, lineHeight: 1.25, cursor: 'pointer',
+                    fontSize: mobile ? 13.5 : 13, lineHeight: 1.25, cursor: 'pointer',
+                    padding: mobile ? '5px 0' : 0,
                     color: on ? '#3a3a36' : 'rgba(0,0,0,0.35)',
                   }}
                 >
@@ -276,7 +312,10 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
                     type="checkbox"
                     checked={on}
                     onChange={() => onToggleSuburb(s)}
-                    style={{ width: 14, height: 14, margin: 0, flexShrink: 0, accentColor: '#0b5cad', cursor: 'pointer' }}
+                    style={{
+                      width: mobile ? 18 : 14, height: mobile ? 18 : 14,
+                      margin: 0, flexShrink: 0, accentColor: '#0b5cad', cursor: 'pointer',
+                    }}
                   />
                   {labelOf(s)}
                 </label>

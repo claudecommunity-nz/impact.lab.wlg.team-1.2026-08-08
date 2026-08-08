@@ -63,7 +63,7 @@ export default function ShareModal({ incident, onClose }) {
         position: 'fixed', inset: 0, zIndex: 50,
         background: 'rgba(15,23,42,0.45)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: 20,
+        padding: 14,
         fontFamily: "'Roboto', sans-serif",
       }}
     >
@@ -71,9 +71,11 @@ export default function ShareModal({ incident, onClose }) {
         onClick={e => e.stopPropagation()}
         style={{
           width: 380, maxWidth: '100%',
+          // A short landscape phone cannot fit the card; let it scroll rather
+          // than clipping the copy-link row off the bottom.
+          maxHeight: '100%', overflowY: 'auto',
           background: '#fff', borderRadius: 14,
           boxShadow: '0 20px 50px rgba(0,0,0,0.28)',
-          overflow: 'hidden',
         }}
       >
         <div style={{ background: cat.colour, height: 4 }} />

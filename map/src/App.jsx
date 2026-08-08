@@ -24,18 +24,23 @@ const WIN = {
 
 const SPEED = 24 * 60 * 60 * 1000
 
-// Where the map starts if we cannot work out where the user is: the south
-// coast, because that is the problem statement. A real location overrides it —
-// see the effect below.
-const FALLBACK_AREA = 'region-south-coast'
+// No region is chosen until we know something. Defaulting to the south coast
+// looked identical to having located the user there, so a failure to locate was
+// indistinguishable from a correct answer — the map simply lied quietly. The
+// picker now says "Select region" until either the browser tells us where the
+// user is or they choose for themselves.
 
 export default function App() {
-  const locationFeature = useGeolocation()
+  const { feature: locationFeature, status: locationStatus, error: locationError } = useGeolocation()
   const [layers, setLayers] = useState(defaultLayers)
-  const [areaId, setAreaIdRaw] = useState(FALLBACK_AREA)
+  const [areaId, setAreaIdRaw] = useState(null)
   // Which suburbs of the chosen region are drawn. Council's spellings, because
   // that is what the boundary layer is keyed on.
-  const [activeSuburbs, setActiveSuburbs] = useState(REGIONS_BY_ID[FALLBACK_AREA].suburbs)
+  const [activeSuburbs, setActiveSuburbs] = useState([])
+  // Set when the browser gave us a position that is not in Wellington City —
+  // Lower Hutt, a VPN, a spoofed location. Worth saying, because otherwise the
+  // picker sits on "Select region" with no explanation.
+  const [outsideCity, setOutsideCity] = useState(false)
   // True once the user has picked a region themselves. Geolocation can arrive
   // seconds late — on a cold GPS fix, well after someone has started clicking —
   // and moving the map out from under them at that point would be worse than
@@ -70,8 +75,12 @@ export default function App() {
     if (!c || chosenRef.current) return
     let cancelled = false
     regionAt(c[0], c[1])
-      .then(id => { if (id && !cancelled && !chosenRef.current) setArea(id, false) })
-      .catch(() => {})
+      .then(id => {
+        if (cancelled || chosenRef.current) return
+        if (id) setArea(id, false)
+        else setOutsideCity(true)
+      })
+      .catch(() => { if (!cancelled) setOutsideCity(true) })
     return () => { cancelled = true }
   }, [locationFeature])
   const [selectedIncident, setSelectedIncident] = useState(null)
@@ -153,6 +162,11 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
           activeSuburbs={activeSuburbs}
           onToggleSuburb={toggleSuburb}
           onSetAll={setAllSuburbs}
+          locationStatus={locationStatus}
+          locationError={locationError}
+          outsideCity={outsideCity}
+          pins={pins}
+          currentTime={currentTime}
         />
         <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
         <Timeline
