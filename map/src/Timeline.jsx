@@ -1,9 +1,12 @@
 function formatOffset(ms) {
   if (ms >= 0) return 'now'
   const abs = Math.abs(ms)
-  const h = Math.floor(abs / 3600000)
+  const d = Math.floor(abs / 86400000)
+  const h = Math.floor((abs % 86400000) / 3600000)
   const m = Math.floor((abs % 3600000) / 60000)
-  return `-${h}:${m.toString().padStart(2, '0')}`
+  if (d > 0) return h > 0 ? `${d}d ${h}h ago` : `${d}d ago`
+  if (h > 0) return m > 0 ? `${h}h ${m}m ago` : `${h}h ago`
+  return `${m}m ago`
 }
 
 export default function Timeline({ currentTime, window: win, playing, onSeek, onTogglePlay }) {
@@ -35,11 +38,6 @@ export default function Timeline({ currentTime, window: win, playing, onSeek, on
       }}>
         {playing ? '⏸' : '▶'}
       </button>
-
-      {/* offset label — left = past */}
-      <span style={{ color: '#fff', fontSize: 11, fontFamily: 'monospace', opacity: 0.6, flexShrink: 0 }}>
-        {formatOffset(-rangeMs)}
-      </span>
 
       <input
         type="range"
