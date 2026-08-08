@@ -1,6 +1,6 @@
 const font = "'Public Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
 
-export default function Header() {
+export default function Header({ notice, onNoticeClick }) {
   return (
     <div style={{ fontFamily: font, flexShrink: 0 }}>
       <div style={{
@@ -34,17 +34,22 @@ export default function Header() {
       </div>
 
       {/* Notice bar */}
-      <div style={{
-        background: '#FFDD00', color: '#14140f',
-        fontSize: 12.5, fontWeight: 600, textAlign: 'center',
-        padding: '6px 20px',
-      }}>
-        Heavy rain warning in effect —{' '}
-        <a href="https://www.metservice.com/warnings/home" target="_blank" rel="noopener noreferrer"
-          style={{ color: '#14140f', fontWeight: 700 }}>
-          see current watches and warnings
-        </a>
-      </div>
+      {notice && (
+        <div
+          onClick={onNoticeClick}
+          style={{
+            background: notice.level === 'clear' ? '#d1fae5' : '#FFDD00',
+            color: '#14140f',
+            fontSize: 12.5, fontWeight: 600, textAlign: 'center',
+            padding: '6px 20px',
+            cursor: 'pointer',
+            userSelect: 'none',
+          }}
+        >
+          {notice.text} — <span style={{ fontWeight: 700, textDecoration: 'underline' }}>see details</span>
+        </div>
+      )}
+
     </div>
   )
 }

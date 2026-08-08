@@ -9,6 +9,7 @@ import useIncidents from './useIncidents.js'
 import useWeather from './useWeather.js'
 import { CATEGORIES, EVENT_WINDOW } from './incidents.js'
 import { REGIONS_BY_ID } from './areas.js'
+import AlertModal from './AlertModal.jsx'
 import { regionAt } from './suburbLookup.js'
 
 const defaultLayers = {
@@ -74,6 +75,7 @@ export default function App() {
     return () => { cancelled = true }
   }, [locationFeature])
   const [selectedIncident, setSelectedIncident] = useState(null)
+  const [alertOpen, setAlertOpen] = useState(false)
 const [currentTime, setCurrentTime] = useState(WIN.end)
   const [playing, setPlaying] = useState(false)
   const rafRef = useRef(null)
@@ -81,6 +83,21 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
 
   const { pins, radii, allIncidents } = useIncidents(currentTime)
   const weather = useWeather(currentTime)
+
+  const notice = (() => {
+    if (!weather) return null
+    if (weather.windGustKph > 70)
+      return { level: 'warning', text: `Gale warning — ${weather.windDir} gusting ${weather.windGustKph} km/h` }
+    if (weather.rainChancePct > 85)
+      return { level: 'warning', text: `Heavy rain warning in effect — ${weather.condition}` }
+    const activeCount = pins?.features?.length ?? 0
+    const highSeverity = pins?.features?.filter(f => f.properties.severity === 'high').length ?? 0
+    if (highSeverity > 0)
+      return { level: 'warning', text: `Active incident alert — ${highSeverity} high-severity report${highSeverity > 1 ? 's' : ''} on the map` }
+    if (activeCount > 0)
+      return { level: 'warning', text: `${activeCount} active incident${activeCount > 1 ? 's' : ''} on the map` }
+    return { level: 'clear', text: 'No active warnings — conditions normal' }
+  })()
 
   useEffect(() => {
     if (!playing) {
@@ -115,7 +132,8 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
 
   return (
     <>
-      <Header />
+      <Header notice={notice} onNoticeClick={() => setAlertOpen(true)} />
+      {alertOpen && <AlertModal weather={weather} pins={pins} onClose={() => setAlertOpen(false)} />}
       <div id="map-root">
         <Map
           locationFeature={locationFeature}
