@@ -3,6 +3,8 @@ import Map from './Map.jsx'
 import Legend from './Legend.jsx'
 import IncidentPanel from './IncidentPanel.jsx'
 import Timeline from './Timeline.jsx'
+import Header from './Header.jsx'
+import InfoPanel from './InfoPanel.jsx'
 import useGeolocation from './useGeolocation.js'
 import useIncidents from './useIncidents.js'
 import { CATEGORIES, EVENT_WINDOW } from './incidents.js'
@@ -17,7 +19,6 @@ const WIN = {
   end:   Date.now(),
 }
 
-// 1 real second = 15 simulated minutes
 const SPEED = 15 * 60 * 1000
 
 export default function App() {
@@ -36,7 +37,6 @@ export default function App() {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
       return
     }
-
     function tick(now) {
       if (lastRef.current != null) {
         const delta = now - lastRef.current
@@ -49,7 +49,6 @@ export default function App() {
       lastRef.current = now
       rafRef.current = requestAnimationFrame(tick)
     }
-
     lastRef.current = null
     rafRef.current = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(rafRef.current)
@@ -65,23 +64,27 @@ export default function App() {
   }
 
   return (
-    <div id="map-root">
-      <Map
-        locationFeature={locationFeature}
-        incidentPins={pins}
-        incidentRadii={radii}
-        layers={layers}
-        onIncidentClick={setSelectedIncident}
-      />
-      <Legend layers={layers} onToggle={onToggle} />
-      <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
-      <Timeline
-        currentTime={currentTime}
-        window={WIN}
-        playing={playing}
-        onSeek={t => { setCurrentTime(t); setPlaying(false) }}
-        onTogglePlay={onTogglePlay}
-      />
-    </div>
+    <>
+      <Header />
+      <div id="map-root">
+        <Map
+          locationFeature={locationFeature}
+          incidentPins={pins}
+          incidentRadii={radii}
+          layers={layers}
+          onIncidentClick={setSelectedIncident}
+        />
+        <InfoPanel />
+        <Legend layers={layers} onToggle={onToggle} />
+        <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
+        <Timeline
+          currentTime={currentTime}
+          window={WIN}
+          playing={playing}
+          onSeek={t => { setCurrentTime(t); setPlaying(false) }}
+          onTogglePlay={onTogglePlay}
+        />
+      </div>
+    </>
   )
 }

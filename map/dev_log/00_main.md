@@ -68,6 +68,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | c3f1yw | done    | 08 Active Window | Incidents appear and disappear based on per-category duration           | 08_active_window.md  |
 | q7d4bm | done    | 09 Timeline Orientation | Right=now, left=past, relative offset labels (-H:mm)          | 09_timeline_orientation.md |
 | x8k2pn | done    | 10 UI Style   | Unified floating overlay style — rounded, gray, no elevation               | 10_ui_style.md       |
+| b2j5qt | done    | 11 Info Cards | WCC header + floating info cards (weather, conditions, stats) over the map | 11_info_cards.md     |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.
