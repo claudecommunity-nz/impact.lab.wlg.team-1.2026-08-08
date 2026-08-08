@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { CATEGORIES } from './incidents.js'
+import ShareModal from './ShareModal.jsx'
 import { overlay } from './styles.js'
 
 const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]))
@@ -10,12 +11,17 @@ const SEVERITY = {
 }
 
 export default function IncidentPanel({ incident, onClose }) {
+  const [sharing, setSharing] = useState(false)
+
+  // Escape closes the share modal first, then the panel.
   useEffect(() => {
     if (!incident) return
-    function onKey(e) { if (e.key === 'Escape') onClose() }
+    function onKey(e) { if (e.key === 'Escape' && !sharing) onClose() }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [incident, onClose])
+  }, [incident, onClose, sharing])
+
+  useEffect(() => { setSharing(false) }, [incident])
 
   if (!incident) return null
 
@@ -23,6 +29,7 @@ export default function IncidentPanel({ incident, onClose }) {
   const sev = SEVERITY[incident.severity] ?? SEVERITY.yellow
 
   return (
+    <>
     <div style={{
       ...overlay,
       position: 'absolute',
@@ -61,15 +68,35 @@ export default function IncidentPanel({ incident, onClose }) {
           }}>×</button>
         </div>
 
-        {/* Severity badge */}
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: 6,
-          background: sev.bg, color: sev.text,
-          borderRadius: 6, padding: '4px 10px', marginBottom: 14,
-          fontSize: 11, fontWeight: 500,
-        }}>
-          <span style={{ width: 7, height: 7, borderRadius: '50%', background: sev.dot, display: 'inline-block' }} />
-          {sev.label}
+        {/* Severity badge + share */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            background: sev.bg, color: sev.text,
+            borderRadius: 6, padding: '4px 10px',
+            fontSize: 11, fontWeight: 500,
+          }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: sev.dot, display: 'inline-block' }} />
+            {sev.label}
+          </div>
+          <button
+            onClick={() => setSharing(true)}
+            style={{
+              marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 5,
+              background: 'none', border: '1px solid rgba(0,0,0,0.14)', borderRadius: 6,
+              padding: '4px 10px', cursor: 'pointer',
+              fontSize: 11, fontWeight: 500, color: '#374151',
+              fontFamily: 'inherit', flexShrink: 0,
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.04)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'none'}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+              <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" />
+            </svg>
+            Share
+          </button>
         </div>
 
         <div style={{ height: 1, background: 'rgba(0,0,0,0.08)', marginBottom: 14 }} />
@@ -101,6 +128,9 @@ export default function IncidentPanel({ incident, onClose }) {
         </Section>
       </div>
     </div>
+
+    {sharing && <ShareModal incident={incident} onClose={() => setSharing(false)} />}
+    </>
   )
 }
 
