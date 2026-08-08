@@ -1,96 +1,69 @@
-# Impact Lab Wellington — Team 1
+# Lyall Bay weather dashboard
 
-**Wellington City Council Emergency Management × Claude Code Community NZ**
-Saturday 8 August 2026 · Waimanga Room, Wellington City Council
+A single-file HTML mockup/dashboard built as a Claude Cowork artifact. Shows current
+conditions for Lyall Bay, Wellington, aggregates real official data sources, and
+answers "what does this mean for me" questions with a mostly-free rule engine
+(AI only as a fallback for unmatched free text).
 
----
+## What's in it
 
-## Problem 01 — Bring official warnings and local conditions into one clear community view
+- **Current conditions**: temperature, wind, rain chance, sea temp
+- **Official sources panel**: MetService forecast summary, NIWA link, WREMO
+  civil defence swell warning, Wellington City Council alerts
+- **Live hazard check**: queries WCC's public ArcGIS REST API directly
+  (no API key required) to confirm whether the location sits inside the
+  council's CDEM tsunami evacuation zone
+- **Illustrative local map**: SVG showing wind/swell direction relative to the bay
+  (not a live tile map — see Limitations)
+- **"What does this mean for me" box**: a small rule engine matches common
+  intents (laundry, commuting, beach/exercise, gardening, evacuation questions,
+  staying home, pets, rain gear) and answers instantly with no AI call. Only
+  unrecognised free-text questions fall through to an AI call, and those get
+  cached client-side so the same question never costs a second call.
 
-> How might we give people a clear, location-specific picture of an emerging weather event by bringing together official warnings, Council information and trusted reports of local conditions?
+## Data sources
 
-South coast events are often forecast by MetService and communicated through official channels. However, those sources do not always show what is happening at street or neighbourhood level — for example, the condition of roads, waves crossing the road, surface flooding or access becoming unsafe.
+| Source | Type | Notes |
+|---|---|---|
+| MetService | Manual/scheduled check | No public API found; page is JS-rendered |
+| NIWA | Link only | Public forecast site, no API integrated |
+| WREMO (civil defence) | Manual/scheduled check | No public API; social/web page only |
+| Wellington City Council news | Manual/scheduled check | No public API for alerts |
+| WCC ArcGIS hazard GIS | **Live REST query** | Keyless, public, `gis.wcc.govt.nz/arcgis/rest/services/...` — confirmed working via direct query in this project |
 
-Residents may monitor MetService, WCC, WREMO, news media and local Facebook groups, without knowing which source to rely on or how the information fits together. A prototype could bring those sources into one view, identify the source and time of each item, and clearly distinguish official advice from unverified community reports.
+The hazard layer catalogue (74 datasets: flood, tsunami, landslide, earthquake,
+liquefaction, climate projections, etc.) came from a companion project that
+probed WCC/GWRC's ArcGIS Open Data portal and verified which endpoints are
+public and keyless. None of the sources above expose a citizen-report/"Fix It"
+feed — that system is a submission-only form, not a public dataset.
 
-**Desired outcome:** People can quickly understand what is forecast, what is happening locally, and where to find authoritative advice.
+## Limitations
 
-*The common theme is improving the flow and use of information between communities and Council before and during an event.*
+- The map is an illustrative SVG, not a real interactive map — the artifact
+  sandbox only allows loading scripts from a small CDN allowlist (Chart.js,
+  Grid.js, Mermaid), which excludes map tile providers.
+- MetService/NIWA/WREMO/WCC news content is not live-polled by the page itself;
+  it needs a scheduled task (external to this HTML) to refresh it periodically,
+  since the sandbox can't call arbitrary external APIs client-side.
+- The hazard GIS check queries a single point — a "no result" for flood depth
+  or liquefaction at that point is not a confirmed "no risk" for the wider area.
 
----
+## Files
 
-## What we're building
+- `lyall_bay_dashboard.html` — the dashboard itself, self-contained (inline CSS/JS)
 
-One working prototype, demoed in four minutes at 16:30.
+## License
 
-Each team's module is meant to slot into a shared **common operating picture** —
-a live map of emergency signals that the ten prototypes feed together. Aim for
-something that can be pointed at a map, a feed or an API, rather than a
-closed-off demo.
+Add a license of your choice (MIT recommended for a demo/mockup like this).
 
-Two teams work each problem statement independently. That's deliberate: two
-honest attempts at the same problem tell WCC more than one.
+## Pushing to GitHub
 
-## Data
-
-The public GIS datasets Wellington City Council Emergency Management shared are
-catalogued, checked and made queryable here:
-
-- **Catalogue + SDK** — https://github.com/claudecommunity-nz/wcc-emergency-gis-data
-- **Browse the datasets** — https://claudecommunity-nz.github.io/wcc-emergency-gis-data/
-
-74 datasets: flood, landslide, earthquake, tsunami, coastal inundation and
-climate layers, plus emergency hubs, post-quake road reopening order, water
-tanks, deprivation by area, and live river-level and rainfall telemetry.
-`wcc_gis.py` is a single file with no dependencies — copy it and
-`catalogue.json` into your project.
-
-```python
-import wcc_gis
-
-wcc_gis.ids("tsunami")                                    # find datasets
-wcc_gis.features("tsunami-evacuation-zones", at=(-41.2790, 174.7804))
-wcc_gis.geojson("footpaths", bbox=wcc_gis.WELLINGTON)     # straight into MapLibre
-wcc_gis.hilltop_data("Hutt River at Taita Gorge", "Flow")[-1]
+```bash
+cd path/to/this/folder
+git init
+git add lyall_bay_dashboard.html README.md
+git commit -m "Add Lyall Bay weather dashboard mockup"
+git branch -M main
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+git push -u origin main
 ```
-
-Three traps worth knowing before you lose an hour to them:
-
-- Everything is published in **NZTM2000, not lat/lng**. Request raw and your
-  pins land off the coast of Africa. Always ask for `outSR=4326`.
-- **A quarter of the layers are rasters** that advertise a query capability,
-  then refuse to answer. Ask them for a PNG instead.
-- **One query is silently capped** (`footpaths` has 8,130 features; a request
-  returns 2,000). Page properly, or check `exceededTransferLimit`.
-
-## Schedule
-
-| Time | What |
-|---|---|
-| 08:00 | Arrival and mingle |
-| 09:00 | Opening address & problem briefing |
-| 09:30 | Build begins |
-| 12:30 | Lunch + lightning talks |
-| 16:00 | Submissions close |
-| 16:30 | Demos + judging |
-| 17:45 | Awards + next steps |
-
-## Ground rules
-
-- These are **hazard-planning layers, not live emergency information**.
-  In an emergency, call 111.
-- **The data is not ours.** Each dataset belongs to its publisher — WCC, Greater
-  Wellington, GNS Science, NIWA, Wellington Water, MBIE, NZTA, MetService.
-  Licence terms vary per dataset; check the dataset's page before publishing
-  anything derived from it, and credit the publisher.
-- Be considerate with request rates. These are council servers, and at least one
-  host throttles under concurrent load.
-- **Keep personal details out of this repo.** It is public. No participant
-  names, contact details or application material.
-- Treat public social content as a *signal to investigate*, never as verified
-  fact — surfacing something unverified as confirmed is the failure mode these
-  problem statements are most wary of.
-
-## Licence
-
-Code here is MIT unless stated otherwise. The data is not covered by it.
