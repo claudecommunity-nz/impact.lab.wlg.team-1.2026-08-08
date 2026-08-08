@@ -63,19 +63,22 @@ function flyToArea(map, area) {
  * label carries macrons ("Ōwhiro Bay") that the boundary data does not. The
  * catch-all area has no suburb, so it correctly outlines nothing.
  */
-function setSuburbFilter(map, area) {
-  // A region carries a list of suburbs; a single suburb carries one name. Both
-  // are Council's own spelling, not the display label — the label has macrons
-  // ("Ōwhiro Bay") that the boundary data does not.
-  const names = area?.suburbs ?? (area?.suburb ? [area.suburb] : [])
-  const filter = names.length
+/**
+ * Outline exactly the suburbs that are ticked.
+ *
+ * Keyed on Council's own spelling, never the display label — the data says
+ * "Owhiro Bay" and the interface shows "Ōwhiro Bay". An empty list outlines
+ * nothing, which is the honest result of unticking everything.
+ */
+function setSuburbFilter(map, names) {
+  const filter = names?.length
     ? ['in', ['get', 'suburb'], ['literal', names]]
     : NO_SUBURB
   map.setFilter('suburb-fill', filter)
   map.setFilter('suburb-outline', filter)
 }
 
-export default function Map({ locationFeature, incidentPins, incidentRadii, layers, focusArea, onIncidentClick }) {
+export default function Map({ locationFeature, incidentPins, incidentRadii, layers, focusArea, activeSuburbs, onIncidentClick }) {
   const containerRef = useRef(null)
   const mapRef = useRef(null)
   const loadedRef = useRef(false)
@@ -268,9 +271,9 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
   // too: the opening frame should already show which suburb is selected, even
   // though the camera deliberately stays on the whole city.
   useEffect(() => {
-    if (!loadedRef.current) { pendingOutlineRef.current = focusArea ?? null; return }
-    setSuburbFilter(mapRef.current, focusArea)
-  }, [focusArea])
+    if (!loadedRef.current) { pendingOutlineRef.current = activeSuburbs ?? []; return }
+    setSuburbFilter(mapRef.current, activeSuburbs)
+  }, [activeSuburbs])
 
   useEffect(() => {
     if (!loadedRef.current) return

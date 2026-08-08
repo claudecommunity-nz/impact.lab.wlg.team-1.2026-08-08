@@ -16,7 +16,9 @@ const ALL_ITEMS = [
   ...CATEGORIES.map(c => ({ id: c.id, label: c.label, colour: c.colour })),
 ]
 
-export default function InfoPanel({ layers, onToggle, weather, areaId, onArea }) {
+export default function InfoPanel({
+  layers, onToggle, weather, areaId, onArea, activeSuburbs, onToggleSuburb, onSetAll,
+}) {
   return (
     <div style={{
       position: 'absolute',
@@ -25,7 +27,13 @@ export default function InfoPanel({ layers, onToggle, weather, areaId, onArea })
       width: 280,
       zIndex: 5,
     }}>
-      <AreaPicker areaId={areaId} onArea={onArea} />
+      <AreaPicker
+        areaId={areaId}
+        onArea={onArea}
+        activeSuburbs={activeSuburbs}
+        onToggleSuburb={onToggleSuburb}
+        onSetAll={onSetAll}
+      />
       <ConditionsCard />
       <WeatherCard weather={weather} />
       <StatsRow weather={weather} />

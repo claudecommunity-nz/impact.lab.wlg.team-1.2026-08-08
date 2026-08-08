@@ -76,7 +76,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | d8r2nf | done    | 16 Real Data    | Replace synthetic incidents with 12 tickets from CSV, expand timeline   | 16_real_data.md       |
 | y5w1kp | done    | 17 Dynamic Weather | Left panel weather updates as timeline scrubs — 21 synthetic snapshots | 17_dynamic_weather.md |
 | m1t6rz | done    | 18 Timeline Labels | Human-readable relative time labels (Xd Yh ago) on the scrubber       | 18_timeline_labels.md |
-| d7v3mq | done    | 19 Location Selector | Search 57 WCC suburbs or a whole region; outline it and move the camera | 19_location_selector.md |
+| d7v3mq | done    | 19 Location Selector | Region search + per-suburb checkboxes; outlines the area and opens on the user's own region | 19_location_selector.md |
 | j4q7ha | done    | 20 Share Alert | Share button on the incident panel opens a mock share modal with source and time attached | 20_share_alert.md |
 | p9q3vw | done    | 21 Data 1000      | Conversion script maps 389 relevant tickets to incidents.json          | 21_data_1000.md       |
 ```

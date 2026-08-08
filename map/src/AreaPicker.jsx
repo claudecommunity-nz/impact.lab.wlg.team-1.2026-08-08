@@ -1,23 +1,25 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AREA_GROUPS, REGIONS_BY_ID, SELECTABLE_BY_ID } from './areas.js'
+import { REGIONS, REGIONS_BY_ID, AREAS_BY_ID } from './areas.js'
 import { overlay } from './styles.js'
 
 /**
- * Choose a Wellington suburb, by name or postcode.
+ * Choose a part of Wellington, then narrow it.
  *
- * The 57 suburbs come from Council's own boundary layer, generated into
- * areas.js by prototype-1/scripts/build_suburbs.py. Static here on purpose:
- * this app only needs to name an area and move the camera to it, so it carries
- * the centres and not the 109 KB of boundary rings.
+ * Two levels, because they answer different questions. The dropdown offers the
+ * seven regions only — "the south coast" is how the problem statement and a
+ * resident both talk about this, and a single suburb is a small, easily-missed
+ * outline on a city-wide map. Underneath, a checkbox per suburb in the chosen
+ * region drops the ones you do not care about. All are on by default, so a
+ * region behaves as one area until someone says otherwise.
  *
- * Typing filters. Text matches the suburb name, case- and macron-insensitive,
- * so "owhiro" finds Ōwhiro Bay — almost nobody types the macron. All digits
- * search postcodes as a prefix, since no Wellington suburb has a number in its
- * name.
+ * Typing filters the regions. It matches the region's own name, any member
+ * suburb, or a postcode prefix — so "khandallah" and "6035" both find Onslow
+ * and the northern hills, and the row says which suburb matched. Without that
+ * you would need to already know which region your suburb is in, which is
+ * exactly what someone searching does not know.
  *
- * Postcodes are not unique — 6021 covers eight suburbs and 6022 covers ten — so
- * the code is shown against every row. Otherwise someone who typed 6021 and got
- * eight unfamiliar names would have no idea why.
+ * The 57 suburbs and 7 regions come from Council's own boundary layer, via
+ * prototype-1/scripts/build_suburbs.py. Do not edit areas.js by hand.
  */
 
 const font = "'Public Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -29,17 +31,20 @@ const card = {
   marginBottom: 10,
 }
 
-/** Must match slugify() in prototype-1/scripts/build_suburbs.py. */
-function slug(name) {
-  return name.toLowerCase().replace(/ /g, '-').replace(/'/g, '')
-}
-
 /** Lower case, macrons folded, so "owhiro" matches "Ōwhiro". */
 function fold(s) {
-  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
 }
 
-export default function AreaPicker({ areaId, onArea }) {
+/** Council's spelling -> the display label, which restores macrons. */
+function areaOf(suburb) {
+  return AREAS_BY_ID[suburb.toLowerCase().replace(/ /g, '-')]
+}
+function labelOf(suburb) {
+  return areaOf(suburb)?.label ?? suburb
+}
+
+export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSuburb, onSetAll }) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [active, setActive] = useState(0)
@@ -48,40 +53,33 @@ export default function AreaPicker({ areaId, onArea }) {
   const inputRef = useRef(null)
   const listRef = useRef(null)
 
-  const current = SELECTABLE_BY_ID[areaId]
+  const region = REGIONS_BY_ID[areaId]
   const q = query.trim()
   const isPostcode = /^\d+$/.test(q)
 
-  const groups = useMemo(() => {
-    if (!q) return AREA_GROUPS
+  // Each result is a region, plus the member suburb that matched — so a search
+  // for "tawa" offers the northern suburbs and says why.
+  const results = useMemo(() => {
+    if (!q) return REGIONS.map(r => ({ region: r, via: null }))
     const folded = fold(q)
-    const match = a => isPostcode
-      ? String(a.postcode).startsWith(q)
-      : fold(a.label).includes(folded) || fold(a.suburb).includes(folded)
-    return AREA_GROUPS
-      .map(g => ({ region: g.region, areas: g.areas.filter(match) }))
-      .filter(g => g.areas.length > 0)
-  }, [q, isPostcode])
 
-  // Each group is led by its own whole-region row. A single suburb is a small
-  // target on a city-wide map, and "the south coast" is how the problem
-  // statement and a resident both actually talk about this.
-  //
-  // The region row is always offered for a group that has any visible suburb,
-  // including under a postcode search: "6023" narrowing to five south coast
-  // suburbs plus the option to take the lot is more useful than five rows and
-  // no way to say "all of those".
-  const flat = useMemo(
-    () => groups.flatMap(g => [REGIONS_BY_ID['region-' + slug(g.region)], ...g.areas]),
-    [groups],
-  )
+    return REGIONS.map(r => {
+      if (!isPostcode && fold(r.label).includes(folded)) return { region: r, via: null }
+      const hit = r.suburbs.find(s => {
+        const a = areaOf(s)
+        return isPostcode
+          ? String(a?.postcode ?? '').startsWith(q)
+          : fold(s).includes(folded) || (a ? fold(a.label).includes(folded) : false)
+      })
+      return hit ? { region: r, via: hit } : null
+    }).filter(Boolean)
+  }, [q, isPostcode])
 
   useEffect(() => setActive(0), [q])
 
-  // Keep the highlighted row in view when arrowing past the fold.
   useEffect(() => {
     if (!open) return
-    // Scroll the LIST, not the page. scrollIntoView walks up to the nearest
+    // Scroll the list, not the page. scrollIntoView walks up to the nearest
     // scrollable ancestor, and when the dropdown is short enough not to
     // overflow that ancestor is the document — which shunts the whole sidebar
     // down as soon as you press an arrow key.
@@ -110,8 +108,8 @@ export default function AreaPicker({ areaId, onArea }) {
     setQuery('')
   }
 
-  function choose(a) {
-    onArea(a.id)
+  function choose(r) {
+    onArea(r.id)
     close()
     inputRef.current?.blur()
   }
@@ -121,22 +119,22 @@ export default function AreaPicker({ areaId, onArea }) {
       e.preventDefault()
       if (!open) { setOpen(true); return }
       const step = e.key === 'ArrowDown' ? 1 : -1
-      setActive(i => (flat.length ? (i + step + flat.length) % flat.length : 0))
+      setActive(i => (results.length ? (i + step + results.length) % results.length : 0))
     } else if (e.key === 'Enter') {
-      if (open && flat[active]) { e.preventDefault(); choose(flat[active]) }
+      if (open && results[active]) { e.preventDefault(); choose(results[active].region) }
     } else if (e.key === 'Escape') {
       if (open) { e.preventDefault(); close() }
     }
   }
 
+  const suburbs = region?.suburbs ?? []
+  const allOn = suburbs.length > 0 && suburbs.every(s => activeSuburbs.includes(s))
+
   return (
     <div ref={wrapRef} style={{ ...card, position: 'relative' }}>
       <label
         htmlFor="map-area-picker"
-        style={{
-          display: 'block', fontWeight: 700, fontSize: 13,
-          marginBottom: 8, color: '#14140f',
-        }}
+        style={{ display: 'block', fontWeight: 700, fontSize: 13, marginBottom: 8, color: '#14140f' }}
       >
         Which part of Pōneke?
       </label>
@@ -150,22 +148,16 @@ export default function AreaPicker({ areaId, onArea }) {
         aria-controls="map-area-picker-list"
         aria-autocomplete="list"
         autoComplete="off"
-        // Shows the chosen suburb until opened, then becomes a search field —
-        // otherwise the panel would read as an empty box and stop telling you
-        // which area you are looking at.
-        value={open ? query : (current?.label ?? '')}
-        placeholder={open ? 'Suburb or postcode…' : 'Choose an area'}
+        value={open ? query : (region?.label ?? '')}
+        placeholder={open ? 'Region, suburb or postcode…' : 'Choose an area'}
         onChange={e => { setQuery(e.target.value); setOpen(true) }}
         onFocus={() => setOpen(true)}
         onKeyDown={onKeyDown}
         style={{
           width: '100%', boxSizing: 'border-box',
-          padding: '7px 10px',
-          borderRadius: 6,
-          border: '1px solid rgba(0,0,0,0.14)',
-          background: '#fff',
-          fontFamily: font, fontSize: 12.5, fontWeight: 600,
-          color: '#14140f',
+          padding: '7px 10px', borderRadius: 6,
+          border: '1px solid rgba(0,0,0,0.14)', background: '#fff',
+          fontFamily: font, fontSize: 12.5, fontWeight: 600, color: '#14140f',
           outline: 'none',
         }}
       />
@@ -177,106 +169,119 @@ export default function AreaPicker({ areaId, onArea }) {
           role="listbox"
           style={{
             position: 'absolute', zIndex: 20,
-            top: '100%', left: 0, right: 0, marginTop: 4,
+            top: 68, left: 16, right: 16,
             maxHeight: 300, overflowY: 'auto',
             listStyle: 'none', margin: 0, padding: '4px 0',
-            background: '#fff',
-            border: '1px solid rgba(0,0,0,0.12)',
-            borderRadius: 8,
-            boxShadow: '0 8px 24px rgba(0,0,0,0.16)',
+            background: '#fff', border: '1px solid rgba(0,0,0,0.12)',
+            borderRadius: 8, boxShadow: '0 8px 24px rgba(0,0,0,0.16)',
           }}
         >
-          {flat.length === 0 && (
+          {results.length === 0 && (
             <li style={{ padding: '8px 12px', fontSize: 12, color: '#757570' }}>
               {isPostcode
                 ? `No Wellington City suburb has a postcode starting ${q}.`
-                : `No Wellington suburb matches “${q}”.`}
+                : `Nothing in Wellington matches “${q}”.`}
             </li>
           )}
 
-          {groups.map(g => (
-            <li key={g.region}>
-              {(() => {
-                const r = REGIONS_BY_ID['region-' + slug(g.region)]
-                const i = flat.indexOf(r)
-                const isActive = i === active
-                const isCurrent = r.id === areaId
-                return (
-                  <button
-                    type="button"
-                    role="option"
-                    aria-selected={isCurrent}
-                    data-active={isActive}
-                    onMouseDown={e => { e.preventDefault(); choose(r) }}
-                    onMouseEnter={() => setActive(i)}
-                    style={{
-                      display: 'flex', alignItems: 'baseline',
-                      justifyContent: 'space-between', gap: 8,
-                      width: '100%', textAlign: 'left',
-                      padding: '7px 12px 4px',
-                      border: 'none',
-                      borderTop: '1px solid rgba(0,0,0,0.06)',
-                      background: isActive ? 'rgba(0,0,0,0.05)' : 'transparent',
-                      fontFamily: font,
-                      fontSize: 10, fontWeight: 700, letterSpacing: '0.04em',
-                      textTransform: 'uppercase',
-                      color: isCurrent ? '#0b5cad' : '#9a9a94',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <span>{g.region}</span>
-                    <span style={{ flexShrink: 0, textTransform: 'none', letterSpacing: 0, fontWeight: 600 }}>
-                      all {g.areas.length}
+          {results.map(({ region: r, via }, i) => {
+            const isActive = i === active
+            const isCurrent = r.id === areaId
+            return (
+              <li key={r.id}>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={isCurrent}
+                  data-active={isActive}
+                  // mousedown, not click: the input's blur would otherwise close
+                  // the list before the click landed.
+                  onMouseDown={e => { e.preventDefault(); choose(r) }}
+                  onMouseEnter={() => setActive(i)}
+                  style={{
+                    display: 'block', width: '100%', textAlign: 'left',
+                    padding: '6px 12px', border: 'none',
+                    background: isActive ? 'rgba(0,0,0,0.05)' : 'transparent',
+                    fontFamily: font, cursor: 'pointer',
+                  }}
+                >
+                  <span style={{
+                    display: 'flex', justifyContent: 'space-between', gap: 8,
+                    fontSize: 12.5,
+                    fontWeight: isCurrent ? 700 : 500,
+                    color: isCurrent ? '#0b5cad' : '#3a3a36',
+                  }}>
+                    <span>{r.label}</span>
+                    <span style={{ flexShrink: 0, fontSize: 10.5, color: '#a8a8a2', fontWeight: 600 }}>
+                      {r.suburbs.length}
                     </span>
-                  </button>
-                )
-              })()}
-              <ul role="group" aria-label={g.region} style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                {g.areas.map(a => {
-                  const i = flat.indexOf(a)
-                  const isActive = i === active
-                  const isCurrent = a.id === areaId
-                  return (
-                    <li key={a.id}>
-                      <button
-                        type="button"
-                        role="option"
-                        aria-selected={isCurrent}
-                        data-active={isActive}
-                        // mousedown, not click: the input's blur would
-                        // otherwise close the list before the click landed.
-                        onMouseDown={e => { e.preventDefault(); choose(a) }}
-                        onMouseEnter={() => setActive(i)}
-                        style={{
-                          display: 'flex', alignItems: 'baseline',
-                          justifyContent: 'space-between', gap: 8,
-                          width: '100%', textAlign: 'left',
-                          padding: '5px 12px',
-                          border: 'none',
-                          background: isActive ? 'rgba(0,0,0,0.05)' : 'transparent',
-                          fontFamily: font, fontSize: 12.5,
-                          fontWeight: isCurrent ? 700 : 400,
-                          color: isCurrent ? '#0b5cad' : '#3a3a36',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <span>{a.label}</span>
-                        <span style={{
-                          flexShrink: 0, fontSize: 10.5,
-                          fontVariantNumeric: 'tabular-nums',
-                          color: isPostcode ? '#55554f' : '#a8a8a2',
-                          fontWeight: isPostcode ? 700 : 400,
-                        }}>
-                          {a.postcode}
-                        </span>
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
-            </li>
-          ))}
+                  </span>
+                  {via && (
+                    <span style={{ display: 'block', fontSize: 10.5, color: '#757570', marginTop: 1 }}>
+                      matches {labelOf(via)}
+                    </span>
+                  )}
+                </button>
+              </li>
+            )
+          })}
         </ul>
+      )}
+
+      {/*
+        The suburbs inside the chosen region. Unchecking removes one from the
+        outline but does not move the camera — the view stays framed on the
+        region so the map does not lurch while you are ticking boxes.
+      */}
+      {region && (
+        <div style={{ marginTop: 10 }}>
+          <div style={{
+            display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
+            marginBottom: 4,
+          }}>
+            <span style={{
+              fontSize: 10, fontWeight: 700, letterSpacing: '0.04em',
+              textTransform: 'uppercase', color: '#9a9a94',
+            }}>
+              {activeSuburbs.length} of {suburbs.length} shown
+            </span>
+            <button
+              type="button"
+              onClick={() => onSetAll(!allOn)}
+              style={{
+                border: 'none', background: 'none', padding: 0,
+                fontFamily: font, fontSize: 10.5, fontWeight: 600,
+                color: '#0b5cad', cursor: 'pointer',
+              }}
+            >
+              {allOn ? 'Clear all' : 'Select all'}
+            </button>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 8px' }}>
+            {suburbs.map(s => {
+              const on = activeSuburbs.includes(s)
+              return (
+                <label
+                  key={s}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 5,
+                    fontSize: 11.5, cursor: 'pointer',
+                    color: on ? '#3a3a36' : 'rgba(0,0,0,0.35)',
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={on}
+                    onChange={() => onToggleSuburb(s)}
+                    style={{ width: 12, height: 12, margin: 0, accentColor: '#0b5cad', cursor: 'pointer' }}
+                  />
+                  {labelOf(s)}
+                </label>
+              )
+            })}
+          </div>
+        </div>
       )}
     </div>
   )
