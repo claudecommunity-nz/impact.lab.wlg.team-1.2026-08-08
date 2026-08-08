@@ -55,19 +55,6 @@ export const CATEGORIES = [
     ],
   },
   {
-    id: 'roads',
-    label: 'Road & Footpath Maintenance',
-    colour: '#d97706',
-    radiusMetres: 80,
-    durationMs: 8 * 60 * 60 * 1000,
-    whatThisMeans: 'A road or footpath defect — such as a pothole, subsidence, or cracked surface — has been reported here. This may affect vehicle and pedestrian safety. Allow extra time if travelling through this area and report unlogged defects to WCC.',
-    sources: [
-      { label: 'Road Categories (WCC GIS)', url: 'https://gis.wcc.govt.nz/arcgis/rest/services/Transportation/Roads/MapServer/4' },
-      { label: 'Footpaths (WCC GIS)', url: 'https://gis.wcc.govt.nz/arcgis/rest/services/Transportation/Roads/MapServer/2' },
-      { label: 'NZTA Highway Information (live)', url: 'https://services.arcgis.com/XTtANUDT8Va4DLwI/arcgis/rest/services/NZTA_Highway_Information/FeatureServer' },
-    ],
-  },
-  {
     id: 'flooding',
     label: 'Flooding',
     colour: '#1d4ed8',
@@ -78,6 +65,19 @@ export const CATEGORIES = [
       { label: 'Flood Hazard Areas (GW)', url: 'https://mapping1.gw.govt.nz/arcgis/rest/services/GW/Flood_Hazards_Areas/MapServer' },
       { label: 'Storm Surge (GW Hazards)', url: 'https://mapping1.gw.govt.nz/arcgis/rest/services/Hazards/Storm_Surge/MapServer' },
       { label: 'River Levels Viewer (GW live)', url: 'https://mapping.gw.govt.nz/GW/RiverLevels/' },
+    ],
+  },
+  {
+    id: 'roads',
+    label: 'Road & Footpath Maintenance',
+    colour: '#d97706',
+    radiusMetres: 80,
+    durationMs: 8 * 60 * 60 * 1000,
+    whatThisMeans: 'A road or footpath defect — such as a pothole, subsidence, or cracked surface — has been reported here. This may affect vehicle and pedestrian safety. Allow extra time if travelling through this area and report unlogged defects to WCC.',
+    sources: [
+      { label: 'Road Categories (WCC GIS)', url: 'https://gis.wcc.govt.nz/arcgis/rest/services/Transportation/Roads/MapServer/4' },
+      { label: 'Footpaths (WCC GIS)', url: 'https://gis.wcc.govt.nz/arcgis/rest/services/Transportation/Roads/MapServer/2' },
+      { label: 'NZTA Highway Information (live)', url: 'https://services.arcgis.com/XTtANUDT8Va4DLwI/arcgis/rest/services/NZTA_Highway_Information/FeatureServer' },
     ],
   },
 ]
