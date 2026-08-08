@@ -18,10 +18,33 @@ function makeDotSvg(colour) {
   )}`
 }
 
-export default function Map({ locationFeature, incidentPins, incidentRadii, layers, onIncidentClick }) {
+/**
+ * Frame a suburb.
+ *
+ * Zoom is derived from the suburb's own catchment rather than fixed, because
+ * these vary enormously — Moa Point is 0.26 km2 and Makara is 89 km2, and no
+ * single zoom level frames both. This is the Web Mercator metres-per-pixel
+ * relation solved for zoom, sized to put roughly two radii across the viewport.
+ */
+function flyToArea(map, area) {
+  const width = map.getContainer().clientWidth || 800
+  const metresPerPixel = (area.radiusM * 2.4) / width
+  const latRad = area.centre[1] * Math.PI / 180
+  const zoom = Math.log2(156543.03392 * Math.cos(latRad) / metresPerPixel)
+
+  map.flyTo({
+    center: area.centre,
+    zoom: Math.max(11, Math.min(15, zoom)),
+    duration: 900,
+    essential: true,
+  })
+}
+
+export default function Map({ locationFeature, incidentPins, incidentRadii, layers, focusArea, onIncidentClick }) {
   const containerRef = useRef(null)
   const mapRef = useRef(null)
   const loadedRef = useRef(false)
+  const pendingFocusRef = useRef(null)
   const locationRef = useRef(locationFeature)
   const layersRef = useRef(layers)
   const incidentPinsRef = useRef(incidentPins)
@@ -126,6 +149,10 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
               if (incidentPinsRef.current) map.getSource('incident-pins').setData(incidentPinsRef.current)
               if (incidentRadiiRef.current) map.getSource('incident-radii').setData(incidentRadiiRef.current)
               map.getSource('my-location').setData(toCollection(locationRef.current))
+              if (pendingFocusRef.current) {
+                flyToArea(map, pendingFocusRef.current)
+                pendingFocusRef.current = null
+              }
             }
           }
           dotImg.src = makeDotSvg(cat.colour)
@@ -146,6 +173,25 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
     if (!loadedRef.current) return
     mapRef.current.getSource('my-location').setData(toCollection(locationFeature))
   }, [locationFeature])
+
+  // Move the camera when the chosen suburb changes.
+  //
+  // Skipped on the very first render. The map deliberately opens on the whole
+  // city at zoom 12, which is the right opening frame for a common operating
+  // picture; flying to a suburb before the user has asked would throw that away
+  // and animate from a frame nobody has seen yet.
+  //
+  // A choice made while the style is still loading is held and replayed on
+  // load, the same way the incident data is below. Without that, picking a
+  // suburb in the first second does nothing at all and the effect never re-runs
+  // to correct it.
+  const firstFocusRef = useRef(true)
+  useEffect(() => {
+    if (!focusArea) return
+    if (firstFocusRef.current) { firstFocusRef.current = false; return }
+    if (!loadedRef.current) { pendingFocusRef.current = focusArea; return }
+    flyToArea(mapRef.current, focusArea)
+  }, [focusArea])
 
   useEffect(() => {
     if (!loadedRef.current) return

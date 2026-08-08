@@ -78,9 +78,19 @@ export function AreaPicker({
   // Keep the highlighted row in view when arrowing past the fold.
   useEffect(() => {
     if (!open) return;
-    listRef.current
-      ?.querySelector('[data-active="true"]')
-      ?.scrollIntoView({ block: 'nearest' });
+    // Scroll the LIST, not the page. scrollIntoView walks up to the nearest
+    // scrollable ancestor, and when the dropdown is short enough not to
+    // overflow that ancestor is the document — which shunts the whole sidebar
+    // down as soon as you press an arrow key.
+    const list = listRef.current;
+    const el = list?.querySelector('[data-active="true"]') as HTMLElement | null;
+    if (!list || !el) return;
+    const top = el.offsetTop;
+    const bottom = top + el.offsetHeight;
+    if (top < list.scrollTop) list.scrollTop = top;
+    else if (bottom > list.scrollTop + list.clientHeight) {
+      list.scrollTop = bottom - list.clientHeight;
+    }
   }, [active, open]);
 
   useEffect(() => {

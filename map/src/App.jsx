@@ -8,6 +8,7 @@ import useGeolocation from './useGeolocation.js'
 import useIncidents from './useIncidents.js'
 import useWeather from './useWeather.js'
 import { CATEGORIES, EVENT_WINDOW } from './incidents.js'
+import { AREAS_BY_ID } from './areas.js'
 
 const defaultLayers = {
   location: true,
@@ -21,9 +22,15 @@ const WIN = {
 
 const SPEED = 24 * 60 * 60 * 1000
 
+// Island Bay, matching prototype-1's default — the south coast is the problem
+// statement, and an empty-looking map of the northern suburbs is a poor opening
+// frame for a four-minute demo.
+const DEFAULT_AREA = 'island-bay'
+
 export default function App() {
   const locationFeature = useGeolocation()
   const [layers, setLayers] = useState(defaultLayers)
+  const [areaId, setAreaId] = useState(DEFAULT_AREA)
   const [selectedIncident, setSelectedIncident] = useState(null)
 const [currentTime, setCurrentTime] = useState(WIN.end)
   const [playing, setPlaying] = useState(false)
@@ -73,9 +80,16 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
           incidentPins={pins}
           incidentRadii={radii}
           layers={layers}
+          focusArea={AREAS_BY_ID[areaId]}
           onIncidentClick={setSelectedIncident}
         />
-        <InfoPanel layers={layers} onToggle={onToggle} weather={weather} />
+        <InfoPanel
+          layers={layers}
+          onToggle={onToggle}
+          weather={weather}
+          areaId={areaId}
+          onArea={setAreaId}
+        />
         <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
         <Timeline
           currentTime={currentTime}

@@ -4,13 +4,27 @@
     {
       "name": "map-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "map", "run", "dev"],
-      "port": 5173
+      "runtimeArgs": [
+        "--prefix",
+        "map",
+        "run",
+        "dev"
+      ],
+      "port": 5173,
+      "autoPort": true
     },
     {
       "name": "map-preview",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "map", "run", "preview", "--", "--port", "4173"],
+      "runtimeArgs": [
+        "--prefix",
+        "map",
+        "run",
+        "preview",
+        "--",
+        "--port",
+        "4173"
+      ],
       "port": 4173
     }
   ]

@@ -1,4 +1,5 @@
 import { CATEGORIES } from './incidents.js'
+import AreaPicker from './AreaPicker.jsx'
 import { overlay } from './styles.js'
 
 const font = "'Public Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -15,7 +16,7 @@ const ALL_ITEMS = [
   ...CATEGORIES.map(c => ({ id: c.id, label: c.label, colour: c.colour })),
 ]
 
-export default function InfoPanel({ layers, onToggle, weather }) {
+export default function InfoPanel({ layers, onToggle, weather, areaId, onArea }) {
   return (
     <div style={{
       position: 'absolute',
@@ -24,6 +25,7 @@ export default function InfoPanel({ layers, onToggle, weather }) {
       width: 280,
       zIndex: 5,
     }}>
+      <AreaPicker areaId={areaId} onArea={onArea} />
       <ConditionsCard />
       <WeatherCard weather={weather} />
       <StatsRow weather={weather} />
