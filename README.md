@@ -1,12 +1,12 @@
 # WCC Alert Dashboard - Claude Impact Lab | Wellington - Aug 2026
 
+<img src="assets/qr-published-app.png" alt="QR code linking to https://claudecommunity-nz.github.io/impact.lab.wlg.team-1.2026-08-08/" width="220">
+
 Published app: https://claudecommunity-nz.github.io/impact.lab.wlg.team-1.2026-08-08/
 
 Slide deck: https://docs.google.com/presentation/d/1MpRV_sOico0D7X_93hf1xhGJIsnM_9j7HKdzuEOIXP4/edit?usp=sharing
 
-<img src="assets/qr-published-app.png" alt="QR code linking to https://claudecommunity-nz.github.io/impact.lab.wlg.team-1.2026-08-08/" width="220">
 
-Scan to open the app on a phone.
 
 A single-file HTML mockup/dashboard built as a Claude Cowork artifact. Shows current
 conditions for Lyall Bay, Wellington, aggregates real official data sources, and
