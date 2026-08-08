@@ -50,7 +50,7 @@ export default function Timeline({ currentTime, window: win, playing, onSeek, on
 
       <span style={{
         color: '#fff', fontSize: 12, fontFamily: 'monospace',
-        opacity: 0.85, flexShrink: 0, letterSpacing: '0.04em', minWidth: 38, textAlign: 'right',
+        opacity: 0.85, flexShrink: 0, letterSpacing: '0.04em', width: 84, textAlign: 'right', whiteSpace: 'nowrap',
       }}>
         {formatOffset(offsetMs)}
       </span>
