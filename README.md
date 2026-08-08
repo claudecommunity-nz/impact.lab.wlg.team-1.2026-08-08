@@ -8,6 +8,10 @@ Slide deck: https://docs.google.com/presentation/d/1MpRV_sOico0D7X_93hf1xhGJIsnM
 
 
 
+![WCC Alert Dashboard screenshot](wcc-demo.png)
+
+Demo video: https://youtu.be/bKIfeBEj7oo?si=_hj46nEh13GjnqHb
+
 A single-file HTML mockup/dashboard built as a Claude Cowork artifact. Shows current
 conditions for Lyall Bay, Wellington, aggregates real official data sources, and
 answers "what does this mean for me" questions with a mostly-free rule engine
