@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { CATEGORIES } from './incidents.js'
 import { REGIONS_BY_ID } from './areas.js'
 import AreaPicker from './AreaPicker.jsx'
-import NearbyReport from './NearbyReport.jsx'
 import { overlay } from './styles.js'
 import useIsMobile from './useIsMobile.js'
 
@@ -25,7 +24,7 @@ const ALL_ITEMS = [
 
 export default function InfoPanel({
   layers, onToggle, weather, areaId, onArea, activeSuburbs, onToggleSuburb, onSetAll,
-  pins, currentTime, locationStatus, locationError, outsideCity,
+  locationStatus, locationError, outsideCity, regionSource,
 }) {
   const mobile = useIsMobile()
   const [open, setOpen] = useState(false)
@@ -41,12 +40,7 @@ export default function InfoPanel({
         locationStatus={locationStatus}
         locationError={locationError}
         outsideCity={outsideCity}
-      />
-      <NearbyReport
-        pins={pins}
-        activeSuburbs={activeSuburbs}
-        regionLabel={REGIONS_BY_ID[areaId]?.label ?? 'Wellington'}
-        currentTime={currentTime}
+        regionSource={regionSource}
       />
       <ConditionsCard />
       <WeatherCard weather={weather} />

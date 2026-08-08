@@ -4,6 +4,7 @@ import IncidentPanel from './IncidentPanel.jsx'
 import Timeline from './Timeline.jsx'
 import Header from './Header.jsx'
 import InfoPanel from './InfoPanel.jsx'
+import NearbyReport from './NearbyReport.jsx'
 import useGeolocation from './useGeolocation.js'
 import useIncidents from './useIncidents.js'
 import useWeather from './useWeather.js'
@@ -24,23 +25,29 @@ const WIN = {
 
 const SPEED = 24 * 60 * 60 * 1000
 
-// No region is chosen until we know something. Defaulting to the south coast
-// looked identical to having located the user there, so a failure to locate was
-// indistinguishable from a correct answer — the map simply lied quietly. The
-// picker now says "Select region" until either the browser tells us where the
-// user is or they choose for themselves.
+// Where the map opens before we know anything.
+//
+// The city centre, because it is where most people and most of the incident
+// data are, and because browser geolocation has proved unreliable on the demo
+// machine. A location fix still overrides this the moment it arrives — see the
+// effect below — and if it never arrives the panel says so rather than letting
+// a fallback pass for an answer.
+const DEFAULT_AREA = 'region-city-and-inner-suburbs'
 
 export default function App() {
   const { feature: locationFeature, status: locationStatus, error: locationError } = useGeolocation()
   const [layers, setLayers] = useState(defaultLayers)
-  const [areaId, setAreaIdRaw] = useState(null)
+  const [areaId, setAreaIdRaw] = useState(DEFAULT_AREA)
   // Which suburbs of the chosen region are drawn. Council's spellings, because
   // that is what the boundary layer is keyed on.
-  const [activeSuburbs, setActiveSuburbs] = useState([])
+  const [activeSuburbs, setActiveSuburbs] = useState(REGIONS_BY_ID[DEFAULT_AREA].suburbs)
   // Set when the browser gave us a position that is not in Wellington City —
   // Lower Hutt, a VPN, a spoofed location. Worth saying, because otherwise the
   // picker sits on "Select region" with no explanation.
   const [outsideCity, setOutsideCity] = useState(false)
+  // Where the current region came from: our fallback, the browser, or a
+  // deliberate choice. The panel only apologises for the first one.
+  const [regionSource, setRegionSource] = useState('default')
   // True once the user has picked a region themselves. Geolocation can arrive
   // seconds late — on a cold GPS fix, well after someone has started clicking —
   // and moving the map out from under them at that point would be worse than
@@ -53,6 +60,7 @@ export default function App() {
     if (byUser) chosenRef.current = true
     setAreaIdRaw(id)
     setActiveSuburbs(REGIONS_BY_ID[id]?.suburbs ?? [])
+    setRegionSource(byUser ? 'user' : 'location')
   }
 
   function toggleSuburb(name) {
@@ -165,9 +173,28 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
           locationStatus={locationStatus}
           locationError={locationError}
           outsideCity={outsideCity}
-          pins={pins}
-          currentTime={currentTime}
+          regionSource={regionSource}
         />
+        {/*
+          Right-hand column. The community report sits opposite the conditions
+          panel — it is the one card asking the reader for something back, and
+          it should not be buried among the cards that only tell them things.
+          The incident panel takes the same corner and covers it while open;
+          that panel is a direct answer to a click and outranks it.
+        */}
+        <div style={{
+          position: 'absolute', top: 16, right: 16, zIndex: 5,
+          // Never wider than the map minus its margins — on a phone the card
+          // spans the width instead of hanging off the right edge.
+          width: 'min(320px, calc(100% - 32px))',
+        }}>
+          <NearbyReport
+            pins={pins}
+            activeSuburbs={activeSuburbs}
+            regionLabel={REGIONS_BY_ID[areaId]?.label ?? 'Wellington'}
+            currentTime={currentTime}
+          />
+        </div>
         <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
         <Timeline
           currentTime={currentTime}

@@ -47,7 +47,7 @@ function labelOf(suburb) {
 
 export default function AreaPicker({
   areaId, onArea, activeSuburbs, onToggleSuburb, onSetAll,
-  locationStatus, locationError, outsideCity,
+  locationStatus, locationError, outsideCity, regionSource,
 }) {
   const mobile = useIsMobile()
   const [open, setOpen] = useState(false)
@@ -248,18 +248,25 @@ export default function AreaPicker({
         "still looking" or naming the reason is the difference between the map
         knowing where you are and the map guessing.
       */}
-      {!region && (
+      {/*
+        Say where this region came from when it was not asked for.
+
+        The map opens on the city centre so the demo is never blank, but a
+        fallback that looks identical to a located answer is the exact failure
+        this project exists to avoid. If the browser could not place the user,
+        the panel says so and names the reason, and the moment a fix arrives
+        this line disappears and the region changes under it.
+      */}
+      {regionSource === 'default' && (locationStatus === 'failed' || outsideCity || locationStatus === 'locating') && (
         <p style={{
           margin: '6px 0 0', fontSize: 11.5, lineHeight: 1.35,
-          color: locationStatus === 'failed' || outsideCity ? '#a3450c' : '#757570',
+          color: locationStatus === 'locating' ? '#757570' : '#a3450c',
         }}>
-          {outsideCity
-            ? 'You appear to be outside Wellington City. Choose a region above.'
-            : locationStatus === 'locating'
-              ? 'Finding your region…'
-              : locationStatus === 'failed'
-                ? `${locationError} Choose a region above.`
-                : 'Choose a region above.'}
+          {locationStatus === 'locating'
+            ? 'Finding your region…'
+            : outsideCity
+              ? 'You appear to be outside Wellington City — showing the city centre.'
+              : `${locationError} Showing the city centre — choose a region above.`}
         </p>
       )}
 
