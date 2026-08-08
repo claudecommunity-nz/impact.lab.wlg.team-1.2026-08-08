@@ -1,11 +1,21 @@
 import { useState } from 'react'
 import Map from './Map.jsx'
 import Legend from './Legend.jsx'
+import IncidentPanel from './IncidentPanel.jsx'
 import useGeolocation from './useGeolocation.js'
+import useIncidents from './useIncidents.js'
+import { CATEGORIES } from './incidents.js'
+
+const defaultLayers = {
+  location: true,
+  ...Object.fromEntries(CATEGORIES.map(c => [c.id, true])),
+}
 
 export default function App() {
   const locationFeature = useGeolocation()
-  const [layers, setLayers] = useState({ location: true })
+  const { pins, radii } = useIncidents()
+  const [layers, setLayers] = useState(defaultLayers)
+  const [selectedIncident, setSelectedIncident] = useState(null)
 
   function onToggle(layer) {
     setLayers(prev => ({ ...prev, [layer]: !prev[layer] }))
@@ -13,8 +23,15 @@ export default function App() {
 
   return (
     <div id="map-root">
-      <Map locationFeature={locationFeature} layers={layers} />
+      <Map
+        locationFeature={locationFeature}
+        incidentPins={pins}
+        incidentRadii={radii}
+        layers={layers}
+        onIncidentClick={setSelectedIncident}
+      />
       <Legend layers={layers} onToggle={onToggle} />
+      <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
     </div>
   )
 }
