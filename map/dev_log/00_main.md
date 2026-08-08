@@ -73,6 +73,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | t6h1rx | done    | 13 Legend Width | Legend bar spans full width, pills distributed with space-evenly         | 13_legendbar_width.md |
 | f2p8ks | done    | 14 Filter Modal | Filter button + modal replaces legend bar and search bar                 | 14_filter_modal.md    |
 | w3c9br | done    | 15 WCC Branding | WCC yellow on header crest and timeline interactive accents              | 15_wcc_branding.md    |
+| d8r2nf | done    | 16 Real Data    | Replace synthetic incidents with 12 tickets from CSV, expand timeline   | 16_real_data.md       |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.

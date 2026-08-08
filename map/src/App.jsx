@@ -18,7 +18,7 @@ const WIN = {
   end:   Date.now(),
 }
 
-const SPEED = 15 * 60 * 1000
+const SPEED = 24 * 60 * 60 * 1000
 
 export default function App() {
   const locationFeature = useGeolocation()
