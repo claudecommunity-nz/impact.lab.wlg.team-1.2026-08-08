@@ -1,16 +1,17 @@
 /**
- * Mirror of src/lib/areas.ts. Duplicated rather than shared because Deno edge
- * functions cannot reliably import from outside supabase/functions, and a
- * six-line distance calculation is cheaper to duplicate than to plumb.
- * If you change one, change the other — the ids must match exactly.
+ * Mirror of src/lib/areas.ts, for the ingest function.
+ *
+ * Deno edge functions cannot reliably import from outside supabase/functions,
+ * so this is duplicated rather than shared — as suburbs.ts is, and for the same
+ * reason. The ids MUST match src/lib/areas.ts exactly, because `area_hint` is
+ * written here and read there.
+ *
+ * They now match by construction rather than by care: both derive the id from
+ * the suburb name with the same slug rule, over the same generated boundaries.
+ * The old version of this file carried a hand-copied list of five bays and
+ * their radii, which is precisely the drift this removes.
  */
-const AREAS: { id: string; centre: [number, number]; radiusM: number }[] = [
-  { id: 'owhiro-bay', centre: [174.7622, -41.3456], radiusM: 1200 },
-  { id: 'island-bay', centre: [174.7756, -41.3399], radiusM: 1300 },
-  { id: 'houghton-bay', centre: [174.7897, -41.34], radiusM: 1000 },
-  { id: 'lyall-bay', centre: [174.7997, -41.3283], radiusM: 1400 },
-  { id: 'moa-point', centre: [174.8118, -41.3417], radiusM: 1100 },
-];
+import { suburbFor } from './suburbs.ts';
 
 const WELLINGTON_CENTRE: [number, number] = [174.7762, -41.2865];
 const WELLINGTON_RADIUS_M = 6000;
@@ -29,13 +30,15 @@ export function distanceM(
   return 2 * R * Math.asin(Math.sqrt(a));
 }
 
+/** Must stay identical to slugify() in scripts/build_suburbs.py. */
+function slugify(name: string): string {
+  return name.toLowerCase().replace(/ /g, '-').replace(/'/g, '');
+}
+
 export function areaFor(lng: number, lat: number): string | null {
-  let best: { id: string; d: number } | null = null;
-  for (const a of AREAS) {
-    const d = distanceM([lng, lat], a.centre);
-    if (d <= a.radiusM && (!best || d < best.d)) best = { id: a.id, d };
-  }
-  if (best) return best.id;
+  const m = suburbFor(lng, lat);
+  if (m) return slugify(m.name);
+
   return distanceM([lng, lat], WELLINGTON_CENTRE) <= WELLINGTON_RADIUS_M
     ? 'wellington-other'
     : null;

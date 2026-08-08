@@ -82,6 +82,113 @@ def fetch() -> dict:
         return json.loads(r.read().decode("utf-8"))
 
 
+# --------------------------------------------------------------------------
+# Which part of the city each suburb belongs to.
+#
+# Editorial, so it lives here rather than being derived: Council publishes no
+# grouping, and a bounding-box guess would put Horokiwi with the northern
+# growth suburbs and Makara with the west coast. The order of the groups is the
+# order of the picker, and the south coast leads because that is the problem
+# statement.
+# --------------------------------------------------------------------------
+REGIONS: list[tuple[str, list[str]]] = [
+    ("South coast", [
+        "Owhiro Bay", "Island Bay", "Southgate", "Houghton Bay", "Melrose",
+        "Lyall Bay", "Moa Point", "Breaker Bay", "Karaka Bays", "Seatoun",
+        "Strathmore Park",
+    ]),
+    ("Eastern suburbs", [
+        "Miramar", "Maupuia", "Rongotai", "Kilbirnie", "Hataitai", "Roseneath",
+    ]),
+    ("City and inner suburbs", [
+        "Wellington Central", "Te Aro", "Pipitea", "Thorndon", "Mount Cook",
+        "Mount Victoria", "Oriental Bay", "Aro Valley", "Kelburn", "Highbury",
+    ]),
+    ("Southern suburbs", [
+        "Newtown", "Berhampore", "Vogeltown", "Mornington", "Kingston",
+        "Brooklyn",
+    ]),
+    ("Western suburbs", [
+        "Karori", "Northland", "Wilton", "Wadestown", "Makara", "Makara Beach",
+        "Ohariu",
+    ]),
+    ("Onslow and the northern hills", [
+        "Ngaio", "Khandallah", "Crofton Downs", "Kaiwharawhara", "Ngauranga",
+        "Broadmeadows", "Horokiwi",
+    ]),
+    ("Northern suburbs and Tawa", [
+        "Johnsonville", "Newlands", "Churton Park", "Glenside",
+        "Grenada Village", "Grenada North", "Paparangi", "Woodridge",
+        "Takapu Valley", "Tawa",
+    ]),
+]
+
+# Blurbs for the places the problem statement is actually about. The other 52
+# suburbs get none rather than a generated one — an invented description of
+# Tawa would be filler, and the picker reads fine without it.
+BLURBS = {
+    "Owhiro Bay": "Ōwhiro Bay Parade, the quarry end, Te Kopahou.",
+    "Island Bay": "The Parade, Shorland Park, the Esplanade.",
+    "Houghton Bay": "Houghton Bay Road, Te Raekaihau Point.",
+    "Lyall Bay": "Lyall Parade, the surf club, Queens Drive.",
+    "Moa Point": "Moa Point Road, the airport south end.",
+    "Breaker Bay": "Breaker Bay Road, the Pass of Branda.",
+    "Seatoun": "Seatoun Wharf, Marine Parade, the tunnel.",
+    "Melrose": "The zoo, Melrose Park, Houghton Valley.",
+    "Southgate": "The hill between Island Bay and Houghton Bay.",
+}
+
+# Macrons Council's own data leaves off. The suburb NAME stays exactly as
+# published, because it is the join key everywhere; only the label shown to a
+# resident is corrected.
+LABELS = {
+    "Owhiro Bay": "Ōwhiro Bay",
+}
+
+# Hand-set centre and catchment for the five bays, carried over from the
+# original areas.ts.
+#
+# A polygon centroid is the wrong point for these. Ōwhiro Bay's boundary runs
+# from the beach over the tops to Te Kopahou, so its centroid lands about 2 km
+# inland on a ridge — measure a resident's distance from there and the road
+# they actually live on scores as far away. The five bays were tuned by hand
+# against where people are, and that beats a derived point. The other 52
+# suburbs are compact enough that the centroid is fine.
+CENTRE_OVERRIDES = {
+    "Owhiro Bay":   ([174.7622, -41.3456], 1200),
+    "Island Bay":   ([174.7756, -41.3399], 1300),
+    "Houghton Bay": ([174.7897, -41.3400], 1000),
+    "Lyall Bay":    ([174.7997, -41.3283], 1400),
+    "Moa Point":    ([174.8118, -41.3417], 1100),
+}
+
+
+def slugify(name: str) -> str:
+    return name.lower().replace(" ", "-").replace("'", "")
+
+
+def ring_centroid(ring: list[list[float]]) -> tuple[float, float, float]:
+    """Shoelace centroid and signed area of one ring.
+
+    The bounding-box centre is not good enough here: Ōwhiro Bay's box is
+    dominated by the empty hill country behind it, and its box centre sits on a
+    ridge about 1.5 km from anywhere a person lives.
+    """
+    cx = cy = a2 = 0.0
+    for i in range(len(ring) - 1):
+        x0, y0 = ring[i]
+        x1, y1 = ring[i + 1]
+        cross = x0 * y1 - x1 * y0
+        a2 += cross
+        cx += (x0 + x1) * cross
+        cy += (y0 + y1) * cross
+    if a2 == 0:
+        xs = [p[0] for p in ring]
+        ys = [p[1] for p in ring]
+        return sum(xs) / len(xs), sum(ys) / len(ys), 0.0
+    return cx / (3 * a2), cy / (3 * a2), abs(a2) / 2
+
+
 def ring_area(ring: list[list[float]]) -> float:
     """Unsigned shoelace area in square degrees."""
     a = 0.0
@@ -241,6 +348,90 @@ export const SUBURBS: SuburbPolygon[] = {body};
     (ROOT / "src" / "lib" / "suburbs.generated.ts").write_text(ts)
     (ROOT / "supabase" / "functions" / "ingest" / "suburbs.generated.ts").write_text(ts)
 
+    # ---- areas, for the picker and for proximity scoring ------------------
+    by_name = {s["name"]: s for s in suburbs}
+    listed = {n for _, names in REGIONS for n in names}
+    missing = sorted(set(by_name) - listed)
+    unknown = sorted(listed - set(by_name))
+    if missing or unknown:
+        # A suburb absent from REGIONS would vanish from the picker silently,
+        # which is exactly the kind of quiet truncation this project is not
+        # allowed to do. Fail instead.
+        sys.exit(f"REGIONS is out of step with the layer.\n"
+                 f"  not in any region: {missing}\n"
+                 f"  no such suburb:    {unknown}")
+
+    M_PER_DEG_LAT = 111_320.0
+    M_PER_DEG_LNG = M_PER_DEG_LAT * 0.7513
+
+    areas = []
+    for region, names in REGIONS:
+        for name in names:
+            s = by_name[name]
+            # Centroid of the largest ring, and total area across all rings.
+            biggest = max(s["rings"], key=ring_area)
+            cx, cy, _ = ring_centroid(biggest)
+            sq_deg = sum(ring_area(r) for r in s["rings"])
+            sq_m = sq_deg * M_PER_DEG_LAT * M_PER_DEG_LNG
+
+            # The radius of a circle of the same area, not the distance to the
+            # furthest corner. Makara is 89 km2 of hill country and its furthest
+            # corner is 11 km out; a catchment that size would call half the
+            # city "nearby". Clamped so the smallest suburbs still have a
+            # usable catchment and the largest do not swallow their neighbours.
+            radius = max(800, min(4000, round((sq_m / 3.14159) ** 0.5)))
+            centre = [round(cx, 5), round(cy, 5)]
+
+            override = CENTRE_OVERRIDES.get(name)
+            if override:
+                centre, radius = override
+
+            areas.append({
+                "id": slugify(name),
+                "suburb": name,
+                "label": LABELS.get(name, name),
+                "region": region,
+                "centre": centre,
+                "radiusM": radius,
+                "tuned": bool(override),
+                "blurb": BLURBS.get(name),
+            })
+
+    ts_areas = f"""// GENERATED by scripts/build_suburbs.py — do not edit by hand.
+//
+// One entry per Wellington City suburb, derived from Council's own boundary
+// polygons: `centre` is the shoelace centroid of the largest ring, `radiusM`
+// is the radius of a circle of equal area, clamped to 800–4000 m.
+//
+// `centre` and `radiusM` are for DISTANCE only — how near a signal is to the
+// area a resident chose. Whether a point is *in* a suburb is answered by the
+// polygon in suburbs.generated.ts, never by this radius.
+// Regenerate with:  bun run suburbs:build
+//
+// Suburb boundaries © Wellington City Council.
+
+export interface GeneratedArea {{
+  id: string;
+  /** Council's own spelling. The join key for signals.suburb — do not localise. */
+  suburb: string;
+  /** What a resident sees. Adds macrons Council's data leaves off. */
+  label: string;
+  region: string;
+  /** [lng, lat] */
+  centre: [number, number];
+  radiusM: number;
+  /** True where the centre was set by hand because the centroid misleads. */
+  tuned: boolean;
+  blurb: string | null;
+}}
+
+/** In picker order: south coast first, then outward. */
+export const GENERATED_AREAS: GeneratedArea[] = {json.dumps(areas, indent=2, ensure_ascii=False)};
+
+export const REGION_ORDER: string[] = {json.dumps([r for r, _ in REGIONS], ensure_ascii=False)};
+"""
+    (ROOT / "src" / "lib" / "areas.generated.ts").write_text(ts_areas)
+
     # ---- SQL seed --------------------------------------------------------
     # Rings go in as parallel float arrays rather than jsonb: the point-in-
     # polygon function walks them element by element on every insert, and
@@ -281,6 +472,7 @@ export const SUBURBS: SuburbPolygon[] = {body};
     print("  -> data/wcc-suburbs.geojson")
     print("  -> src/lib/suburbs.generated.ts")
     print("  -> supabase/functions/ingest/suburbs.generated.ts")
+    print("  -> src/lib/areas.generated.ts")
     print("  -> supabase/seed_suburbs.sql")
 
 

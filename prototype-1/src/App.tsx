@@ -9,7 +9,7 @@ import { ReportSheet } from './components/ReportSheet';
 import { useProfile } from './hooks/useProfile';
 import { useSignals, triggerIngest, type SourceHealth } from './hooks/useSignals';
 import { OVERLAYS } from './lib/catalogue.generated';
-import { AREAS, AREAS_BY_ID, DEFAULT_AREA, areaLabel } from './lib/areas';
+import { AREA_GROUPS, AREAS_BY_ID, DEFAULT_AREA, areaLabel } from './lib/areas';
 import { EMPTY_PROFILE, rank, type Profile, type Scored } from './lib/relevance';
 import { TIERS, ageLabel, type Tier } from './lib/tiers';
 import type { Signal } from './lib/signals';
@@ -322,7 +322,20 @@ function Header({
           onChange={(e) => onArea(e.target.value)}
           className="rounded border border-slate-300 bg-white px-2 py-1 text-xs font-medium"
         >
-          {AREAS.map((a) => <option key={a.id} value={a.id}>{a.label}</option>)}
+          {/*
+            All 57 suburbs, grouped, with the south coast first because that is
+            the problem statement. Grouped rather than flat: an alphabetical run
+            from Aro Valley to Woodridge makes a resident hunt for their own
+            suburb, and the five bays this prototype is actually about would be
+            scattered through it.
+          */}
+          {AREA_GROUPS.map((g) => (
+            <optgroup key={g.region} label={g.region}>
+              {g.areas.map((a) => (
+                <option key={a.id} value={a.id}>{a.label}</option>
+              ))}
+            </optgroup>
+          ))}
         </select>
       </label>
 

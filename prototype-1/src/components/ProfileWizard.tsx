@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { AREAS } from '@/lib/areas';
+import { AREA_GROUPS, areaFor } from '@/lib/areas';
 import { EMPTY_PROFILE, type Corridor, type Profile, type Role, type Travel } from '@/lib/relevance';
+
+const SOUTH_COAST = AREA_GROUPS.find((g) => g.region === 'South coast')?.areas ?? [];
+const ELSEWHERE_GROUPS = AREA_GROUPS.filter((g) => g.region !== 'South coast');
 
 /**
  * Four questions, no login, skippable.
@@ -55,17 +58,24 @@ export function ProfileWizard({
     setLocateError(null);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        // Nearest listed area. The coordinates are used here and discarded —
-        // only the area id is ever stored.
+        // The area whose BOUNDARY contains the point, not the nearest centre.
+        // With every suburb listed, nearest-centre gets this wrong often: a
+        // point can sit well inside Brooklyn and still be closer to the centre
+        // of small, dense Vogeltown next door.
+        //
+        // The coordinates are used here and discarded. Only the area id is
+        // ever stored, and it never leaves this browser.
         const { latitude, longitude } = pos.coords;
-        let best = AREAS[0];
-        let bestD = Infinity;
-        for (const a of AREAS) {
-          const d = Math.hypot(a.centre[0] - longitude, a.centre[1] - latitude);
-          if (d < bestD) { bestD = d; best = a; }
+        const id = areaFor(longitude, latitude);
+        if (id) {
+          setP((prev) => ({ ...prev, area: id }));
+          setLocating(false);
+        } else {
+          setLocateError(
+            'That looks like it is outside Wellington. Pick an area from the list instead.',
+          );
+          setLocating(false);
         }
-        setP((prev) => ({ ...prev, area: best.id }));
-        setLocating(false);
       },
       (err) => {
         setLocateError(
@@ -92,18 +102,44 @@ export function ProfileWizard({
 
         {/* 1 */}
         <Section n={1} title="Which part of the coast matters most to you today?">
+          {/*
+            The south coast as chips, because that is what this prototype is
+            about and a resident of Ōwhiro Bay should not have to open a menu.
+            The other 46 suburbs sit behind the select below — as chips they
+            would make this modal several screens tall and bury the question.
+          */}
           <div className="grid grid-cols-2 gap-1.5">
-            {AREAS.map((a) => (
+            {SOUTH_COAST.map((a) => (
               <button
                 key={a.id}
                 onClick={() => setP({ ...p, area: a.id })}
                 className={chip(p.area === a.id)}
               >
                 <span className="font-semibold">{a.label}</span>
-                <span className="block text-[10px] font-normal opacity-70">{a.blurb}</span>
+                {a.blurb && (
+                  <span className="block text-[10px] font-normal opacity-70">{a.blurb}</span>
+                )}
               </button>
             ))}
           </div>
+
+          <label className="mt-2 block text-[11px] text-slate-600">
+            <span className="font-medium">Somewhere else in Wellington</span>
+            <select
+              value={SOUTH_COAST.some((a) => a.id === p.area) ? '' : p.area}
+              onChange={(e) => e.target.value && setP({ ...p, area: e.target.value })}
+              className="mt-0.5 block w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs"
+            >
+              <option value="">Choose a suburb…</option>
+              {ELSEWHERE_GROUPS.map((g) => (
+                <optgroup key={g.region} label={g.region}>
+                  {g.areas.map((a) => (
+                    <option key={a.id} value={a.id}>{a.label}</option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
+          </label>
           <button
             onClick={useMyLocation}
             disabled={locating}

@@ -17,6 +17,16 @@
 --
 -- Times are relative to now() so they are always plausibly recent, and inside
 -- the 24-hour window the CHECK constraint allows.
+--
+-- Every coordinate below sits on the carriageway its own text names, taken from
+-- WCC's Transportation/Roads layer, inside the suburb its own text names.
+--
+-- They were eyeballed before, and the suburb lookup made that visible the
+-- moment it was added: two reports both saying "Owhiro Bay Parade" resolved to
+-- different suburbs, and one saying "Moa Point" landed in the sea. A demo that
+-- labels its own example data with the wrong place argues against the thing
+-- this prototype is for. If you add a report here, put it on the road you are
+-- naming — `suburb_for()` will tell you if you have not.
 -- ---------------------------------------------------------------------------
 INSERT INTO public.community_reports
   (device_id, category, headline, detail, lng, lat, area_hint, observed_at, is_seed)
@@ -24,77 +34,77 @@ VALUES
   ('seed-0000000001', 'waves_over_road',
    'Spray coming over The Esplanade',
    'Sea spray reaching the footpath near the shops. Passable but wet.',
-   174.7739, -41.3436, 'island-bay', now() - interval '25 minutes', true),
+   174.77836, -41.3453, 'island-bay', now() - interval '25 minutes', true),
 
   ('seed-0000000002', 'waves_over_road',
    'Waves across the road at the Esplanade',
    'Water crossing both lanes between the surf club and the playground.',
-   174.7761, -41.3441, 'island-bay', now() - interval '40 minutes', true),
+   174.77004, -41.34464, 'island-bay', now() - interval '40 minutes', true),
 
   ('seed-0000000003', 'surface_flooding',
    'Water pooling at the Parade bus stop',
    'About ankle deep by the kerb, drain looks blocked.',
-   174.7752, -41.3387, 'island-bay', now() - interval '1 hour 10 minutes', true),
+   174.77309, -41.33482, 'island-bay', now() - interval '1 hour 10 minutes', true),
 
   ('seed-0000000004', 'waves_over_road',
    'Big sets washing over at Owhiro Bay Parade',
    'Stones and weed across the road near the quarry end.',
-   174.7605, -41.3462, 'owhiro-bay', now() - interval '35 minutes', true),
+   174.75064, -41.34858, 'owhiro-bay', now() - interval '35 minutes', true),
 
   ('seed-0000000005', 'debris',
    'Gravel and driftwood on Owhiro Bay Parade',
    'Enough to slow a car right down. One lane effectively.',
-   174.7638, -41.3459, 'owhiro-bay', now() - interval '55 minutes', true),
+   174.75757, -41.34462, 'owhiro-bay', now() - interval '55 minutes', true),
 
   ('seed-0000000006', 'access_unsafe',
    'Would not walk the Owhiro Bay footpath right now',
    'Sea side of the road is taking regular hits.',
-   174.7619, -41.3457, 'owhiro-bay', now() - interval '20 minutes', true),
+   174.76046, -41.34626, 'owhiro-bay', now() - interval '20 minutes', true),
 
   ('seed-0000000007', 'surface_flooding',
    'Surface flooding on Houghton Bay Road',
    'Water across the low point near the corner.',
-   174.7893, -41.3378, 'houghton-bay', now() - interval '1 hour 30 minutes', true),
+   174.78944, -41.34523, 'houghton-bay', now() - interval '1 hour 30 minutes', true),
 
   ('seed-0000000008', 'slip',
    'Small slip on the bank above Houghton Bay Road',
    'Mud and rock on the verge, road still clear.',
-   174.7906, -41.3402, 'houghton-bay', now() - interval '2 hours 15 minutes', true),
+   174.78704, -41.33193, 'houghton-bay', now() - interval '2 hours 15 minutes', true),
 
   ('seed-0000000009', 'wind_damage',
    'Trampoline blown onto Lyall Parade',
    'Someone has dragged it onto the grass but watch out.',
-   174.7981, -41.3271, 'lyall-bay', now() - interval '50 minutes', true),
+   174.79536, -41.32744, 'lyall-bay', now() - interval '50 minutes', true),
 
   ('seed-0000000010', 'surface_flooding',
    'Water over the path at the Lyall Bay end of Queens Drive',
    'Fine in a car, not fine on foot.',
-   174.8012, -41.3288, 'lyall-bay', now() - interval '1 hour 45 minutes', true),
+   174.79349, -41.32807, 'lyall-bay', now() - interval '1 hour 45 minutes', true),
 
   ('seed-0000000011', 'road_blocked',
    'Moa Point Road down to one lane',
    'Cones out, someone clearing stones off the seaward side.',
-   174.8104, -41.3423, 'moa-point', now() - interval '1 hour 5 minutes', true),
+   174.81277, -41.34208, 'moa-point', now() - interval '1 hour 5 minutes', true),
 
   ('seed-0000000012', 'waves_over_road',
    'Swell hitting the wall at Moa Point',
    'Coming over in sets, road wet the whole way along.',
-   174.8126, -41.3412, 'moa-point', now() - interval '30 minutes', true),
+   174.81678, -41.34336, 'moa-point', now() - interval '30 minutes', true),
 
   ('seed-0000000013', 'power_out',
    'Power out on our street in Houghton Bay',
    'Whole block as far as I can tell. Reported it already.',
-   174.7889, -41.3392, 'houghton-bay', now() - interval '3 hours', true),
+   174.78737, -41.34284, 'houghton-bay', now() - interval '3 hours', true),
 
   ('seed-0000000014', 'debris',
    'Branch down across the footpath, Melbourne Road',
    'Walkable if you step onto the road, careful with a pram.',
-   174.7768, -41.3364, 'island-bay', now() - interval '2 hours 40 minutes', true),
+   174.77648, -41.33048, 'island-bay', now() - interval '2 hours 40 minutes', true),
 
   ('seed-0000000015', 'all_clear',
    'Esplanade looks clear again now',
    'Tide has dropped, road is just wet. Still gritty underfoot.',
-   174.7745, -41.3438, 'island-bay', now() - interval '8 minutes', true);
+   174.7605, -41.34729, 'island-bay', now() - interval '8 minutes', true);
 
 
 -- ---------------------------------------------------------------------------
