@@ -10,7 +10,10 @@
  * Access-Control-Allow-Origin header. That was measured, not assumed.
  */
 import { USER_AGENT } from '../_shared/cors.ts';
-import { areaFor, inWellington, WELLINGTON_BBOX } from './areas.ts';
+import { areaFor, inWellington } from './areas.ts';
+// Endpoints are resolved from the WCC catalogue by scripts/build_sources.py.
+// Nothing in this file writes an upstream URL by hand.
+import { ENDPOINTS, WELLINGTON_BBOX } from './endpoints.generated.ts';
 
 export interface SignalRow {
   source_id: string;
@@ -139,7 +142,7 @@ const metservice: Adapter = {
   host: 'services.arcgis.com',
   async run() {
     const fc = await arcgis(
-      'https://services.arcgis.com/XTtANUDT8Va4DLwI/arcgis/rest/services/Metservice_Weather_Alerts/FeatureServer/0',
+      ENDPOINTS['metservice-alerts'],
       bboxQuery(),
     );
     return (fc.features ?? []).map((f: any, i: number) => {
@@ -189,7 +192,7 @@ const wccRoads: Adapter = {
   host: 'gis.wcc.govt.nz',
   async run() {
     const fc = await arcgis(
-      'https://gis.wcc.govt.nz/arcgis/rest/services/Transportation/StreetEventsAndRoadClosures/MapServer/1',
+      ENDPOINTS['wcc-road-closures'],
     );
     const now = Date.now();
     const out: SignalRow[] = [];
@@ -250,7 +253,7 @@ const nztaDelays: Adapter = {
   host: 'www.journeys.nzta.govt.nz',
   async run() {
     const fc = await getJSON(
-      'https://www.journeys.nzta.govt.nz/assets/map-data-cache/delays.json',
+      ENDPOINTS['nzta-delays'],
     );
     const out: SignalRow[] = [];
 
@@ -293,7 +296,7 @@ const emaRss: Adapter = {
   sourceId: 'ema-rss',
   host: 'alerthub.civildefence.govt.nz',
   async run() {
-    const xml = await getText('https://alerthub.civildefence.govt.nz/rss/pwp');
+    const xml = await getText(ENDPOINTS['ema-rss']);
     const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)];
     const pick = (block: string, tag: string) =>
       block.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`))?.[1]
@@ -332,7 +335,7 @@ const seaLevel: Adapter = {
   host: 'tilde.geonet.org.nz',
   async run() {
     const j = await getJSON(
-      'https://tilde.geonet.org.nz/v4/data/coastal/WLGT/water-height-detided/40/15s/nil/latest/6h',
+      ENDPOINTS['geonet-tilde-sea-level'],
     );
     const series: { val: number; ts: string }[] = j?.[0]?.data ?? [];
     if (!series.length) return [];
@@ -383,7 +386,7 @@ const baringHead: Adapter = {
     const site = 'Wellington Harbour at Baring Head Wave Buoy (North (A))';
     const measurement = 'Significant Wave Height (Hsig)';
     const url =
-      'https://hilltop.gw.govt.nz/Data.hts?Service=Hilltop&Request=GetData' +
+      `${ENDPOINTS['baring-head-waves']}?Service=Hilltop&Request=GetData` +
       `&Site=${encodeURIComponent(site)}` +
       `&Measurement=${encodeURIComponent(measurement)}` +
       '&TimeInterval=PT12H';
@@ -432,7 +435,7 @@ const marine: Adapter = {
   host: 'marine-api.open-meteo.com',
   async run() {
     const j = await getJSON(
-      'https://marine-api.open-meteo.com/v1/marine?latitude=-41.36&longitude=174.77' +
+      `${ENDPOINTS['open-meteo-marine']}?latitude=-41.36&longitude=174.77` +
         '&current=wave_height,swell_wave_height,wave_period&timezone=UTC',
     );
     const cur = j?.current;
@@ -468,7 +471,7 @@ const wind: Adapter = {
   host: 'api.open-meteo.com',
   async run() {
     const j = await getJSON(
-      'https://api.open-meteo.com/v1/forecast?latitude=-41.3399&longitude=174.7756' +
+      `${ENDPOINTS['open-meteo-forecast']}?latitude=-41.3399&longitude=174.7756` +
         '&current=wind_gusts_10m,wind_speed_10m,precipitation&timezone=UTC',
     );
     const cur = j?.current;
@@ -518,7 +521,7 @@ const wwFaults: Adapter = {
   host: 'services7.arcgis.com',
   async run() {
     const fc = await arcgis(
-      'https://services7.arcgis.com/2ECs938g489DMWjt/arcgis/rest/services/Job_Status_Public_View/FeatureServer/5',
+      ENDPOINTS['ww-faults'],
       { ...bboxQuery(), orderByFields: 'reportdate DESC' },
     );
     const cutoff = Date.now() - FOURTEEN_DAYS;
@@ -571,7 +574,7 @@ const outages: Adapter = {
   host: 'services5.arcgis.com',
   async run() {
     const fc = await arcgis(
-      'https://services5.arcgis.com/cJn6oR1QqErYBL5d/arcgis/rest/services/electricity_outages_read_only/FeatureServer/0',
+      ENDPOINTS['electricity-outages'],
       bboxQuery(),
     );
     return (fc.features ?? [])
@@ -628,7 +631,7 @@ const nemaCap: Adapter = {
   host: 'services5.arcgis.com',
   async run() {
     const fc = await arcgis(
-      'https://services5.arcgis.com/cJn6oR1QqErYBL5d/arcgis/rest/services/NZ_CAP_Alerts_(Read_only)/FeatureServer/0',
+      ENDPOINTS['nema-cap-alerts'],
       bboxQuery(),
     );
     const now = Date.now();
