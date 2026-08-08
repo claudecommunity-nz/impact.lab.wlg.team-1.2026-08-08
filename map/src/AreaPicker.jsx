@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AREA_GROUPS, AREAS_BY_ID } from './areas.js'
+import { AREA_GROUPS, REGIONS_BY_ID, SELECTABLE_BY_ID } from './areas.js'
 import { overlay } from './styles.js'
 
 /**
@@ -29,6 +29,11 @@ const card = {
   marginBottom: 10,
 }
 
+/** Must match slugify() in prototype-1/scripts/build_suburbs.py. */
+function slug(name) {
+  return name.toLowerCase().replace(/ /g, '-').replace(/'/g, '')
+}
+
 /** Lower case, macrons folded, so "owhiro" matches "Ōwhiro". */
 function fold(s) {
   return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -43,7 +48,7 @@ export default function AreaPicker({ areaId, onArea }) {
   const inputRef = useRef(null)
   const listRef = useRef(null)
 
-  const current = AREAS_BY_ID[areaId]
+  const current = SELECTABLE_BY_ID[areaId]
   const q = query.trim()
   const isPostcode = /^\d+$/.test(q)
 
@@ -58,7 +63,18 @@ export default function AreaPicker({ areaId, onArea }) {
       .filter(g => g.areas.length > 0)
   }, [q, isPostcode])
 
-  const flat = useMemo(() => groups.flatMap(g => g.areas), [groups])
+  // Each group is led by its own whole-region row. A single suburb is a small
+  // target on a city-wide map, and "the south coast" is how the problem
+  // statement and a resident both actually talk about this.
+  //
+  // The region row is always offered for a group that has any visible suburb,
+  // including under a postcode search: "6023" narrowing to five south coast
+  // suburbs plus the option to take the lot is more useful than five rows and
+  // no way to say "all of those".
+  const flat = useMemo(
+    () => groups.flatMap(g => [REGIONS_BY_ID['region-' + slug(g.region)], ...g.areas]),
+    [groups],
+  )
 
   useEffect(() => setActive(0), [q])
 
@@ -180,13 +196,41 @@ export default function AreaPicker({ areaId, onArea }) {
 
           {groups.map(g => (
             <li key={g.region}>
-              <div style={{
-                padding: '6px 12px 2px',
-                fontSize: 10, fontWeight: 700, letterSpacing: '0.04em',
-                textTransform: 'uppercase', color: '#9a9a94',
-              }}>
-                {g.region}
-              </div>
+              {(() => {
+                const r = REGIONS_BY_ID['region-' + slug(g.region)]
+                const i = flat.indexOf(r)
+                const isActive = i === active
+                const isCurrent = r.id === areaId
+                return (
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={isCurrent}
+                    data-active={isActive}
+                    onMouseDown={e => { e.preventDefault(); choose(r) }}
+                    onMouseEnter={() => setActive(i)}
+                    style={{
+                      display: 'flex', alignItems: 'baseline',
+                      justifyContent: 'space-between', gap: 8,
+                      width: '100%', textAlign: 'left',
+                      padding: '7px 12px 4px',
+                      border: 'none',
+                      borderTop: '1px solid rgba(0,0,0,0.06)',
+                      background: isActive ? 'rgba(0,0,0,0.05)' : 'transparent',
+                      fontFamily: font,
+                      fontSize: 10, fontWeight: 700, letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                      color: isCurrent ? '#0b5cad' : '#9a9a94',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <span>{g.region}</span>
+                    <span style={{ flexShrink: 0, textTransform: 'none', letterSpacing: 0, fontWeight: 600 }}>
+                      all {g.areas.length}
+                    </span>
+                  </button>
+                )
+              })()}
               <ul role="group" aria-label={g.region} style={{ listStyle: 'none', margin: 0, padding: 0 }}>
                 {g.areas.map(a => {
                   const i = flat.indexOf(a)

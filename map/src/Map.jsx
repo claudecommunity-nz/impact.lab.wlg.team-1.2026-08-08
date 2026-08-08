@@ -5,6 +5,8 @@ import { CATEGORIES } from './incidents.js'
 const WELLINGTON = [174.7762, -41.2865]
 const STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
 const EMPTY = { type: 'FeatureCollection', features: [] }
+/** Matches no feature — the outline's resting state. */
+const NO_SUBURB = ['==', ['get', 'suburb'], '\u0000']
 
 function toCollection(feature) {
   return { type: 'FeatureCollection', features: feature ? [feature] : [] }
@@ -27,6 +29,20 @@ function makeDotSvg(colour) {
  * relation solved for zoom, sized to put roughly two radii across the viewport.
  */
 function flyToArea(map, area) {
+  // A whole region is framed by its bounding box. Deriving a centre and radius
+  // for it would be wrong twice over: the western suburbs run from Makara Beach
+  // to Wadestown, and a circle around that covers most of the harbour.
+  if (area.bbox) {
+    const [w, s, e, n] = area.bbox
+    map.fitBounds([[w, s], [e, n]], {
+      // Room for the sidebar, which sits over the left of the map.
+      padding: { top: 40, right: 40, bottom: 60, left: 340 },
+      duration: 900,
+      essential: true,
+    })
+    return
+  }
+
   const width = map.getContainer().clientWidth || 800
   const metresPerPixel = (area.radiusM * 2.4) / width
   const latRad = area.centre[1] * Math.PI / 180
@@ -40,11 +56,31 @@ function flyToArea(map, area) {
   })
 }
 
+/**
+ * Show only the chosen suburb's boundary.
+ *
+ * Matched on Council's own `suburb` spelling, not the display label — the
+ * label carries macrons ("Ōwhiro Bay") that the boundary data does not. The
+ * catch-all area has no suburb, so it correctly outlines nothing.
+ */
+function setSuburbFilter(map, area) {
+  // A region carries a list of suburbs; a single suburb carries one name. Both
+  // are Council's own spelling, not the display label — the label has macrons
+  // ("Ōwhiro Bay") that the boundary data does not.
+  const names = area?.suburbs ?? (area?.suburb ? [area.suburb] : [])
+  const filter = names.length
+    ? ['in', ['get', 'suburb'], ['literal', names]]
+    : NO_SUBURB
+  map.setFilter('suburb-fill', filter)
+  map.setFilter('suburb-outline', filter)
+}
+
 export default function Map({ locationFeature, incidentPins, incidentRadii, layers, focusArea, onIncidentClick }) {
   const containerRef = useRef(null)
   const mapRef = useRef(null)
   const loadedRef = useRef(false)
   const pendingFocusRef = useRef(null)
+  const pendingOutlineRef = useRef(null)
   const locationRef = useRef(locationFeature)
   const layersRef = useRef(layers)
   const incidentPinsRef = useRef(incidentPins)
@@ -70,6 +106,38 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
       const img = new Image()
       img.onload = () => {
         map.addImage('person-pin', img)
+
+        // Selected suburb outline.
+        //
+        // Underneath everything else on purpose — it is context for the pins,
+        // not a thing to click. MapLibre fetches the file itself from a URL, so
+        // there is no loading code here and nothing in the bundle.
+        //
+        // The filter starts matching nothing. Council's own `suburb` spelling
+        // is the key, which is why areas.js carries it alongside the display
+        // label: the label has macrons the boundary data does not.
+        map.addSource('suburb-boundaries', {
+          type: 'geojson',
+          data: `${import.meta.env.BASE_URL}wcc-suburbs.geojson`,
+        })
+        map.addLayer({
+          id: 'suburb-fill',
+          type: 'fill',
+          source: 'suburb-boundaries',
+          filter: NO_SUBURB,
+          paint: { 'fill-color': '#0b5cad', 'fill-opacity': 0.06 },
+        })
+        map.addLayer({
+          id: 'suburb-outline',
+          type: 'line',
+          source: 'suburb-boundaries',
+          filter: NO_SUBURB,
+          paint: {
+            'line-color': '#0b5cad',
+            'line-width': 2,
+            'line-opacity': 0.75,
+          },
+        })
 
         // Location layer
         map.addSource('my-location', { type: 'geojson', data: toCollection(locationRef.current) })
@@ -153,6 +221,7 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
                 flyToArea(map, pendingFocusRef.current)
                 pendingFocusRef.current = null
               }
+              setSuburbFilter(map, pendingOutlineRef.current)
             }
           }
           dotImg.src = makeDotSvg(cat.colour)
@@ -191,6 +260,16 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
     if (firstFocusRef.current) { firstFocusRef.current = false; return }
     if (!loadedRef.current) { pendingFocusRef.current = focusArea; return }
     flyToArea(mapRef.current, focusArea)
+  }, [focusArea])
+
+  // Outline the chosen suburb.
+  //
+  // Separate from the camera effect because it must run on the FIRST render
+  // too: the opening frame should already show which suburb is selected, even
+  // though the camera deliberately stays on the whole city.
+  useEffect(() => {
+    if (!loadedRef.current) { pendingOutlineRef.current = focusArea ?? null; return }
+    setSuburbFilter(mapRef.current, focusArea)
   }, [focusArea])
 
   useEffect(() => {

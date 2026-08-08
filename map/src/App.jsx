@@ -8,7 +8,7 @@ import useGeolocation from './useGeolocation.js'
 import useIncidents from './useIncidents.js'
 import useWeather from './useWeather.js'
 import { CATEGORIES, EVENT_WINDOW } from './incidents.js'
-import { AREAS_BY_ID } from './areas.js'
+import { SELECTABLE_BY_ID } from './areas.js'
 
 const defaultLayers = {
   location: true,
@@ -22,10 +22,9 @@ const WIN = {
 
 const SPEED = 24 * 60 * 60 * 1000
 
-// Island Bay, matching prototype-1's default — the south coast is the problem
-// statement, and an empty-looking map of the northern suburbs is a poor opening
-// frame for a four-minute demo.
-const DEFAULT_AREA = 'island-bay'
+// The whole south coast, not one bay. That is the problem statement, and a
+// single suburb is a small, easily-missed outline on a city-wide opening frame.
+const DEFAULT_AREA = 'region-south-coast'
 
 export default function App() {
   const locationFeature = useGeolocation()
@@ -80,7 +79,7 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
           incidentPins={pins}
           incidentRadii={radii}
           layers={layers}
-          focusArea={AREAS_BY_ID[areaId]}
+          focusArea={SELECTABLE_BY_ID[areaId]}
           onIncidentClick={setSelectedIncident}
         />
         <InfoPanel

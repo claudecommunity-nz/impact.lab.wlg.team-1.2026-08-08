@@ -705,3 +705,164 @@ export const AREA_GROUPS = REGION_ORDER.map(region => ({
   region,
   areas: AREAS.filter(a => a.region === region),
 }))
+
+/**
+ * Whole regions, selectable like a suburb. `bbox` is the union of the member
+ * suburbs' boxes, for framing the camera; `suburbs` are Council's own spellings,
+ * for filtering the boundary layer.
+ */
+export const REGIONS = [
+  {
+    "id": "region-south-coast",
+    "label": "South coast",
+    "region": "South coast",
+    "suburbs": [
+      "Owhiro Bay",
+      "Island Bay",
+      "Southgate",
+      "Houghton Bay",
+      "Melrose",
+      "Lyall Bay",
+      "Moa Point",
+      "Breaker Bay",
+      "Karaka Bays",
+      "Seatoun",
+      "Strathmore Park"
+    ],
+    "bbox": [
+      174.71121,
+      -41.36238,
+      174.83904,
+      -41.29482
+    ]
+  },
+  {
+    "id": "region-eastern-suburbs",
+    "label": "Eastern suburbs",
+    "region": "Eastern suburbs",
+    "suburbs": [
+      "Miramar",
+      "Maupuia",
+      "Rongotai",
+      "Kilbirnie",
+      "Hataitai",
+      "Roseneath"
+    ],
+    "bbox": [
+      174.78777,
+      -41.337,
+      174.83682,
+      -41.28387
+    ]
+  },
+  {
+    "id": "region-city-and-inner-suburbs",
+    "label": "City and inner suburbs",
+    "region": "City and inner suburbs",
+    "suburbs": [
+      "Wellington Central",
+      "Te Aro",
+      "Pipitea",
+      "Thorndon",
+      "Mount Cook",
+      "Mount Victoria",
+      "Oriental Bay",
+      "Aro Valley",
+      "Kelburn",
+      "Highbury"
+    ],
+    "bbox": [
+      174.74987,
+      -41.3104,
+      174.80085,
+      -41.25929
+    ]
+  },
+  {
+    "id": "region-southern-suburbs",
+    "label": "Southern suburbs",
+    "region": "Southern suburbs",
+    "suburbs": [
+      "Newtown",
+      "Berhampore",
+      "Vogeltown",
+      "Mornington",
+      "Kingston",
+      "Brooklyn"
+    ],
+    "bbox": [
+      174.69252,
+      -41.35889,
+      174.79092,
+      -41.29717
+    ]
+  },
+  {
+    "id": "region-western-suburbs",
+    "label": "Western suburbs",
+    "region": "Western suburbs",
+    "suburbs": [
+      "Karori",
+      "Northland",
+      "Wilton",
+      "Wadestown",
+      "Makara",
+      "Makara Beach",
+      "Ohariu"
+    ],
+    "bbox": [
+      174.6131,
+      -41.34732,
+      174.81252,
+      -41.14354
+    ]
+  },
+  {
+    "id": "region-onslow-and-the-northern-hills",
+    "label": "Onslow and the northern hills",
+    "region": "Onslow and the northern hills",
+    "suburbs": [
+      "Ngaio",
+      "Khandallah",
+      "Crofton Downs",
+      "Kaiwharawhara",
+      "Ngauranga",
+      "Broadmeadows",
+      "Horokiwi"
+    ],
+    "bbox": [
+      174.75116,
+      -41.2635,
+      174.86816,
+      -41.18467
+    ]
+  },
+  {
+    "id": "region-northern-suburbs-and-tawa",
+    "label": "Northern suburbs and Tawa",
+    "region": "Northern suburbs and Tawa",
+    "suburbs": [
+      "Johnsonville",
+      "Newlands",
+      "Churton Park",
+      "Glenside",
+      "Grenada Village",
+      "Grenada North",
+      "Paparangi",
+      "Woodridge",
+      "Takapu Valley",
+      "Tawa"
+    ],
+    "bbox": [
+      174.78628,
+      -41.24163,
+      174.89541,
+      -41.14741
+    ]
+  }
+]
+
+export const REGIONS_BY_ID = Object.fromEntries(REGIONS.map(r => [r.id, r]))
+
+/** Suburbs and regions together — anything the picker can select. */
+export const SELECTABLE_BY_ID = { ...AREAS_BY_ID, ...REGIONS_BY_ID }
