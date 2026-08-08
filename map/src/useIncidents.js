@@ -56,7 +56,8 @@ export default function useIncidents(before) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/incidents.json')
+    // BASE_URL keeps this working under the GitHub Pages subpath as well as at /.
+    fetch(`${import.meta.env.BASE_URL}incidents.json`)
       .then(r => r.json())
       .then(data => { setAllIncidents(data); setLoading(false) })
       .catch(() => setLoading(false))

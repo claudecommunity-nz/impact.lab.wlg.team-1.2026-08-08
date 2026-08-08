@@ -118,7 +118,15 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
             })
 
             pending -= 1
-            if (pending === 0) loadedRef.current = true
+            if (pending === 0) {
+              loadedRef.current = true
+              // The incidents fetch can resolve before the images finish decoding.
+              // Those update effects bail while loadedRef is false and never re-run,
+              // so replay whatever data has landed by now.
+              if (incidentPinsRef.current) map.getSource('incident-pins').setData(incidentPinsRef.current)
+              if (incidentRadiiRef.current) map.getSource('incident-radii').setData(incidentRadiiRef.current)
+              map.getSource('my-location').setData(toCollection(locationRef.current))
+            }
           }
           dotImg.src = makeDotSvg(cat.colour)
         })
