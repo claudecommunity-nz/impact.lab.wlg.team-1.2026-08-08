@@ -66,7 +66,10 @@ export default function useIncidents(before) {
   return useMemo(() => {
     if (!allIncidents.length) return { ...EMPTY_GEO, loading }
     const filtered = before != null
-      ? allIncidents.filter(inc => Date.parse(inc.timestamp) <= before)
+      ? allIncidents.filter(inc => {
+          const t = Date.parse(inc.timestamp)
+          return t <= before && before < t + catMap[inc.type].durationMs
+        })
       : allIncidents
     return { ...toGeoJSON(filtered), loading }
   }, [allIncidents, before, loading])
