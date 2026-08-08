@@ -258,15 +258,17 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
             </button>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 8px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 10px' }}>
             {suburbs.map(s => {
               const on = activeSuburbs.includes(s)
               return (
                 <label
                   key={s}
                   style={{
-                    display: 'flex', alignItems: 'center', gap: 5,
-                    fontSize: 11.5, cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    // Long names wrap in a 2-up column at this width
+                    // ("Strathmore Park"), so keep wrapped rows tight.
+                    fontSize: 13, lineHeight: 1.25, cursor: 'pointer',
                     color: on ? '#3a3a36' : 'rgba(0,0,0,0.35)',
                   }}
                 >
@@ -274,7 +276,7 @@ export default function AreaPicker({ areaId, onArea, activeSuburbs, onToggleSubu
                     type="checkbox"
                     checked={on}
                     onChange={() => onToggleSuburb(s)}
-                    style={{ width: 12, height: 12, margin: 0, accentColor: '#0b5cad', cursor: 'pointer' }}
+                    style={{ width: 14, height: 14, margin: 0, flexShrink: 0, accentColor: '#0b5cad', cursor: 'pointer' }}
                   />
                   {labelOf(s)}
                 </label>
