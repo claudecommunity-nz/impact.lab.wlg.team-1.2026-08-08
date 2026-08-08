@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weather & alerts mockup</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px;
+    background: #eef1f0;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #2c2c2a;
+  }
+  .app {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .panel { display: flex; flex-direction: column; gap: 12px; }
+
+  .search-area {
+    background: #9a9a9a;
+    color: #1c1c1c;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: 4px;
+  }
+
+  .info-box {
+    background: #fff;
+    border: 1.5px solid #2f6fb0;
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .info-box .q { font-weight: 600; margin-bottom: 4px; }
+  .info-box .a { color: #2f6fb0; font-weight: 600; }
+
+  .card {
+    background: #f5f2ea;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .temp-card .temp { font-size: 40px; font-weight: 700; line-height: 1; }
+  .temp-card .desc { font-size: 13px; margin: 6px 0 4px; color: #3a3a38; }
+  .temp-card .range { font-size: 12px; color: #6b6b68; }
+
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-card .label { font-size: 12px; color: #6b6b68; margin-bottom: 4px; }
+  .stat-card .value { font-size: 22px; font-weight: 700; }
+  .stat-card .sub { font-size: 11px; color: #6b6b68; margin-top: 4px; }
+
+  .map-area {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #cfe3d8;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+  }
+  .map-placeholder {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background:
+      repeating-linear-gradient(45deg, #dfe8e1, #dfe8e1 10px, #d3ddd6 10px, #d3ddd6 20px);
+  }
+  .map-search {
+    margin-top: 90px;
+    background: rgba(60, 70, 65, 0.55);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 24px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+  }
+  .legend {
+    background: #1e5f6e;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.7;
+    padding: 14px 20px;
+  }
+  .legend u { text-decoration-color: rgba(255,255,255,0.6); }
+
+  .footnote {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    color: #8a8a86;
+    text-align: center;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="panel">
+    <div class="search-area">Search area</div>
+
+    <div class="info-box">
+      <div class="q">What does this mean for your day?</div>
+      <div>Drinking water — <span class="a">Safe</span></div>
+      <div>Washing clothes — between this time</div>
+      <div>Can I walk the animal?</div>
+    </div>
+
+    <div class="card temp-card">
+      <div class="temp">15&deg;</div>
+      <div class="desc">Cloudy, breezy showers easing to afternoon spots</div>
+      <div class="range">Feels like 12&deg; &middot; H:16&deg; L:11&deg;</div>
+    </div>
+
+    <div class="stat-row">
+      <div class="card stat-card">
+        <div class="label">Wind</div>
+        <div class="value">35 km/h</div>
+        <div class="sub">Southerly, gusting 55</div>
+      </div>
+      <div class="card stat-card">
+        <div class="label">Rain chance</div>
+        <div class="value">70%</div>
+        <div class="sub">Heaviest before noon</div>
+      </div>
+    </div>
+
+    <div class="card stat-card">
+      <div class="label">Sea temp</div>
+      <div class="value">14&deg;</div>
+      <div class="sub">Swell 2.5m, south coast</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="map-area">
+      <div class="map-placeholder">
+        <div class="map-search">Search PLACEDHOLDER</div>
+      </div>
+    </div>
+    <div class="legend">
+      This circle <u>circle circle</u> &mdash; shows like here is warning yellow warning and<br>
+      then it shows spider like of warnings from Niwa, Met Service etc<br>
+      Drinking tap water? &nbsp;falling <u>trees</u>, or fallen <u>trees</u>, slips, weather<br>
+      event, road or <u>footpath</u> maintenance and flooding <u>zoer</u>
+    </div>
+  </div>
+
+  <div class="footnote">Map area is a placeholder &mdash; teammate is building the live map</div>
+</div>
+</body>
+</html>
