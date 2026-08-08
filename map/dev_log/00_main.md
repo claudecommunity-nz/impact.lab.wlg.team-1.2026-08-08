@@ -66,6 +66,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | r9w2cx | done    | 06 JSON Data  | Extract hardcoded incidents to a static JSON file fetched at runtime        | 06_json_data.md      |
 | v5n8ej | done    | 07 Timeline   | Video-style scrubber to play and scrub through the storm event over time    | 07_timeline.md       |
 | c3f1yw | done    | 08 Active Window | Incidents appear and disappear based on per-category duration           | 08_active_window.md  |
+| q7d4bm | done    | 09 Timeline Orientation | Right=now, left=past, relative offset labels (-H:mm)          | 09_timeline_orientation.md |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.
