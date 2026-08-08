@@ -389,6 +389,7 @@ export const SUBURBS: SuburbPolygon[] = {body};
             areas.append({
                 "id": slugify(name),
                 "suburb": name,
+                "postcode": s["postcode"],
                 "label": LABELS.get(name, name),
                 "region": region,
                 "centre": centre,
@@ -416,6 +417,8 @@ export interface GeneratedArea {{
   suburb: string;
   /** What a resident sees. Adds macrons Council's data leaves off. */
   label: string;
+  /** Council's postcode for the suburb. Not unique — 6021 covers nine of them. */
+  postcode: number;
   region: string;
   /** [lng, lat] */
   centre: [number, number];

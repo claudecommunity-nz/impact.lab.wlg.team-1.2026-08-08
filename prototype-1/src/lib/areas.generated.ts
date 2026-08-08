@@ -17,6 +17,8 @@ export interface GeneratedArea {
   suburb: string;
   /** What a resident sees. Adds macrons Council's data leaves off. */
   label: string;
+  /** Council's postcode for the suburb. Not unique — 6021 covers nine of them. */
+  postcode: number;
   region: string;
   /** [lng, lat] */
   centre: [number, number];
@@ -31,6 +33,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "owhiro-bay",
     "suburb": "Owhiro Bay",
+    "postcode": 6023,
     "label": "Ōwhiro Bay",
     "region": "South coast",
     "centre": [
@@ -44,6 +47,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "island-bay",
     "suburb": "Island Bay",
+    "postcode": 6023,
     "label": "Island Bay",
     "region": "South coast",
     "centre": [
@@ -57,6 +61,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "southgate",
     "suburb": "Southgate",
+    "postcode": 6023,
     "label": "Southgate",
     "region": "South coast",
     "centre": [
@@ -70,6 +75,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "houghton-bay",
     "suburb": "Houghton Bay",
+    "postcode": 6023,
     "label": "Houghton Bay",
     "region": "South coast",
     "centre": [
@@ -83,6 +89,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "melrose",
     "suburb": "Melrose",
+    "postcode": 6023,
     "label": "Melrose",
     "region": "South coast",
     "centre": [
@@ -96,6 +103,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "lyall-bay",
     "suburb": "Lyall Bay",
+    "postcode": 6022,
     "label": "Lyall Bay",
     "region": "South coast",
     "centre": [
@@ -109,6 +117,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "moa-point",
     "suburb": "Moa Point",
+    "postcode": 6022,
     "label": "Moa Point",
     "region": "South coast",
     "centre": [
@@ -122,6 +131,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "breaker-bay",
     "suburb": "Breaker Bay",
+    "postcode": 6022,
     "label": "Breaker Bay",
     "region": "South coast",
     "centre": [
@@ -135,6 +145,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "karaka-bays",
     "suburb": "Karaka Bays",
+    "postcode": 6022,
     "label": "Karaka Bays",
     "region": "South coast",
     "centre": [
@@ -148,6 +159,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "seatoun",
     "suburb": "Seatoun",
+    "postcode": 6022,
     "label": "Seatoun",
     "region": "South coast",
     "centre": [
@@ -161,6 +173,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "strathmore-park",
     "suburb": "Strathmore Park",
+    "postcode": 6022,
     "label": "Strathmore Park",
     "region": "South coast",
     "centre": [
@@ -174,6 +187,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "miramar",
     "suburb": "Miramar",
+    "postcode": 6022,
     "label": "Miramar",
     "region": "Eastern suburbs",
     "centre": [
@@ -187,6 +201,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "maupuia",
     "suburb": "Maupuia",
+    "postcode": 6022,
     "label": "Maupuia",
     "region": "Eastern suburbs",
     "centre": [
@@ -200,6 +215,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "rongotai",
     "suburb": "Rongotai",
+    "postcode": 6022,
     "label": "Rongotai",
     "region": "Eastern suburbs",
     "centre": [
@@ -213,6 +229,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "kilbirnie",
     "suburb": "Kilbirnie",
+    "postcode": 6022,
     "label": "Kilbirnie",
     "region": "Eastern suburbs",
     "centre": [
@@ -226,6 +243,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "hataitai",
     "suburb": "Hataitai",
+    "postcode": 6021,
     "label": "Hataitai",
     "region": "Eastern suburbs",
     "centre": [
@@ -239,6 +257,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "roseneath",
     "suburb": "Roseneath",
+    "postcode": 6011,
     "label": "Roseneath",
     "region": "Eastern suburbs",
     "centre": [
@@ -252,6 +271,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "wellington-central",
     "suburb": "Wellington Central",
+    "postcode": 6011,
     "label": "Wellington Central",
     "region": "City and inner suburbs",
     "centre": [
@@ -265,6 +285,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "te-aro",
     "suburb": "Te Aro",
+    "postcode": 6011,
     "label": "Te Aro",
     "region": "City and inner suburbs",
     "centre": [
@@ -278,6 +299,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "pipitea",
     "suburb": "Pipitea",
+    "postcode": 6011,
     "label": "Pipitea",
     "region": "City and inner suburbs",
     "centre": [
@@ -291,6 +313,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "thorndon",
     "suburb": "Thorndon",
+    "postcode": 6011,
     "label": "Thorndon",
     "region": "City and inner suburbs",
     "centre": [
@@ -304,6 +327,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "mount-cook",
     "suburb": "Mount Cook",
+    "postcode": 6021,
     "label": "Mount Cook",
     "region": "City and inner suburbs",
     "centre": [
@@ -317,6 +341,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "mount-victoria",
     "suburb": "Mount Victoria",
+    "postcode": 6011,
     "label": "Mount Victoria",
     "region": "City and inner suburbs",
     "centre": [
@@ -330,6 +355,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "oriental-bay",
     "suburb": "Oriental Bay",
+    "postcode": 6011,
     "label": "Oriental Bay",
     "region": "City and inner suburbs",
     "centre": [
@@ -343,6 +369,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "aro-valley",
     "suburb": "Aro Valley",
+    "postcode": 6021,
     "label": "Aro Valley",
     "region": "City and inner suburbs",
     "centre": [
@@ -356,6 +383,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "kelburn",
     "suburb": "Kelburn",
+    "postcode": 6012,
     "label": "Kelburn",
     "region": "City and inner suburbs",
     "centre": [
@@ -369,6 +397,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "highbury",
     "suburb": "Highbury",
+    "postcode": 6012,
     "label": "Highbury",
     "region": "City and inner suburbs",
     "centre": [
@@ -382,6 +411,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "newtown",
     "suburb": "Newtown",
+    "postcode": 6021,
     "label": "Newtown",
     "region": "Southern suburbs",
     "centre": [
@@ -395,6 +425,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "berhampore",
     "suburb": "Berhampore",
+    "postcode": 6023,
     "label": "Berhampore",
     "region": "Southern suburbs",
     "centre": [
@@ -408,6 +439,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "vogeltown",
     "suburb": "Vogeltown",
+    "postcode": 6021,
     "label": "Vogeltown",
     "region": "Southern suburbs",
     "centre": [
@@ -421,6 +453,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "mornington",
     "suburb": "Mornington",
+    "postcode": 6021,
     "label": "Mornington",
     "region": "Southern suburbs",
     "centre": [
@@ -434,6 +467,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "kingston",
     "suburb": "Kingston",
+    "postcode": 6021,
     "label": "Kingston",
     "region": "Southern suburbs",
     "centre": [
@@ -447,6 +481,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "brooklyn",
     "suburb": "Brooklyn",
+    "postcode": 6021,
     "label": "Brooklyn",
     "region": "Southern suburbs",
     "centre": [
@@ -460,6 +495,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "karori",
     "suburb": "Karori",
+    "postcode": 6012,
     "label": "Karori",
     "region": "Western suburbs",
     "centre": [
@@ -473,6 +509,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "northland",
     "suburb": "Northland",
+    "postcode": 6012,
     "label": "Northland",
     "region": "Western suburbs",
     "centre": [
@@ -486,6 +523,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "wilton",
     "suburb": "Wilton",
+    "postcode": 6012,
     "label": "Wilton",
     "region": "Western suburbs",
     "centre": [
@@ -499,6 +537,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "wadestown",
     "suburb": "Wadestown",
+    "postcode": 6012,
     "label": "Wadestown",
     "region": "Western suburbs",
     "centre": [
@@ -512,6 +551,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "makara",
     "suburb": "Makara",
+    "postcode": 6972,
     "label": "Makara",
     "region": "Western suburbs",
     "centre": [
@@ -525,6 +565,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "makara-beach",
     "suburb": "Makara Beach",
+    "postcode": 6972,
     "label": "Makara Beach",
     "region": "Western suburbs",
     "centre": [
@@ -538,6 +579,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "ohariu",
     "suburb": "Ohariu",
+    "postcode": 6037,
     "label": "Ohariu",
     "region": "Western suburbs",
     "centre": [
@@ -551,6 +593,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "ngaio",
     "suburb": "Ngaio",
+    "postcode": 6035,
     "label": "Ngaio",
     "region": "Onslow and the northern hills",
     "centre": [
@@ -564,6 +607,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "khandallah",
     "suburb": "Khandallah",
+    "postcode": 6035,
     "label": "Khandallah",
     "region": "Onslow and the northern hills",
     "centre": [
@@ -577,6 +621,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "crofton-downs",
     "suburb": "Crofton Downs",
+    "postcode": 6035,
     "label": "Crofton Downs",
     "region": "Onslow and the northern hills",
     "centre": [
@@ -590,6 +635,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "kaiwharawhara",
     "suburb": "Kaiwharawhara",
+    "postcode": 6035,
     "label": "Kaiwharawhara",
     "region": "Onslow and the northern hills",
     "centre": [
@@ -603,6 +649,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "ngauranga",
     "suburb": "Ngauranga",
+    "postcode": 6035,
     "label": "Ngauranga",
     "region": "Onslow and the northern hills",
     "centre": [
@@ -616,6 +663,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "broadmeadows",
     "suburb": "Broadmeadows",
+    "postcode": 6035,
     "label": "Broadmeadows",
     "region": "Onslow and the northern hills",
     "centre": [
@@ -629,6 +677,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "horokiwi",
     "suburb": "Horokiwi",
+    "postcode": 5016,
     "label": "Horokiwi",
     "region": "Onslow and the northern hills",
     "centre": [
@@ -642,6 +691,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "johnsonville",
     "suburb": "Johnsonville",
+    "postcode": 6037,
     "label": "Johnsonville",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -655,6 +705,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "newlands",
     "suburb": "Newlands",
+    "postcode": 6037,
     "label": "Newlands",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -668,6 +719,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "churton-park",
     "suburb": "Churton Park",
+    "postcode": 6037,
     "label": "Churton Park",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -681,6 +733,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "glenside",
     "suburb": "Glenside",
+    "postcode": 6037,
     "label": "Glenside",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -694,6 +747,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "grenada-village",
     "suburb": "Grenada Village",
+    "postcode": 6037,
     "label": "Grenada Village",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -707,6 +761,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "grenada-north",
     "suburb": "Grenada North",
+    "postcode": 5028,
     "label": "Grenada North",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -720,6 +775,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "paparangi",
     "suburb": "Paparangi",
+    "postcode": 6037,
     "label": "Paparangi",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -733,6 +789,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "woodridge",
     "suburb": "Woodridge",
+    "postcode": 6037,
     "label": "Woodridge",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -746,6 +803,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "takapu-valley",
     "suburb": "Takapu Valley",
+    "postcode": 5028,
     "label": "Takapu Valley",
     "region": "Northern suburbs and Tawa",
     "centre": [
@@ -759,6 +817,7 @@ export const GENERATED_AREAS: GeneratedArea[] = [
   {
     "id": "tawa",
     "suburb": "Tawa",
+    "postcode": 5028,
     "label": "Tawa",
     "region": "Northern suburbs and Tawa",
     "centre": [

@@ -29,6 +29,8 @@ export interface Area {
   label: string;
   /** Council's own spelling, and the join key for `signals.suburb`. */
   suburb: string | null;
+  /** Council's postcode. Not unique — 6021 covers eight suburbs. Null for the catch-all. */
+  postcode: number | null;
   region: string;
   /** [lng, lat] */
   centre: [number, number];
@@ -46,6 +48,7 @@ const ELSEWHERE: Area = {
   id: 'wellington-other',
   label: 'Elsewhere in Wellington',
   suburb: null,
+  postcode: null,
   region: 'Anywhere else',
   centre: [174.7762, -41.2865],
   radiusM: 6000,
@@ -57,6 +60,7 @@ export const AREAS: Area[] = [
     id: a.id,
     label: a.label,
     suburb: a.suburb,
+    postcode: a.postcode,
     region: a.region,
     centre: a.centre,
     radiusM: a.radiusM,

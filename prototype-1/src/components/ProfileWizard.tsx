@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { AREA_GROUPS, areaFor } from '@/lib/areas';
+import { AreaPicker } from './AreaPicker';
 import { EMPTY_PROFILE, type Corridor, type Profile, type Role, type Travel } from '@/lib/relevance';
 
 const SOUTH_COAST = AREA_GROUPS.find((g) => g.region === 'South coast')?.areas ?? [];
-const ELSEWHERE_GROUPS = AREA_GROUPS.filter((g) => g.region !== 'South coast');
 
 /**
  * Four questions, no login, skippable.
@@ -105,8 +105,9 @@ export function ProfileWizard({
           {/*
             The south coast as chips, because that is what this prototype is
             about and a resident of Ōwhiro Bay should not have to open a menu.
-            The other 46 suburbs sit behind the select below — as chips they
-            would make this modal several screens tall and bury the question.
+            The rest of the city sits behind the search box below — as chips
+            they would make this modal several screens tall and bury the
+            question.
           */}
           <div className="grid grid-cols-2 gap-1.5">
             {SOUTH_COAST.map((a) => (
@@ -123,23 +124,14 @@ export function ProfileWizard({
             ))}
           </div>
 
-          <label className="mt-2 block text-[11px] text-slate-600">
-            <span className="font-medium">Somewhere else in Wellington</span>
-            <select
-              value={SOUTH_COAST.some((a) => a.id === p.area) ? '' : p.area}
-              onChange={(e) => e.target.value && setP({ ...p, area: e.target.value })}
-              className="mt-0.5 block w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs"
-            >
-              <option value="">Choose a suburb…</option>
-              {ELSEWHERE_GROUPS.map((g) => (
-                <optgroup key={g.region} label={g.region}>
-                  {g.areas.map((a) => (
-                    <option key={a.id} value={a.id}>{a.label}</option>
-                  ))}
-                </optgroup>
-              ))}
-            </select>
-          </label>
+          <div className="mt-2 text-[11px] text-slate-600">
+            <label htmlFor="wizard-area" className="font-medium">
+              Somewhere else in Wellington
+            </label>
+            <div className="mt-0.5">
+              <AreaPicker id="wizard-area" areaId={p.area} onArea={(id) => setP({ ...p, area: id })} />
+            </div>
+          </div>
           <button
             onClick={useMyLocation}
             disabled={locating}
