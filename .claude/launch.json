@@ -2,10 +2,16 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "one-clear-view",
-      "runtimeExecutable": "bun",
-      "runtimeArgs": ["--cwd=/Users/timothymarwick/Code/TheColabAi/impact.lab.wlg.team-1.2026-08-08/prototype-1", "run", "dev"],
-      "port": 8082
+      "name": "map-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "map", "run", "dev"],
+      "port": 5173
+    },
+    {
+      "name": "map-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "map", "run", "preview", "--", "--port", "4173"],
+      "port": 4173
     }
   ]
 }

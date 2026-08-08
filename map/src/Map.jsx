@@ -123,7 +123,8 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
           dotImg.src = makeDotSvg(cat.colour)
         })
       }
-      img.src = '/user-pin.svg'
+      // BASE_URL keeps this working under the GitHub Pages subpath as well as at /.
+      img.src = `${import.meta.env.BASE_URL}user-pin.svg`
     })
 
     mapRef.current = map
