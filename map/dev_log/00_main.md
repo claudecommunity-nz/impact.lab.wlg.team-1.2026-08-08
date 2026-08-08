@@ -69,6 +69,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | q7d4bm | done    | 09 Timeline Orientation | Right=now, left=past, relative offset labels (-H:mm)          | 09_timeline_orientation.md |
 | x8k2pn | done    | 10 UI Style   | Unified floating overlay style — rounded, gray, no elevation               | 10_ui_style.md       |
 | b2j5qt | done    | 11 Info Cards | WCC header + floating info cards (weather, conditions, stats) over the map | 11_info_cards.md     |
+| n4w9xc | done    | 12 Layout     | Compact header, legend moved to horizontal bar above timeline              | 12_layout.md         |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.

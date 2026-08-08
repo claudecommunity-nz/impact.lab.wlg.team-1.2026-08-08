@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Map from './Map.jsx'
-import Legend from './Legend.jsx'
+import LegendBar from './LegendBar.jsx'
 import IncidentPanel from './IncidentPanel.jsx'
 import Timeline from './Timeline.jsx'
 import Header from './Header.jsx'
@@ -75,7 +75,7 @@ export default function App() {
           onIncidentClick={setSelectedIncident}
         />
         <InfoPanel />
-        <Legend layers={layers} onToggle={onToggle} />
+        <LegendBar layers={layers} onToggle={onToggle} />
         <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
         <Timeline
           currentTime={currentTime}
