@@ -24,11 +24,11 @@ export default function InfoPanel({ layers, onToggle }) {
       width: 280,
       zIndex: 5,
     }}>
-      <FilterBar layers={layers} onToggle={onToggle} />
       <ConditionsCard />
       <WeatherCard />
       <StatsRow />
       <SeaTempCard />
+      <FilterBar layers={layers} onToggle={onToggle} />
     </div>
   )
 }
@@ -156,7 +156,7 @@ function SeaTempCard() {
 
 function StatCard({ icon, label, value, sub, full }) {
   return (
-    <div style={{ ...card, marginBottom: full ? 0 : undefined, display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <div style={{ ...card, display: 'flex', flexDirection: 'column', gap: 4 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#55554f', fontSize: 12, fontWeight: 600 }}>
         {icon}{label}
       </div>
