@@ -244,7 +244,18 @@ function recency(s: Signal, reasons: Reason[]): number {
  * than commands, and it never implies an unverified report has been checked.
  */
 function actionFor(s: Signal, p: Profile): string | null {
-  const where = s.areaHint ? AREAS_BY_ID[s.areaHint]?.label ?? 'your area' : 'your area';
+  // Council's own suburb name when the point is genuinely inside it, because
+  // "a warning in force for Houghton Bay" is worth more to a resident than
+  // "for Lyall Bay", which is the nearest circle we drew.
+  //
+  // Only when `suburbExact`. An offshore point is rendered "off Lyall Bay" on
+  // the card, but this string is interpolated after five different
+  // prepositions below ("in", "covering", "for", "through", "at"), and "in off
+  // Lyall Bay" is not a sentence. Inexact points keep the area label, which
+  // reads correctly after all five.
+  const where =
+    (s.suburbExact && s.suburb) ||
+    (s.areaHint ? AREAS_BY_ID[s.areaHint]?.label ?? 'your area' : 'your area');
 
   if (s.tier === 'community') {
     return `Residents are reporting this in ${where}. Council has not confirmed it — ` +

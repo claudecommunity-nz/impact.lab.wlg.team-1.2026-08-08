@@ -210,6 +210,16 @@
       "gotcha": "The live layer is index 5, not 0. Two similarly named layers on the same org — Water_Outage_(View) and Drinking_Water_Notice_(View) — are dead (0 records since 2018-19); do not use them. Wellington Water's website is now tiakiwai.co.nz.",
       "found_via": "hackathon research sweep, verified 2026-08-04"
     },
+    "wcc_suburbs": {
+      "name": "Wellington City suburb boundaries (WCC)",
+      "why": "The 57 official suburb polygons Council itself uses. Nothing in the spreadsheet catalogue carries a place-name boundary, so before this every signal could only be described by a hand-drawn radius. This is the layer that lets an item say which suburb Council would call it, rather than which bay we guessed.",
+      "endpoint": "https://gis.wcc.govt.nz/arcgis/rest/services/PropertyAndBoundaries/Boundaries/MapServer/4",
+      "auth": "none",
+      "licence": "Check WCC terms",
+      "verified": true,
+      "gotcha": "Fields are only `suburb` and `postcode` — no id, so the name is the key. Polygon areas are wildly uneven: Makara is 89 km2 and Brooklyn 14.5 km2 (both run over the hills to the south coast), while Moa Point is 0.26 km2. Treat a suburb as a name for a place, not as a measure of how close something is. Returns f=geojson directly and does not exceed the transfer limit at 57 features.",
+      "found_via": "team 1, verified 2026-08-08"
+    },
     "community_emergency_hubs": {
       "name": "Community Emergency Hubs + emergency facilities (GWRC/WREMO)",
       "why": "The WREMO hub network — 126 hubs region-wide, 36 in Wellington City — where communities coordinate after a disaster. The same Emergencies_P service also carries hospitals (13), medical centres (61), fire stations (32), police stations (11) and ambulance stations (5) on layers 1-6. Layers 7-24 are the hazard layers already in this catalogue.",

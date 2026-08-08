@@ -49,6 +49,7 @@ bun install
 supabase start
 bun run dev                # http://localhost:8082
 bun run sources:build      # regenerate the catalogue-derived registry
+bun run suburbs:build      # regenerate the WCC suburb boundaries
 bun run ingest             # terminal fallback for the Refresh button
 bun run typecheck
 supabase db reset          # reapplies migrations + seed
@@ -72,6 +73,40 @@ Two things the SDK protects you from, learned the hard way:
   models into one all-layers image.
 - `catalogue.json`'s `feature_queryable` / `raster_only` tell you which layers
   advertise a query capability and then refuse to answer. Trust them.
+
+## Place: two different questions, kept apart
+
+`area_hint` and `suburb` both say where something is, and collapsing them would
+break one of the two things they do.
+
+- **`area_hint`** — one of five south coast bays, as a centre and a radius
+  (`src/lib/areas.ts`). A *distance*. Personalisation ranks on this, and
+  corroboration groups on it.
+- **`suburb`** — Council's own boundary polygon (`src/lib/suburbs.ts`, generated
+  by `scripts/build_suburbs.py`). A *name*. The interface shows this.
+
+Rank on the suburb and you get nonsense, because the polygons run from 0.26 km²
+at Moa Point to 89 km² at Makara. Two reports 6 km apart are both "Brooklyn".
+Name with the radius and you get nonsense the other way: Council calls the
+Ōwhiro Bay Parade end Island Bay, and Houghton Bay Road is in Lyall Bay.
+
+`suburb_exact = false` means the point is outside every boundary and this is
+the nearest within 3 km — a wave buoy, a sea-level gauge, a report from the sea
+wall. Render those "off X", never "in X". `NULL` means outside Wellington City
+altogether, which is most of the Wellington Water feed.
+
+The boundaries exist four times — browser, Deno, database, and a GeoJSON file —
+all written by one run of `build_suburbs.py` from one fetch, so they cannot
+disagree. The suburbs layer is not in `catalogue.json`; its endpoint lives in
+`vendor/wcc-gis/sources-supplementary.json` under `extra.wcc_suburbs`, so the
+rule about URLs below still holds.
+
+A community report may not state its own suburb, for the same reason it may not
+state its own status. It is derived by a `BEFORE INSERT` trigger from the point,
+and the columns are absent from the anon INSERT grant, so an attempt is rejected
+before the trigger runs. Signals are stamped instead in `stampSuburbs()` in the
+ingest function, where the path is service_role and there is no untrusted
+submitter.
 
 ## Data model
 
@@ -130,7 +165,17 @@ anon PATCH            -> 401
 6th report in 10 min  -> rate-limit trigger rejects
 point outside the bbox-> CHECK constraint rejects
 default GeoJSON       -> zero features with simulated = true
+anon sets suburb      -> 401 permission denied
+report at Lyall Bay   -> suburb = "Lyall Bay", suburb_exact = true
+report 300 m offshore -> suburb_exact = false
 ```
+
+The three suburb implementations must also agree with each other and with the
+publisher. `suburb_for()` in SQL, `suburbFor()` in TypeScript and a point query
+against the WCC layer itself return the same answer for the same coordinate —
+including the counter-intuitive ones (Houghton Bay Road is in Lyall Bay; Red
+Rocks is in no suburb at all). If you change the simplification tolerance in
+`build_suburbs.py`, re-check those two before trusting the result.
 
 ## A note on the preview pane
 

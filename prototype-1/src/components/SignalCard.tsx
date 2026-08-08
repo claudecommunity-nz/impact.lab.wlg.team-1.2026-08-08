@@ -113,6 +113,25 @@ export function SignalCard({
             not current
           </span>
         )}
+        {/*
+          Source · time · place. The problem statement asks for the source and
+          time of every item; the place belongs on the same line because a
+          resident reads all three as one question.
+
+          "off X" is not decoration. An inexact match means the point is in the
+          water or past the seaward kerb — a wave buoy, a sea-level gauge — and
+          reading that as "Lyall Bay" would put an offshore measurement on
+          someone's street. Council's suburb, Council's wording, our honesty
+          about which of the two it is.
+        */}
+        {signal.suburb && (
+          <>
+            <span aria-hidden>·</span>
+            <span className={signal.suburbExact ? '' : 'italic'}>
+              {signal.suburbExact ? signal.suburb : `off ${signal.suburb}`}
+            </span>
+          </>
+        )}
       </div>
     </div>
   );

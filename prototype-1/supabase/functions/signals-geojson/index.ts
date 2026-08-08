@@ -96,6 +96,18 @@ async function liveFeatures(
   const area = url.searchParams.get('area');
   if (area) q = q.eq('area_hint', area);
 
+  // ?suburb=Island%20Bay — Council's own boundary, so another team's module can
+  // ask for a place by the name Council uses rather than by one of our five
+  // circles. Exact match on the name: the layer has no stable id, the name is
+  // the key, and there are only 57 of them.
+  //
+  // Deliberately includes offshore items whose nearest suburb this is. A wave
+  // buoy off Lyall Bay is part of the picture for Lyall Bay; suburb_exact
+  // travels with every feature so the consumer can tell the two apart and word
+  // it accordingly.
+  const suburb = url.searchParams.get('suburb');
+  if (suburb) q = q.eq('suburb', suburb);
+
   const since = url.searchParams.get('since');
   if (since) q = q.gte('observed_at', since);
 
@@ -194,6 +206,10 @@ function toFeature(r: Record<string, any>, simulated: boolean): GeoJSON.Feature 
       valid_to: r.valid_to ?? null,
 
       area_hint: r.area_hint ?? null,
+      suburb: r.suburb ?? null,
+      // TRUE = inside the boundary. FALSE = offshore, and `suburb` is the
+      // nearest within 3 km. Consumers must not render the two identically.
+      suburb_exact: r.suburb_exact ?? null,
       value: r.value ?? null,
       unit: r.unit ?? null,
       trend: r.trend ?? null,

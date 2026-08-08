@@ -59,11 +59,24 @@ The judged deliverable. Open, keyless, CORS `*`:
 curl "http://127.0.0.1:54521/functions/v1/signals-geojson?bbox=174.62,-41.36,174.94,-41.14"
 ```
 
-Parameters: `tier`, `bbox`, `area`, `since`, and `scenario` (+`at`). Every
-feature carries `source_id`, `publisher`, `tier`, `evidence_basis`,
-`observed_at`, `age_seconds`, `attribution`, `licence`, `url`, and for community
-items `status`, `report_count` and `unverified: true`. The collection carries
-`generated_at`, `simulation`, the disclaimer, and per-source health.
+Parameters: `tier`, `bbox`, `area`, `suburb`, `since`, and `scenario` (+`at`).
+Every feature carries `source_id`, `publisher`, `tier`, `evidence_basis`,
+`observed_at`, `age_seconds`, `attribution`, `licence`, `url`, `suburb`,
+`suburb_exact`, and for community items `status`, `report_count` and
+`unverified: true`. The collection carries `generated_at`, `simulation`, the
+disclaimer, and per-source health.
+
+`suburb` is Wellington City Council's own boundary, so another team's module can
+ask for a place by the name Council uses:
+
+```bash
+curl "http://127.0.0.1:54521/functions/v1/signals-geojson?suburb=Island%20Bay"
+```
+
+`suburb_exact: false` means the item is *outside* every boundary and this is the
+nearest suburb within 3 km — a wave buoy, a sea-level gauge, a report from the
+sea wall. Word those "off Island Bay", never "in Island Bay". `null` means
+outside Wellington City altogether.
 
 The app itself is just the first consumer of this endpoint. If it breaks for
 another team it breaks for us.

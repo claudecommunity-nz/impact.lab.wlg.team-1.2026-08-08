@@ -31,6 +31,13 @@ export interface SignalRow {
   lng: number | null;
   lat: number | null;
   area_hint: string | null;
+  /**
+   * Filled by stampSuburbs() in index.ts, not by adapters — the suburb is a
+   * pure function of the point, so it is derived once for every feed.
+   */
+  suburb?: string | null;
+  /** False means offshore, and `suburb` is the nearest one within 3 km. */
+  suburb_exact?: boolean | null;
   geometry: unknown | null;
   value: number | null;
   unit: string | null;

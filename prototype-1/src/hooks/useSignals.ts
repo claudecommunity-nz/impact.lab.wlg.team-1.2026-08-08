@@ -58,6 +58,8 @@ function toSignal(f: any): Signal {
     lng: coords?.[0] ?? null,
     lat: coords?.[1] ?? null,
     areaHint: p.area_hint ?? null,
+    suburb: p.suburb ?? null,
+    suburbExact: p.suburb_exact ?? null,
     geometry: f.geometry ?? null,
     value: p.value ?? null,
     unit: p.unit ?? null,

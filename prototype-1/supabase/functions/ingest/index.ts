@@ -17,6 +17,7 @@
 import { createClient } from 'npm:@supabase/supabase-js@2';
 import { json, preflight } from '../_shared/cors.ts';
 import { ADAPTERS, type Adapter, type SignalRow } from './adapters.ts';
+import { suburbFor } from './suburbs.ts';
 
 const HOST_GAP_MS = 150;
 const MAX_CONCURRENT_HOSTS = 3;
@@ -79,6 +80,25 @@ Deno.serve(async (req) => {
   });
 });
 
+/**
+ * Attach the WCC suburb name to every row that has a point.
+ *
+ * Done here rather than in each adapter on purpose. `area_hint` is per-adapter
+ * because some of them already know which bay a gauge belongs to; the suburb is
+ * a pure function of the coordinate, so stamping it once in the runner means a
+ * new adapter cannot forget it and no adapter can disagree with another about
+ * where a point is.
+ */
+function stampSuburbs(rows: SignalRow[]): SignalRow[] {
+  for (const r of rows) {
+    if (r.lng == null || r.lat == null) continue;
+    const m = suburbFor(r.lng, r.lat);
+    r.suburb = m?.name ?? null;
+    r.suburb_exact = m ? m.exact : null;
+  }
+  return rows;
+}
+
 async function runOne(
   supabase: ReturnType<typeof createClient>,
   adapter: Adapter,
@@ -87,7 +107,7 @@ async function runOne(
   const attemptedAt = new Date().toISOString();
 
   try {
-    const rows = await adapter.run();
+    const rows = stampSuburbs(await adapter.run());
 
     if (rows.length) {
       // Upsert on (source_id, external_id) so a re-run updates in place. Batched

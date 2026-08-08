@@ -9,6 +9,7 @@
     "preview": "bunx --bun vite preview",
     "typecheck": "bunx tsc --noEmit",
     "sources:build": "python3 scripts/build_sources.py",
+    "suburbs:build": "python3 scripts/build_suburbs.py",
     "types": "supabase gen types typescript --local > src/integrations/supabase/types.ts",
     "ingest": "bun scripts/ingest.mjs"
   },

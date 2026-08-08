@@ -11,6 +11,7 @@
 
 import type { EvidenceBasis, Tier } from './tiers';
 import { areaFor } from './areas';
+import { suburbFor } from './suburbs';
 import { SOURCES_BY_ID, WELLINGTON } from './catalogue.generated';
 
 export interface Signal {
@@ -39,6 +40,13 @@ export interface Signal {
   lng: number | null;
   lat: number | null;
   areaHint: string | null;
+  /**
+   * WCC suburb name for the point. Naming only — proximity ranking stays on
+   * `areaHint`, because suburb polygons run from 0.26 km² to 89 km².
+   */
+  suburb: string | null;
+  /** False when the point is offshore and `suburb` is the nearest within 3 km. */
+  suburbExact: boolean | null;
   geometry: GeoJSON.Geometry | null;
 
   value: number | null;
@@ -176,6 +184,7 @@ export async function fetchMetService(signal?: AbortSignal): Promise<Signal[]> {
       lng: c?.[0] ?? null,
       lat: c?.[1] ?? null,
       areaHint: c ? areaFor(c[0], c[1]) : null,
+      suburb: null, suburbExact: null,  // filled by stamp() in fetchAllDirect
       geometry: (f.geometry as GeoJSON.Geometry) ?? null,
       value: null, unit: null, trend: null, sparkline: null,
       baselineMin: null, baselineMax: null,
@@ -251,6 +260,7 @@ export async function fetchRoadClosures(signal?: AbortSignal): Promise<Signal[]>
         lng: c?.[0] ?? null,
         lat: c?.[1] ?? null,
         areaHint: c ? areaFor(c[0], c[1]) : null,
+        suburb: null, suburbExact: null,  // filled by stamp() in fetchAllDirect
         geometry: (f.geometry as GeoJSON.Geometry) ?? null,
         value: null, unit: null, trend: null, sparkline: null,
         baselineMin: null, baselineMax: null,
@@ -296,6 +306,7 @@ export async function fetchSeaLevel(signal?: AbortSignal): Promise<Signal[]> {
     validFrom: null, validTo: null,
     lng: 174.7797, lat: -41.2847,
     areaHint: 'wellington-other',
+    suburb: null, suburbExact: null,  // filled by stamp() in fetchAllDirect
     geometry: { type: 'Point', coordinates: [174.7797, -41.2847] },
     value: last.val,
     unit: 'm',
@@ -337,6 +348,7 @@ export async function fetchMarine(signal?: AbortSignal): Promise<Signal[]> {
     validFrom: null, validTo: null,
     lng: 174.77, lat: -41.36,
     areaHint: 'island-bay',
+    suburb: null, suburbExact: null,  // filled by stamp() in fetchAllDirect
     geometry: { type: 'Point', coordinates: [174.77, -41.36] },
     value: h, unit: 'm', trend: null, sparkline: null,
     baselineMin: null, baselineMax: null,
@@ -370,13 +382,25 @@ export async function fetchAllDirect(
 
   const settled = await Promise.allSettled(jobs.map(([, fn]) => fn()));
   const signals: Signal[] = [];
+  // Mirrors stampSuburbs() in the ingest function: the suburb is derived from
+  // the point in one place, so the no-backend path and the database path can
+  // never name the same coordinate differently.
+  const stamp = (list: Signal[]) => {
+    for (const s of list) {
+      if (s.lng == null || s.lat == null) continue;
+      const m = suburbFor(s.lng, s.lat);
+      s.suburb = m?.name ?? null;
+      s.suburbExact = m ? m.exact : null;
+    }
+    return list;
+  };
   const outcomes: FetchOutcome[] = [];
   const at = new Date().toISOString();
 
   settled.forEach((r, i) => {
     const sourceId = jobs[i][0];
     if (r.status === 'fulfilled') {
-      signals.push(...r.value);
+      signals.push(...stamp(r.value));
       outcomes.push({ sourceId, status: 'ok', count: r.value.length, at });
     } else {
       outcomes.push({
