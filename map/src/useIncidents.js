@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { CATEGORIES } from './incidents.js'
 
 const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]))
@@ -49,17 +49,24 @@ function toGeoJSON(incidents) {
   return { pins, radii }
 }
 
-const EMPTY = { pins: { type: 'FeatureCollection', features: [] }, radii: { type: 'FeatureCollection', features: [] } }
+const EMPTY_GEO = { pins: { type: 'FeatureCollection', features: [] }, radii: { type: 'FeatureCollection', features: [] } }
 
-export default function useIncidents() {
-  const [state, setState] = useState({ ...EMPTY, loading: true })
+export default function useIncidents(before) {
+  const [allIncidents, setAllIncidents] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('/incidents.json')
       .then(r => r.json())
-      .then(incidents => setState({ ...toGeoJSON(incidents), loading: false }))
-      .catch(() => setState({ ...EMPTY, loading: false }))
+      .then(data => { setAllIncidents(data); setLoading(false) })
+      .catch(() => setLoading(false))
   }, [])
 
-  return state
+  return useMemo(() => {
+    if (!allIncidents.length) return { ...EMPTY_GEO, loading }
+    const filtered = before != null
+      ? allIncidents.filter(inc => Date.parse(inc.timestamp) <= before)
+      : allIncidents
+    return { ...toGeoJSON(filtered), loading }
+  }, [allIncidents, before, loading])
 }

@@ -1,21 +1,64 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Map from './Map.jsx'
 import Legend from './Legend.jsx'
 import IncidentPanel from './IncidentPanel.jsx'
+import Timeline from './Timeline.jsx'
 import useGeolocation from './useGeolocation.js'
 import useIncidents from './useIncidents.js'
-import { CATEGORIES } from './incidents.js'
+import { CATEGORIES, EVENT_WINDOW } from './incidents.js'
 
 const defaultLayers = {
   location: true,
   ...Object.fromEntries(CATEGORIES.map(c => [c.id, true])),
 }
 
+const WIN = {
+  start: Date.parse(EVENT_WINDOW.start),
+  end:   Date.parse(EVENT_WINDOW.end),
+}
+
+// 1 real second = 15 simulated minutes
+const SPEED = 15 * 60 * 1000
+
 export default function App() {
   const locationFeature = useGeolocation()
-  const { pins, radii } = useIncidents()  // loading state available if needed
   const [layers, setLayers] = useState(defaultLayers)
   const [selectedIncident, setSelectedIncident] = useState(null)
+  const [currentTime, setCurrentTime] = useState(WIN.start)
+  const [playing, setPlaying] = useState(false)
+  const rafRef = useRef(null)
+  const lastRef = useRef(null)
+
+  const { pins, radii } = useIncidents(currentTime)
+
+  useEffect(() => {
+    if (!playing) {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      return
+    }
+
+    function tick(now) {
+      if (lastRef.current != null) {
+        const delta = now - lastRef.current
+        setCurrentTime(t => {
+          const next = t + delta * SPEED / 1000
+          if (next >= WIN.end) { setPlaying(false); return WIN.end }
+          return next
+        })
+      }
+      lastRef.current = now
+      rafRef.current = requestAnimationFrame(tick)
+    }
+
+    lastRef.current = null
+    rafRef.current = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [playing])
+
+  function onTogglePlay() {
+    if (currentTime >= WIN.end) setCurrentTime(WIN.start)
+    setPlaying(p => !p)
+  }
 
   function onToggle(layer) {
     setLayers(prev => ({ ...prev, [layer]: !prev[layer] }))
@@ -32,6 +75,13 @@ export default function App() {
       />
       <Legend layers={layers} onToggle={onToggle} />
       <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
+      <Timeline
+        currentTime={currentTime}
+        window={WIN}
+        playing={playing}
+        onSeek={t => { setCurrentTime(t); setPlaying(false) }}
+        onTogglePlay={onTogglePlay}
+      />
     </div>
   )
 }
