@@ -14,7 +14,7 @@ const defaultLayers = {
 
 const WIN = {
   start: Date.parse(EVENT_WINDOW.start),
-  end:   Date.parse(EVENT_WINDOW.end),
+  end:   Date.now(),
 }
 
 // 1 real second = 15 simulated minutes
@@ -24,7 +24,7 @@ export default function App() {
   const locationFeature = useGeolocation()
   const [layers, setLayers] = useState(defaultLayers)
   const [selectedIncident, setSelectedIncident] = useState(null)
-  const [currentTime, setCurrentTime] = useState(WIN.start)
+  const [currentTime, setCurrentTime] = useState(WIN.end)
   const [playing, setPlaying] = useState(false)
   const rafRef = useRef(null)
   const lastRef = useRef(null)
