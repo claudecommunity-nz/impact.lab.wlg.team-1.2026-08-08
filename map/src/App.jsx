@@ -13,7 +13,7 @@ const defaultLayers = {
 
 export default function App() {
   const locationFeature = useGeolocation()
-  const { pins, radii } = useIncidents()
+  const { pins, radii } = useIncidents()  // loading state available if needed
   const [layers, setLayers] = useState(defaultLayers)
   const [selectedIncident, setSelectedIncident] = useState(null)
 

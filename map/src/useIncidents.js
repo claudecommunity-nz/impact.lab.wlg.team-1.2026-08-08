@@ -1,5 +1,7 @@
-import { useMemo } from 'react'
-import { CATEGORIES, INCIDENTS } from './incidents.js'
+import { useEffect, useState } from 'react'
+import { CATEGORIES } from './incidents.js'
+
+const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]))
 
 function circlePolygon(lng, lat, radiusMetres) {
   const steps = 64
@@ -14,33 +16,50 @@ function circlePolygon(lng, lat, radiusMetres) {
   return coords
 }
 
+function toGeoJSON(incidents) {
+  const pins = {
+    type: 'FeatureCollection',
+    features: incidents.map((inc, i) => ({
+      type: 'Feature',
+      id: i,
+      geometry: { type: 'Point', coordinates: [inc.lng, inc.lat] },
+      properties: {
+        type: inc.type,
+        severity: inc.severity,
+        description: inc.description,
+        detail: inc.detail,
+        timestamp: inc.timestamp,
+      },
+    })),
+  }
+
+  const radii = {
+    type: 'FeatureCollection',
+    features: incidents.map((inc, i) => ({
+      type: 'Feature',
+      id: i,
+      geometry: {
+        type: 'Polygon',
+        coordinates: [circlePolygon(inc.lng, inc.lat, catMap[inc.type].radiusMetres)],
+      },
+      properties: { type: inc.type },
+    })),
+  }
+
+  return { pins, radii }
+}
+
+const EMPTY = { pins: { type: 'FeatureCollection', features: [] }, radii: { type: 'FeatureCollection', features: [] } }
+
 export default function useIncidents() {
-  return useMemo(() => {
-    const catMap = Object.fromEntries(CATEGORIES.map(c => [c.id, c]))
+  const [state, setState] = useState({ ...EMPTY, loading: true })
 
-    const pins = {
-      type: 'FeatureCollection',
-      features: INCIDENTS.map((inc, i) => ({
-        type: 'Feature',
-        id: i,
-        geometry: { type: 'Point', coordinates: [inc.lng, inc.lat] },
-        properties: { type: inc.type, description: inc.description },
-      })),
-    }
-
-    const radii = {
-      type: 'FeatureCollection',
-      features: INCIDENTS.map((inc, i) => ({
-        type: 'Feature',
-        id: i,
-        geometry: {
-          type: 'Polygon',
-          coordinates: [circlePolygon(inc.lng, inc.lat, catMap[inc.type].radiusMetres)],
-        },
-        properties: { type: inc.type },
-      })),
-    }
-
-    return { pins, radii }
+  useEffect(() => {
+    fetch('/incidents.json')
+      .then(r => r.json())
+      .then(incidents => setState({ ...toGeoJSON(incidents), loading: false }))
+      .catch(() => setState({ ...EMPTY, loading: false }))
   }, [])
+
+  return state
 }

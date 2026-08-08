@@ -1,3 +1,8 @@
+export const EVENT_WINDOW = {
+  start: '2026-08-08T06:00:00+12:00',
+  end:   '2026-08-08T14:00:00+12:00',
+}
+
 export const CATEGORIES = [
   {
     id: 'water',
@@ -71,35 +76,4 @@ export const CATEGORIES = [
   },
 ]
 
-export const INCIDENTS = [
-  // Drinking / Tap Water
-  { type: 'water',    severity: 'red',    lat: -41.2863, lng: 174.7683, description: 'Burst water main on Upland Rd, Kelburn',          detail: 'A major water main has burst, cutting supply to approximately 200 homes. Wellington Water crews are on site.' },
-  { type: 'water',    severity: 'yellow', lat: -41.3022, lng: 174.7787, description: 'Low pressure on Adelaide Rd, Newtown',            detail: 'Residents are reporting unusually low water pressure. Wellington Water is investigating a possible network fault.' },
-  { type: 'water',    severity: 'yellow', lat: -41.2866, lng: 174.7393, description: 'Discoloured water on Campbell St, Karori',        detail: 'Tap water appears brown or cloudy following works nearby. Do not drink until Wellington Water clears the line.' },
-  { type: 'water',    severity: 'red',    lat: -41.2754, lng: 174.7769, description: 'Pipe leak on Tinakori Rd, Thorndon',              detail: 'A pressurised pipe is leaking under the road surface. The area is partially closed. Expect supply interruptions.' },
-  // Fallen or Dangerous Trees
-  { type: 'trees',    severity: 'red',    lat: -41.2980, lng: 174.7883, description: 'Tree down blocking Majoribanks St, Mt Victoria', detail: 'A large pohutukawa has fallen across both lanes. The road is closed. WCC Parks crews have been notified.' },
-  { type: 'trees',    severity: 'red',    lat: -41.2943, lng: 174.7696, description: 'Large tree blocking Aro St, Aro Valley',          detail: 'Storm winds brought down a mature tree blocking the footpath and partially blocking the road. Avoid the area.' },
-  { type: 'trees',    severity: 'yellow', lat: -41.3112, lng: 174.7617, description: 'Dangerous leaning tree on Ohiro Rd, Brooklyn',   detail: 'A tree is leaning significantly after root damage. It has not fallen but poses a risk. WCC inspection pending.' },
-  { type: 'trees',    severity: 'yellow', lat: -41.2863, lng: 174.7710, description: 'Fallen branch on Upland Rd, Kelburn',            detail: 'A heavy branch has come down on the footpath. Pedestrians should cross to the other side until removed.' },
-  // Slips
-  { type: 'slips',    severity: 'red',    lat: -41.3366, lng: 174.7753, description: 'Slip covering lane on The Parade, Island Bay',   detail: 'A significant slip has covered one lane of The Parade with mud and debris. One lane remains open under traffic control.' },
-  { type: 'slips',    severity: 'red',    lat: -41.2960, lng: 174.7400, description: 'Slip on Karori Rd near tunnel',                  detail: 'Soil movement has deposited debris on Karori Rd. The road is closed between Karori Park and the tunnel entrance.' },
-  { type: 'slips',    severity: 'yellow', lat: -41.3200, lng: 174.7530, description: 'Slip on Happy Valley Rd, Brooklyn',              detail: 'A minor slip has deposited material on the road shoulder. One lane is passable. Further movement is possible.' },
-  { type: 'slips',    severity: 'yellow', lat: -41.3028, lng: 174.7972, description: 'Slip on Ruahine St, Hataitai',                   detail: 'Soil has slipped from a bank onto the footpath. The footpath is closed; use the road edge with care.' },
-  // Weather Event
-  { type: 'weather',  severity: 'red',    lat: -41.2961, lng: 174.7786, description: 'Severe wind damage on Cuba St, Te Aro',          detail: 'Wind gusts exceeding 120 km/h caused structural damage to awnings and signage. Debris on footpath. Avoid the block.' },
-  { type: 'weather',  severity: 'yellow', lat: -41.3030, lng: 174.7800, description: 'Hail damage on Riddiford St, Newtown',           detail: 'Intense hail caused minor flooding and damaged several vehicle windscreens. Roads are clearing but remain slippery.' },
-  { type: 'weather',  severity: 'yellow', lat: -41.3162, lng: 174.8131, description: 'Strong gusts damaging structures on Miramar Ave', detail: 'Sustained 90 km/h gusts have damaged fencing and a roof on Miramar Ave. Loose debris remains in the area.' },
-  { type: 'weather',  severity: 'red',    lat: -41.2754, lng: 174.7790, description: 'Storm damage on Tinakori Rd, Thorndon',          detail: 'A MetService severe weather warning is active. Multiple trees and power lines are down in the Tinakori Rd area.' },
-  // Road & Footpath Maintenance
-  { type: 'roads',    severity: 'yellow', lat: -41.2985, lng: 174.7820, description: 'Large pothole on Courtenay Pl, Te Aro',          detail: 'A pothole approximately 40 cm wide and 15 cm deep has opened in the left lane. It has been marked but not yet filled.' },
-  { type: 'roads',    severity: 'yellow', lat: -41.3010, lng: 174.7780, description: 'Footpath subsidence on Adelaide Rd, Newtown',    detail: 'A section of footpath has sunk by around 10 cm, likely due to a water leak below. Cones are in place.' },
-  { type: 'roads',    severity: 'red',    lat: -41.2900, lng: 174.7420, description: 'Road subsidence on Karori Rd',                   detail: 'Significant road subsidence has made a section of Karori Rd unstable. The affected lane is closed pending repair.' },
-  { type: 'roads',    severity: 'yellow', lat: -41.2247, lng: 174.8056, description: 'Cracked footpath on Moorefield Rd, Johnsonville', detail: 'Tree root damage has cracked and lifted a footpath slab. A trip hazard exists. Reported to WCC for scheduling.' },
-  // Flooding
-  { type: 'flooding', severity: 'red',    lat: -41.3350, lng: 174.7740, description: 'Road flooding on The Parade, Island Bay',        detail: 'The Parade is flooded to a depth of approximately 30 cm following heavy rain and a storm surge. Road is closed.' },
-  { type: 'flooding', severity: 'red',    lat: -41.3050, lng: 174.7810, description: 'Surface flooding on Constable St, Newtown',      detail: 'Overland flooding has entered several ground-floor properties. The overland flowpath is at capacity. Avoid the area.' },
-  { type: 'flooding', severity: 'yellow', lat: -41.2970, lng: 174.7760, description: 'Surface flooding on Taranaki St, Te Aro',        detail: 'Stormwater is ponding at the Taranaki St / Courtenay Pl intersection. Passable but slow down and watch for depth.' },
-  { type: 'flooding', severity: 'yellow', lat: -41.2940, lng: 174.7380, description: 'Stream overflow on Karori Rd',                   detail: 'The Kaiwharawhara Stream has overflowed its banks slightly, depositing water on the road edge. Monitor for changes.' },
-]
+// INCIDENTS moved to public/incidents.json — edit that file to update data.
