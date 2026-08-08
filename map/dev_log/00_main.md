@@ -78,6 +78,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | m1t6rz | done    | 18 Timeline Labels | Human-readable relative time labels (Xd Yh ago) on the scrubber       | 18_timeline_labels.md |
 | d7v3mq | done    | 19 Location Selector | Search 57 WCC suburbs or a whole region; outline it and move the camera | 19_location_selector.md |
 | j4q7ha | done    | 20 Share Alert | Share button on the incident panel opens a mock share modal with source and time attached | 20_share_alert.md |
+| p9q3vw | done    | 21 Data 1000      | Conversion script maps 389 relevant tickets to incidents.json          | 21_data_1000.md       |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.

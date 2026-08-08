@@ -2,109 +2,3502 @@
   {
     "type": "flooding",
     "severity": "high",
-    "timestamp": "2026-07-10T06:20:00Z",
-    "lat": -41.29215,
-    "lng": 174.76967,
-    "description": "Flooding — Aro Street, Aro Valley",
-    "detail": "Continuous rain overnight has flooded the low section of Aro Street outside the community hall. Water is ankle deep and rising."
+    "timestamp": "2026-07-09T22:30:51Z",
+    "lat": -41.31679,
+    "lng": 174.75473,
+    "description": "Flooding — Harbour View Road, Brooklyn, Wellington",
+    "detail": "Continuous rain has flooded the low section of Harbour View Road in Brooklyn, water is rising rapidly"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-09T22:50:24Z",
+    "lat": -41.3062,
+    "lng": 174.78844,
+    "description": "Weather event — Riddiford Street, Newtown, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Riddiford Street, Newtown"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-09T23:08:08Z",
+    "lat": -41.28893,
+    "lng": 174.76918,
+    "description": "Weather event — Todman Street, Brooklyn, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Todman Street, Brooklyn"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-09T23:42:20Z",
+    "lat": -41.27765,
+    "lng": 174.76479,
+    "description": "Flooding — Molesworth Street, Pipitea, Wellington",
+    "detail": "A nearby stream has burst its banks near Molesworth Street, Pipitea, flooding the road and adjoining properties"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-10T00:10:43Z",
+    "lat": -41.31854,
+    "lng": 174.78771,
+    "description": "Weather event — Constable Street, Newtown, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Constable Street, Newtown"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-10T00:12:30Z",
+    "lat": -41.28296,
+    "lng": 174.8,
+    "description": "Flooding — Hay Street, Mount Victoria, Wellington",
+    "detail": "Surface flooding on Hay Street near Mount Victoria is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-10T00:57:30Z",
+    "lat": -41.28337,
+    "lng": 174.79994,
+    "description": "Slip — Hay Street, Mount Victoria, Wellington",
+    "detail": "Retaining wall next to Hay Street has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-10T00:59:24Z",
+    "lat": -41.30224,
+    "lng": 174.7688,
+    "description": "Flooding — Constable Street, Newtown, Wellington",
+    "detail": "A nearby stream has burst its banks near Constable Street, Newtown, flooding the road and adjoining properties"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-10T02:05:00Z",
+    "lat": -41.31471,
+    "lng": 174.81571,
+    "description": "Weather event — Chelsea Street, Miramar, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Chelsea Street, Miramar"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-10T02:54:44Z",
+    "lat": -41.3038,
+    "lng": 174.74921,
+    "description": "Flooding — Cleveland Street, Brooklyn, Wellington",
+    "detail": "Surface flooding on Cleveland Street near Brooklyn is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-10T03:12:59Z",
+    "lat": -41.29139,
+    "lng": 174.77773,
+    "description": "Weather event — Murphy Street, Thorndon, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Murphy Street, Thorndon"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-10T03:25:44Z",
+    "lat": -41.30338,
+    "lng": 174.74864,
+    "description": "Slip — Cleveland Street, Brooklyn, Wellington",
+    "detail": "Loose soil and rocks have come down onto Cleveland Street near Brooklyn, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-10T07:11:17Z",
+    "lat": -41.31341,
+    "lng": 174.7682,
+    "description": "Flooding — Coromandel Street, Berhampore, Wellington",
+    "detail": "A nearby stream has burst its banks near Coromandel Street, Berhampore, flooding the road and adjoining properties"
   },
   {
     "type": "slips",
     "severity": "medium",
-    "timestamp": "2026-07-10T06:48:00Z",
-    "lat": -41.29223,
-    "lng": 174.76981,
-    "description": "Slip — Aro Street, Aro Valley",
-    "detail": "Bank above Aro Street has slipped following the flooding. Loose clay and debris now blocking half of the footpath."
-  },
-  {
-    "type": "weather",
-    "severity": "low",
-    "timestamp": "2026-07-11T18:02:00Z",
-    "lat": -41.28960,
-    "lng": 174.76780,
-    "description": "Weather damage — Curtis Street, Kelburn",
-    "detail": "Strong northerly gusts overnight have brought down several fence panels and outdoor furniture across properties on Curtis Street."
-  },
-  {
-    "type": "water",
-    "severity": "medium",
-    "timestamp": "2026-07-12T09:30:00Z",
-    "lat": -41.27389,
-    "lng": 174.77653,
-    "description": "Water quality — Tinakori Road, Thorndon",
-    "detail": "Tap water from the mains on Tinakori Road has a strong chlorine smell and slightly cloudy appearance since yesterday."
+    "timestamp": "2026-07-10T07:50:17Z",
+    "lat": -41.3132,
+    "lng": 174.76813,
+    "description": "Slip — Coromandel Street, Berhampore, Wellington",
+    "detail": "Hillside slip on Coromandel Street in Berhampore has closed the footpath to pedestrians following the earlier flooding"
   },
   {
     "type": "flooding",
     "severity": "medium",
-    "timestamp": "2026-07-15T05:10:00Z",
-    "lat": -41.32068,
-    "lng": 174.79355,
-    "description": "Flooding — Childers Terrace, Kilbirnie",
-    "detail": "Stormwater drains on Childers Terrace have overflowed after heavy rain. Water is pooling across the intersection near the shops."
+    "timestamp": "2026-07-10T08:05:02Z",
+    "lat": -41.25763,
+    "lng": 174.77609,
+    "description": "Flooding — Fife Street, Khandallah, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Fife Street, Khandallah, water is pooling across the road"
   },
   {
     "type": "slips",
-    "severity": "low",
-    "timestamp": "2026-07-15T05:39:00Z",
-    "lat": -41.32076,
-    "lng": 174.79368,
-    "description": "Slip — Childers Terrace, Kilbirnie",
-    "detail": "Grass verge along Childers Terrace has given way after the flooding. Soft mud now spilling onto the road."
+    "severity": "high",
+    "timestamp": "2026-07-10T08:25:02Z",
+    "lat": -41.2581,
+    "lng": 174.77665,
+    "description": "Slip — Fife Street, Khandallah, Wellington",
+    "detail": "Bank alongside Fife Street in Khandallah has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
   },
   {
     "type": "roads",
     "severity": "medium",
-    "timestamp": "2026-07-19T10:05:00Z",
-    "lat": -41.31274,
-    "lng": 174.78141,
-    "description": "Pothole — Riddiford Street, Newtown",
-    "detail": "Deep pothole has formed on Riddiford Street outside the medical centre, causing vehicles to swerve suddenly into oncoming traffic."
-  },
-  {
-    "type": "flooding",
-    "severity": "high",
-    "timestamp": "2026-07-21T04:55:00Z",
-    "lat": -41.27984,
-    "lng": 174.71875,
-    "description": "Flooding — Makara Road, Karori",
-    "detail": "Makara Stream has burst its banks near Makara Road, flooding several sections of the road and nearby paddocks."
+    "timestamp": "2026-07-10T13:47:08Z",
+    "lat": -41.29947,
+    "lng": 174.79788,
+    "description": "Road/footpath issue — Grass Street, Oriental Bay, Wellington",
+    "detail": "Road surface on Grass Street near Oriental Bay has deteriorated badly and needs resurfacing"
   },
   {
     "type": "slips",
     "severity": "high",
-    "timestamp": "2026-07-21T05:24:00Z",
-    "lat": -41.27991,
-    "lng": 174.71891,
-    "description": "Slip — Makara Road, Karori",
-    "detail": "Hillside next to Makara Road has slipped after the stream flooding. Rocks and soil now covering one lane."
+    "timestamp": "2026-07-10T14:41:54Z",
+    "lat": -41.25715,
+    "lng": 174.74318,
+    "description": "Slip — Wilton Road, Wilton, Wellington",
+    "detail": "Retaining wall next to Wilton Road has partially collapsed, spilling debris onto the road"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-10T14:54:38Z",
+    "lat": -41.25648,
+    "lng": 174.78179,
+    "description": "Road/footpath issue — Wadestown Road, Wadestown, Wellington",
+    "detail": "Faded and unclear road markings on Wadestown Road, Wadestown are causing confusion for drivers"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-10T20:48:40Z",
+    "lat": -41.28194,
+    "lng": 174.77224,
+    "description": "Flooding — Kelburn Parade, Kelburn, Wellington",
+    "detail": "Continuous rain has flooded the low section of Kelburn Parade in Kelburn, water is rising rapidly"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-10T22:56:55Z",
+    "lat": -41.2418,
+    "lng": 174.73052,
+    "description": "Weather event — Coppin Street, Wilton, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Coppin Street, Wilton"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-10T23:23:21Z",
+    "lat": -41.33396,
+    "lng": 174.75906,
+    "description": "Weather event — Medway Street, Island Bay, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Medway Street, Island Bay"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-10T23:43:02Z",
+    "lat": -41.29575,
+    "lng": 174.79474,
+    "description": "Flooding — Ellice Street, Mount Victoria, Wellington",
+    "detail": "A nearby stream has burst its banks near Ellice Street, Mount Victoria, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-11T00:13:02Z",
+    "lat": -41.29535,
+    "lng": 174.79516,
+    "description": "Slip — Ellice Street, Mount Victoria, Wellington",
+    "detail": "Bank alongside Ellice Street in Mount Victoria has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-11T00:56:46Z",
+    "lat": -41.23035,
+    "lng": 174.77356,
+    "description": "Slip — Cummings Park, Ngaio, Wellington",
+    "detail": "Bank alongside Cummings Park in Ngaio has slipped after heavy rain, covering part of the footpath with mud"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-11T01:23:09Z",
+    "lat": -41.33515,
+    "lng": 174.77514,
+    "description": "Slip — Rintoul Street, Berhampore, Wellington",
+    "detail": "Bank alongside Rintoul Street in Berhampore has slipped after heavy rain, covering part of the footpath with mud"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-11T03:04:54Z",
+    "lat": -41.29683,
+    "lng": 174.78559,
+    "description": "Flooding — Cuba Street, CBD, Wellington",
+    "detail": "A nearby stream has burst its banks near Cuba Street, CBD, flooding the road and adjoining properties"
+  },
+  {
+    "type": "trees",
+    "severity": "medium",
+    "timestamp": "2026-07-11T09:56:16Z",
+    "lat": -41.22973,
+    "lng": 174.75303,
+    "description": "Dangerous tree — Coppin Street, Wilton, Wellington",
+    "detail": "Large tree branch on Coppin Street near Wilton shops is hanging precariously over the footpath after recent wind"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-11T10:21:18Z",
+    "lat": -41.32707,
+    "lng": 174.81599,
+    "description": "Weather event — Chelsea Street, Miramar, Wellington",
+    "detail": "Storm damage reported to power lines near Chelsea Street, Miramar after last night's severe weather"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-11T10:34:22Z",
+    "lat": -41.29021,
+    "lng": 174.72354,
+    "description": "Flooding — Donald Street, Karori, Wellington",
+    "detail": "Continuous rain has flooded the low section of Donald Street in Karori, water is rising rapidly"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-11T13:29:53Z",
+    "lat": -41.33523,
+    "lng": 174.77699,
+    "description": "Road/footpath issue — Rintoul Street, Berhampore, Wellington",
+    "detail": "Footpath slabs on Rintoul Street, Berhampore have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-11T18:13:35Z",
+    "lat": -41.34933,
+    "lng": 174.78643,
+    "description": "Flooding — Reef Street, Island Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of Reef Street in Island Bay, water is rising rapidly"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-11T18:38:26Z",
+    "lat": -41.28547,
+    "lng": 174.76142,
+    "description": "Weather event — Buckle Street, Mount Cook, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Buckle Street, Mount Cook"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-11T18:39:35Z",
+    "lat": -41.34941,
+    "lng": 174.78588,
+    "description": "Slip — Reef Street, Island Bay, Wellington",
+    "detail": "Hillside slip on Reef Street in Island Bay has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-11T19:02:04Z",
+    "lat": -41.26097,
+    "lng": 174.7646,
+    "description": "Weather event — Croydon Street, Wilton, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Croydon Street in Wilton"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-11T20:01:17Z",
+    "lat": -41.23692,
+    "lng": 174.76974,
+    "description": "Weather event — Bendall Avenue, Ngaio, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Bendall Avenue in Ngaio"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-11T21:20:38Z",
+    "lat": -41.26481,
+    "lng": 174.73628,
+    "description": "Road/footpath issue — Wilton Road, Wilton, Wellington",
+    "detail": "Deep pothole has formed on Wilton Road in Wilton, causing vehicles to swerve into oncoming traffic"
   },
   {
     "type": "trees",
     "severity": "high",
-    "timestamp": "2026-07-30T13:12:00Z",
-    "lat": -41.31350,
-    "lng": 174.78295,
-    "description": "Dangerous tree — Anderson Park, Newtown",
-    "detail": "Large macrocarpa tree on the boundary of Anderson Park is leaning heavily after recent winds and looks close to falling onto the playground."
+    "timestamp": "2026-07-11T21:56:28Z",
+    "lat": -41.25067,
+    "lng": 174.79788,
+    "description": "Dangerous tree — Ganges Road, Khandallah, Wellington",
+    "detail": "A pohutukawa tree on Ganges Road has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-12T00:43:22Z",
+    "lat": -41.30394,
+    "lng": 174.77546,
+    "description": "Dangerous tree — Willis Street, CBD, Wellington",
+    "detail": "Dead tree limb overhanging Willis Street in CBD looks close to falling onto parked cars"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-12T01:07:43Z",
+    "lat": -41.32787,
+    "lng": 174.75695,
+    "description": "Road/footpath issue — Wakefield Park Terrace, Berhampore, Wellington",
+    "detail": "Faded and unclear road markings on Wakefield Park Terrace, Berhampore are causing confusion for drivers"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-12T02:49:33Z",
+    "lat": -41.28754,
+    "lng": 174.70539,
+    "description": "Road/footpath issue — Makara Road, Karori, Wellington",
+    "detail": "Road surface on Makara Road near Karori has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-12T03:07:59Z",
+    "lat": -41.28597,
+    "lng": 174.76444,
+    "description": "Slip — Curtis Street, Kelburn, Wellington",
+    "detail": "Retaining wall next to Curtis Street has partially collapsed, spilling debris onto the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-12T04:50:05Z",
+    "lat": -41.28132,
+    "lng": 174.7837,
+    "description": "Flooding — Holloway Road, Aro Valley, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Holloway Road, Aro Valley, water is pooling across the road"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-12T05:06:47Z",
+    "lat": -41.31742,
+    "lng": 174.83042,
+    "description": "Water quality — Chelsea Street, Miramar, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Chelsea Street, Miramar"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-12T05:38:55Z",
+    "lat": -41.25265,
+    "lng": 174.75499,
+    "description": "Weather event — Wadestown Road, Wadestown, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Wadestown Road, Wadestown"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-12T05:45:06Z",
+    "lat": -41.31414,
+    "lng": 174.80967,
+    "description": "Road/footpath issue — Miramar Avenue, Miramar, Wellington",
+    "detail": "Faded and unclear road markings on Miramar Avenue, Miramar are causing confusion for drivers"
   },
   {
     "type": "roads",
     "severity": "low",
-    "timestamp": "2026-08-01T08:47:00Z",
-    "lat": -41.28789,
-    "lng": 174.77605,
-    "description": "Footpath hazard — Willis Street",
-    "detail": "Footpath slabs on Willis Street have cracked and lifted, creating a tripping hazard outside the pharmacy."
+    "timestamp": "2026-07-12T06:46:51Z",
+    "lat": -41.28153,
+    "lng": 174.76365,
+    "description": "Road/footpath issue — Wadestown Road, Wadestown, Wellington",
+    "detail": "Footpath slabs on Wadestown Road, Wadestown have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-12T08:54:38Z",
+    "lat": -41.27824,
+    "lng": 174.77893,
+    "description": "Road/footpath issue — Pipitea Street, Pipitea, Wellington",
+    "detail": "Faded and unclear road markings on Pipitea Street, Pipitea are causing confusion for drivers"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-12T09:20:15Z",
+    "lat": -41.3012,
+    "lng": 174.80258,
+    "description": "Flooding — Ellice Street, Mount Victoria, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Ellice Street, Mount Victoria, water is pooling across the road"
   },
   {
     "type": "weather",
     "severity": "high",
-    "timestamp": "2026-08-02T20:45:00Z",
-    "lat": -41.29470,
-    "lng": 174.77620,
-    "description": "Storm damage — Cuba Street, CBD",
-    "detail": "Southerly storm has brought hail and gale-force wind through the CBD. Several shopfront awnings on Cuba Street have been damaged."
+    "timestamp": "2026-07-12T10:50:07Z",
+    "lat": -41.2791,
+    "lng": 174.792,
+    "description": "Weather event — Ellice Street, Mount Victoria, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Ellice Street in Mount Victoria"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-12T10:53:46Z",
+    "lat": -41.27917,
+    "lng": 174.77621,
+    "description": "Road/footpath issue — Kelburn Parade, Kelburn, Wellington",
+    "detail": "Faded and unclear road markings on Kelburn Parade, Kelburn are causing confusion for drivers"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-12T11:42:35Z",
+    "lat": -41.24684,
+    "lng": 174.75611,
+    "description": "Water quality — Ottawa Road, Ngaio, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Ottawa Road, Ngaio"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-12T13:43:44Z",
+    "lat": -41.30299,
+    "lng": 174.77908,
+    "description": "Road/footpath issue — Roxburgh Street, Oriental Bay, Wellington",
+    "detail": "Faded and unclear road markings on Roxburgh Street, Oriental Bay are causing confusion for drivers"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-12T16:04:44Z",
+    "lat": -41.29327,
+    "lng": 174.77634,
+    "description": "Road/footpath issue — Mansfield Street, Newtown, Wellington",
+    "detail": "Road surface on Mansfield Street near Newtown has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-12T18:28:59Z",
+    "lat": -41.31506,
+    "lng": 174.78279,
+    "description": "Flooding — Wakefield Park Terrace, Berhampore, Wellington",
+    "detail": "Surface flooding on Wakefield Park Terrace near Berhampore is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-12T18:47:59Z",
+    "lat": -41.3154,
+    "lng": 174.78242,
+    "description": "Slip — Wakefield Park Terrace, Berhampore, Wellington",
+    "detail": "Bank alongside Wakefield Park Terrace in Berhampore has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-13T02:05:44Z",
+    "lat": -41.25876,
+    "lng": 174.80295,
+    "description": "Road/footpath issue — Fife Street, Khandallah, Wellington",
+    "detail": "Faded and unclear road markings on Fife Street, Khandallah are causing confusion for drivers"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-13T09:06:19Z",
+    "lat": -41.29125,
+    "lng": 174.78565,
+    "description": "Flooding — Grass Street, Oriental Bay, Wellington",
+    "detail": "A nearby stream has burst its banks near Grass Street, Oriental Bay, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-13T09:55:19Z",
+    "lat": -41.29088,
+    "lng": 174.78623,
+    "description": "Slip — Grass Street, Oriental Bay, Wellington",
+    "detail": "Hillside slip on Grass Street in Oriental Bay has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-13T10:59:00Z",
+    "lat": -41.26706,
+    "lng": 174.71673,
+    "description": "Road/footpath issue — Karori Road, Karori, Wellington",
+    "detail": "Road surface on Karori Road near Karori has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-13T11:09:59Z",
+    "lat": -41.28077,
+    "lng": 174.76256,
+    "description": "Slip — Thorndon Quay, Thorndon, Wellington",
+    "detail": "Retaining wall next to Thorndon Quay has partially collapsed, spilling debris onto the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-13T12:10:10Z",
+    "lat": -41.24914,
+    "lng": 174.77134,
+    "description": "Flooding — Fife Street, Khandallah, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Fife Street, Khandallah, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-13T12:25:10Z",
+    "lat": -41.24872,
+    "lng": 174.77185,
+    "description": "Slip — Fife Street, Khandallah, Wellington",
+    "detail": "Loose soil and rocks have come down onto Fife Street near Khandallah, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-13T12:37:49Z",
+    "lat": -41.29125,
+    "lng": 174.77753,
+    "description": "Weather event — Roxburgh Street, Oriental Bay, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Roxburgh Street, Oriental Bay"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-13T16:23:04Z",
+    "lat": -41.28806,
+    "lng": 174.78071,
+    "description": "Flooding — Pipitea Street, Pipitea, Wellington",
+    "detail": "A nearby stream has burst its banks near Pipitea Street, Pipitea, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-13T17:14:04Z",
+    "lat": -41.28831,
+    "lng": 174.78052,
+    "description": "Slip — Pipitea Street, Pipitea, Wellington",
+    "detail": "Loose soil and rocks have come down onto Pipitea Street near Pipitea, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-13T19:57:40Z",
+    "lat": -41.2833,
+    "lng": 174.76799,
+    "description": "Road/footpath issue — Glasgow Street, Kelburn, Wellington",
+    "detail": "Faded and unclear road markings on Glasgow Street, Kelburn are causing confusion for drivers"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-13T21:18:24Z",
+    "lat": -41.2868,
+    "lng": 174.78048,
+    "description": "Weather event — Tasman Street, Mount Cook, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Tasman Street, Mount Cook"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-14T05:03:58Z",
+    "lat": -41.27993,
+    "lng": 174.7499,
+    "description": "Water quality — Kelburn Parade, Kelburn, Wellington",
+    "detail": "Tap water on Kelburn Parade in Kelburn has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-14T08:39:17Z",
+    "lat": -41.2564,
+    "lng": 174.76568,
+    "description": "Water quality — Thorndon Quay, Thorndon, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Thorndon Quay, Thorndon"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-14T10:51:26Z",
+    "lat": -41.23756,
+    "lng": 174.7398,
+    "description": "Road/footpath issue — Coppin Street, Wilton, Wellington",
+    "detail": "Faded and unclear road markings on Coppin Street, Wilton are causing confusion for drivers"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-14T11:49:13Z",
+    "lat": -41.32244,
+    "lng": 174.81149,
+    "description": "Slip — Rongotai Road, Kilbirnie, Wellington",
+    "detail": "Hillside slip on Rongotai Road in Kilbirnie has closed the footpath to pedestrians"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-14T13:21:48Z",
+    "lat": -41.31573,
+    "lng": 174.76741,
+    "description": "Dangerous tree — Ohiro Road, Brooklyn, Wellington",
+    "detail": "Dead tree limb overhanging Ohiro Road in Brooklyn looks close to falling onto parked cars"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-14T14:18:28Z",
+    "lat": -41.22818,
+    "lng": 174.74873,
+    "description": "Flooding — Cummings Park, Ngaio, Wellington",
+    "detail": "A nearby stream has burst its banks near Cummings Park, Ngaio, flooding the road and adjoining properties"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-14T17:27:18Z",
+    "lat": -41.25466,
+    "lng": 174.75839,
+    "description": "Flooding — Bendall Avenue, Ngaio, Wellington",
+    "detail": "A nearby stream has burst its banks near Bendall Avenue, Ngaio, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-14T17:42:18Z",
+    "lat": -41.25436,
+    "lng": 174.75877,
+    "description": "Slip — Bendall Avenue, Ngaio, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Bendall Avenue, Ngaio and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-14T18:05:38Z",
+    "lat": -41.29534,
+    "lng": 174.76162,
+    "description": "Slip — Pipitea Street, Pipitea, Wellington",
+    "detail": "Bank alongside Pipitea Street in Pipitea has slipped after heavy rain, covering part of the footpath with mud"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-15T00:29:58Z",
+    "lat": -41.30937,
+    "lng": 174.7709,
+    "description": "Flooding — Ohiro Road, Brooklyn, Wellington",
+    "detail": "Surface flooding on Ohiro Road near Brooklyn is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-15T01:22:58Z",
+    "lat": -41.30933,
+    "lng": 174.77148,
+    "description": "Slip — Ohiro Road, Brooklyn, Wellington",
+    "detail": "Bank alongside Ohiro Road in Brooklyn has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-15T02:55:14Z",
+    "lat": -41.2788,
+    "lng": 174.70146,
+    "description": "Flooding — Beauchamp Street, Karori, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Beauchamp Street, Karori, water is pooling across the road"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-15T03:45:13Z",
+    "lat": -41.25767,
+    "lng": 174.78257,
+    "description": "Weather event — Fife Street, Khandallah, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Fife Street, Khandallah"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-15T04:46:43Z",
+    "lat": -41.30903,
+    "lng": 174.80039,
+    "description": "Road/footpath issue — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "Faded and unclear road markings on Oriental Parade, Oriental Bay are causing confusion for drivers"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-15T05:13:07Z",
+    "lat": -41.34624,
+    "lng": 174.75779,
+    "description": "Flooding — The Parade, Island Bay, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on The Parade, Island Bay, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-15T05:58:07Z",
+    "lat": -41.34606,
+    "lng": 174.75743,
+    "description": "Slip — The Parade, Island Bay, Wellington",
+    "detail": "Hillside slip on The Parade in Island Bay has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-15T08:52:34Z",
+    "lat": -41.30068,
+    "lng": 174.7711,
+    "description": "Dangerous tree — Epuni Street, Aro Valley, Wellington",
+    "detail": "Dead tree limb overhanging Epuni Street in Aro Valley looks close to falling onto parked cars"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-15T11:23:41Z",
+    "lat": -41.25439,
+    "lng": 174.7644,
+    "description": "Weather event — Fife Street, Khandallah, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Fife Street in Khandallah"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-15T11:55:35Z",
+    "lat": -41.28746,
+    "lng": 174.79136,
+    "description": "Road/footpath issue — Hill Street, Thorndon, Wellington",
+    "detail": "Footpath slabs on Hill Street, Thorndon have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-15T13:02:23Z",
+    "lat": -41.29479,
+    "lng": 174.76699,
+    "description": "Water quality — Hay Street, Mount Victoria, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Hay Street, Mount Victoria"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-15T14:31:18Z",
+    "lat": -41.22704,
+    "lng": 174.76697,
+    "description": "Road/footpath issue — Bendall Avenue, Ngaio, Wellington",
+    "detail": "Deep pothole has formed on Bendall Avenue in Ngaio, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-15T20:42:43Z",
+    "lat": -41.25506,
+    "lng": 174.77271,
+    "description": "Slip — Ottawa Road, Ngaio, Wellington",
+    "detail": "Bank alongside Ottawa Road in Ngaio has slipped after heavy rain, covering part of the footpath with mud"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-15T23:00:06Z",
+    "lat": -41.25041,
+    "lng": 174.7658,
+    "description": "Water quality — Bendall Avenue, Ngaio, Wellington",
+    "detail": "Residents on Bendall Avenue report low water pressure and a metallic taste from the mains supply"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-16T00:00:10Z",
+    "lat": -41.28417,
+    "lng": 174.78484,
+    "description": "Dangerous tree — Willis Street, CBD, Wellington",
+    "detail": "A pohutukawa tree on Willis Street has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-16T04:15:10Z",
+    "lat": -41.33141,
+    "lng": 174.79201,
+    "description": "Weather event — Coromandel Street, Berhampore, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Coromandel Street, Berhampore"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-16T05:33:47Z",
+    "lat": -41.25741,
+    "lng": 174.79994,
+    "description": "Flooding — Ganges Road, Khandallah, Wellington",
+    "detail": "A nearby stream has burst its banks near Ganges Road, Khandallah, flooding the road and adjoining properties"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-16T05:49:47Z",
+    "lat": -41.283,
+    "lng": 174.71614,
+    "description": "Road/footpath issue — Karori Road, Karori, Wellington",
+    "detail": "Deep pothole has formed on Karori Road in Karori, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-16T07:34:16Z",
+    "lat": -41.25709,
+    "lng": 174.76882,
+    "description": "Weather event — Pipitea Street, Pipitea, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Pipitea Street, Pipitea"
+  },
+  {
+    "type": "water",
+    "severity": "high",
+    "timestamp": "2026-07-16T08:58:25Z",
+    "lat": -41.30157,
+    "lng": 174.7871,
+    "description": "Water quality — Waterfront Promenade, Waterfront, Wellington",
+    "detail": "Dead tree limb overhanging Waterfront Promenade in Waterfront looks close to falling onto parked cars"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-16T10:04:17Z",
+    "lat": -41.3058,
+    "lng": 174.79097,
+    "description": "Road/footpath issue — Cuba Street, CBD, Wellington",
+    "detail": "Road surface on Cuba Street near CBD has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-16T12:01:01Z",
+    "lat": -41.3032,
+    "lng": 174.79453,
+    "description": "Water quality — Cuba Street, CBD, Wellington",
+    "detail": "Residents on Cuba Street report low water pressure and a metallic taste from the mains supply"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-16T15:24:50Z",
+    "lat": -41.32559,
+    "lng": 174.78976,
+    "description": "Weather event — Childers Terrace, Kilbirnie, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Childers Terrace, Kilbirnie"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-16T15:45:20Z",
+    "lat": -41.29115,
+    "lng": 174.77602,
+    "description": "Dangerous tree — Hay Street, Mount Victoria, Wellington",
+    "detail": "A pohutukawa tree on Hay Street has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-16T16:25:34Z",
+    "lat": -41.30301,
+    "lng": 174.78152,
+    "description": "Flooding — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Oriental Parade, Oriental Bay, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-16T17:04:34Z",
+    "lat": -41.30285,
+    "lng": 174.78142,
+    "description": "Slip — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "Loose soil and rocks have come down onto Oriental Parade near Oriental Bay, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-16T17:16:09Z",
+    "lat": -41.28048,
+    "lng": 174.78791,
+    "description": "Slip — Willis Street, CBD, Wellington",
+    "detail": "Retaining wall next to Willis Street has partially collapsed, spilling debris onto the road"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-16T21:01:25Z",
+    "lat": -41.3063,
+    "lng": 174.78667,
+    "description": "Water quality — Tasman Street, Mount Cook, Wellington",
+    "detail": "Tap water on Tasman Street in Mount Cook has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "trees",
+    "severity": "medium",
+    "timestamp": "2026-07-16T21:43:36Z",
+    "lat": -41.30539,
+    "lng": 174.79335,
+    "description": "Dangerous tree — Rongotai Road, Kilbirnie, Wellington",
+    "detail": "Large tree branch on Rongotai Road near Kilbirnie shops is hanging precariously over the footpath after recent wind"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-16T22:14:22Z",
+    "lat": -41.33782,
+    "lng": 174.80458,
+    "description": "Road/footpath issue — Rongotai Road, Kilbirnie, Wellington",
+    "detail": "Footpath slabs on Rongotai Road, Kilbirnie have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-17T02:31:13Z",
+    "lat": -41.25617,
+    "lng": 174.74855,
+    "description": "Road/footpath issue — Croydon Street, Wilton, Wellington",
+    "detail": "Deep pothole has formed on Croydon Street in Wilton, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-17T07:25:41Z",
+    "lat": -41.2875,
+    "lng": 174.71977,
+    "description": "Flooding — Karori Road, Karori, Wellington",
+    "detail": "Surface flooding on Karori Road near Karori is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-17T07:52:41Z",
+    "lat": -41.28733,
+    "lng": 174.72036,
+    "description": "Slip — Karori Road, Karori, Wellington",
+    "detail": "Hillside slip on Karori Road in Karori has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-17T10:21:54Z",
+    "lat": -41.24633,
+    "lng": 174.76631,
+    "description": "Flooding — Ottawa Road, Ngaio, Wellington",
+    "detail": "Continuous rain has flooded the low section of Ottawa Road in Ngaio, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-17T10:58:54Z",
+    "lat": -41.2463,
+    "lng": 174.76592,
+    "description": "Slip — Ottawa Road, Ngaio, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Ottawa Road, Ngaio and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-17T11:23:56Z",
+    "lat": -41.28791,
+    "lng": 174.76743,
+    "description": "Flooding — Lambton Quay, CBD, Wellington",
+    "detail": "Continuous rain has flooded the low section of Lambton Quay in CBD, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-17T11:49:56Z",
+    "lat": -41.28762,
+    "lng": 174.767,
+    "description": "Slip — Lambton Quay, CBD, Wellington",
+    "detail": "Hillside slip on Lambton Quay in CBD has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-17T13:25:27Z",
+    "lat": -41.30892,
+    "lng": 174.79034,
+    "description": "Weather event — Bay Road, Kilbirnie, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Bay Road, Kilbirnie"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-17T15:29:13Z",
+    "lat": -41.29543,
+    "lng": 174.70421,
+    "description": "Flooding — Karori Road, Karori, Wellington",
+    "detail": "Surface flooding on Karori Road near Karori is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-17T16:14:13Z",
+    "lat": -41.29478,
+    "lng": 174.7606,
+    "description": "Flooding — Curtis Street, Kelburn, Wellington",
+    "detail": "A nearby stream has burst its banks near Curtis Street, Kelburn, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-17T16:45:13Z",
+    "lat": -41.29493,
+    "lng": 174.76091,
+    "description": "Slip — Curtis Street, Kelburn, Wellington",
+    "detail": "Retaining wall next to Curtis Street has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-17T17:44:20Z",
+    "lat": -41.28344,
+    "lng": 174.72974,
+    "description": "Flooding — Karori Road, Karori, Wellington",
+    "detail": "A nearby stream has burst its banks near Karori Road, Karori, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-17T18:04:20Z",
+    "lat": -41.28379,
+    "lng": 174.72958,
+    "description": "Slip — Karori Road, Karori, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Karori Road, Karori and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-17T22:31:09Z",
+    "lat": -41.27514,
+    "lng": 174.76761,
+    "description": "Slip — Thorndon Quay, Pipitea, Wellington",
+    "detail": "Bank alongside Thorndon Quay in Pipitea has slipped after heavy rain, covering part of the footpath with mud"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-17T23:05:10Z",
+    "lat": -41.25161,
+    "lng": 174.74627,
+    "description": "Road/footpath issue — Weld Street, Wadestown, Wellington",
+    "detail": "Faded and unclear road markings on Weld Street, Wadestown are causing confusion for drivers"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-18T01:36:41Z",
+    "lat": -41.28514,
+    "lng": 174.80291,
+    "description": "Weather event — Majoribanks Street, Mount Victoria, Wellington",
+    "detail": "Storm damage reported to power lines near Majoribanks Street, Mount Victoria after last night's severe weather"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-18T02:30:36Z",
+    "lat": -41.31158,
+    "lng": 174.77637,
+    "description": "Weather event — Childers Terrace, Kilbirnie, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Childers Terrace, Kilbirnie"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-18T05:06:47Z",
+    "lat": -41.28629,
+    "lng": 174.72328,
+    "description": "Flooding — Beauchamp Street, Karori, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Beauchamp Street, Karori, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-18T05:47:36Z",
+    "lat": -41.2774,
+    "lng": 174.75779,
+    "description": "Slip — Epuni Street, Aro Valley, Wellington",
+    "detail": "Loose soil and rocks have come down onto Epuni Street near Aro Valley, blocking one lane"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-18T07:31:13Z",
+    "lat": -41.27077,
+    "lng": 174.76404,
+    "description": "Road/footpath issue — Molesworth Street, Pipitea, Wellington",
+    "detail": "Road surface on Molesworth Street near Pipitea has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-18T09:14:50Z",
+    "lat": -41.2627,
+    "lng": 174.74614,
+    "description": "Slip — Pitt Street, Wadestown, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Pitt Street, Wadestown and injured their wrist"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-18T10:26:48Z",
+    "lat": -41.24103,
+    "lng": 174.77734,
+    "description": "Water quality — Box Hill, Khandallah, Wellington",
+    "detail": "Tap water on Box Hill in Khandallah has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-18T11:12:28Z",
+    "lat": -41.3046,
+    "lng": 174.75908,
+    "description": "Dangerous tree — Curtis Street, Kelburn, Wellington",
+    "detail": "Dead tree limb overhanging Curtis Street in Kelburn looks close to falling onto parked cars"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-18T11:58:29Z",
+    "lat": -41.27879,
+    "lng": 174.7527,
+    "description": "Weather event — Pitt Street, Wadestown, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Pitt Street, Wadestown"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-18T13:00:42Z",
+    "lat": -41.27947,
+    "lng": 174.7674,
+    "description": "Weather event — Buckle Street, Mount Cook, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Buckle Street, Mount Cook"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-18T13:52:44Z",
+    "lat": -41.30329,
+    "lng": 174.75952,
+    "description": "Road/footpath issue — Epuni Street, Aro Valley, Wellington",
+    "detail": "Road surface on Epuni Street near Aro Valley has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-18T17:44:22Z",
+    "lat": -41.26026,
+    "lng": 174.76951,
+    "description": "Road/footpath issue — Ottawa Road, Ngaio, Wellington",
+    "detail": "Faded and unclear road markings on Ottawa Road, Ngaio are causing confusion for drivers"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-18T21:42:06Z",
+    "lat": -41.24485,
+    "lng": 174.75348,
+    "description": "Road/footpath issue — Ottawa Road, Ngaio, Wellington",
+    "detail": "Faded and unclear road markings on Ottawa Road, Ngaio are causing confusion for drivers"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-18T21:43:34Z",
+    "lat": -41.27916,
+    "lng": 174.78271,
+    "description": "Weather event — Thorndon Quay, Thorndon, Wellington",
+    "detail": "Storm damage reported to power lines near Thorndon Quay, Thorndon after last night's severe weather"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-19T00:25:18Z",
+    "lat": -41.278,
+    "lng": 174.78588,
+    "description": "Weather event — Waterfront Promenade, Waterfront, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Waterfront Promenade, Waterfront"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-19T02:01:35Z",
+    "lat": -41.32051,
+    "lng": 174.80289,
+    "description": "Water quality — Evans Bay Parade, Kilbirnie, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Evans Bay Parade, Kilbirnie"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-19T03:45:37Z",
+    "lat": -41.2689,
+    "lng": 174.72556,
+    "description": "Water quality — Karori Road, Karori, Wellington",
+    "detail": "Tap water on Karori Road in Karori has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-19T05:01:13Z",
+    "lat": -41.33581,
+    "lng": 174.767,
+    "description": "Road/footpath issue — Britomart Street, Berhampore, Wellington",
+    "detail": "Faded and unclear road markings on Britomart Street, Berhampore are causing confusion for drivers"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-19T06:28:21Z",
+    "lat": -41.29094,
+    "lng": 174.78281,
+    "description": "Flooding — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of Oriental Parade in Oriental Bay, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-19T06:55:21Z",
+    "lat": -41.29049,
+    "lng": 174.78277,
+    "description": "Slip — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "Bank alongside Oriental Parade in Oriental Bay has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-19T08:51:35Z",
+    "lat": -41.30354,
+    "lng": 174.77951,
+    "description": "Road/footpath issue — Aro Street, Aro Valley, Wellington",
+    "detail": "Faded and unclear road markings on Aro Street, Aro Valley are causing confusion for drivers"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-19T09:45:09Z",
+    "lat": -41.28621,
+    "lng": 174.78989,
+    "description": "Slip — Roxburgh Street, Oriental Bay, Wellington",
+    "detail": "Loose soil and rocks have come down onto Roxburgh Street near Oriental Bay, blocking one lane"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-19T11:53:08Z",
+    "lat": -41.29348,
+    "lng": 174.78978,
+    "description": "Road/footpath issue — Manners Street, CBD, Wellington",
+    "detail": "Footpath slabs on Manners Street, CBD have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-19T12:25:29Z",
+    "lat": -41.32915,
+    "lng": 174.78785,
+    "description": "Road/footpath issue — Wakefield Park Terrace, Berhampore, Wellington",
+    "detail": "Deep pothole has formed on Wakefield Park Terrace in Berhampore, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-19T13:22:46Z",
+    "lat": -41.25138,
+    "lng": 174.76583,
+    "description": "Weather event — Fife Street, Khandallah, Wellington",
+    "detail": "Storm damage reported to power lines near Fife Street, Khandallah after last night's severe weather"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-19T13:35:17Z",
+    "lat": -41.27856,
+    "lng": 174.71598,
+    "description": "Flooding — Donald Street, Karori, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Donald Street, Karori, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-19T13:58:17Z",
+    "lat": -41.27869,
+    "lng": 174.71638,
+    "description": "Slip — Donald Street, Karori, Wellington",
+    "detail": "Hillside slip on Donald Street in Karori has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-19T15:52:21Z",
+    "lat": -41.29722,
+    "lng": 174.77861,
+    "description": "Weather event — Constable Street, Newtown, Wellington",
+    "detail": "Storm damage reported to power lines near Constable Street, Newtown after last night's severe weather"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-19T16:52:52Z",
+    "lat": -41.26441,
+    "lng": 174.79263,
+    "description": "Weather event — Tinakori Road, Thorndon, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Tinakori Road, Thorndon"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-19T23:39:14Z",
+    "lat": -41.26326,
+    "lng": 174.7864,
+    "description": "Flooding — Box Hill, Khandallah, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Box Hill, Khandallah, water is pooling across the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-19T23:44:27Z",
+    "lat": -41.28691,
+    "lng": 174.77119,
+    "description": "Flooding — Waterfront Promenade, Waterfront, Wellington",
+    "detail": "Continuous rain has flooded the low section of Waterfront Promenade in Waterfront, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-20T00:00:27Z",
+    "lat": -41.28699,
+    "lng": 174.77071,
+    "description": "Slip — Waterfront Promenade, Waterfront, Wellington",
+    "detail": "Retaining wall next to Waterfront Promenade has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-20T01:32:57Z",
+    "lat": -41.28966,
+    "lng": 174.76801,
+    "description": "Water quality — Hankey Street, Mount Cook, Wellington",
+    "detail": "Tap water on Hankey Street in Mount Cook has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-20T04:01:21Z",
+    "lat": -41.26032,
+    "lng": 174.74842,
+    "description": "Slip — Wadestown Road, Wadestown, Wellington",
+    "detail": "Loose soil and rocks have come down onto Wadestown Road near Wadestown, blocking one lane"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-20T05:57:45Z",
+    "lat": -41.28487,
+    "lng": 174.76392,
+    "description": "Water quality — Kelburn Parade, Kelburn, Wellington",
+    "detail": "Tap water on Kelburn Parade in Kelburn has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-20T09:08:26Z",
+    "lat": -41.27011,
+    "lng": 174.781,
+    "description": "Flooding — Thorndon Quay, Pipitea, Wellington",
+    "detail": "A nearby stream has burst its banks near Thorndon Quay, Pipitea, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-20T09:46:26Z",
+    "lat": -41.27017,
+    "lng": 174.78148,
+    "description": "Slip — Thorndon Quay, Pipitea, Wellington",
+    "detail": "Loose soil and rocks have come down onto Thorndon Quay near Pipitea, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-20T11:34:56Z",
+    "lat": -41.30052,
+    "lng": 174.7766,
+    "description": "Flooding — Ellice Street, Mount Victoria, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Ellice Street, Mount Victoria, water is pooling across the road"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-20T14:20:11Z",
+    "lat": -41.27027,
+    "lng": 174.78063,
+    "description": "Weather event — Jervois Quay, Waterfront, Wellington",
+    "detail": "Storm damage reported to power lines near Jervois Quay, Waterfront after last night's severe weather"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-20T14:32:51Z",
+    "lat": -41.28061,
+    "lng": 174.77912,
+    "description": "Weather event — Queens Wharf, Waterfront, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Queens Wharf, Waterfront"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-20T14:56:00Z",
+    "lat": -41.25268,
+    "lng": 174.79782,
+    "description": "Flooding — Ganges Road, Khandallah, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Ganges Road, Khandallah, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-20T15:11:00Z",
+    "lat": -41.25312,
+    "lng": 174.79799,
+    "description": "Slip — Ganges Road, Khandallah, Wellington",
+    "detail": "Retaining wall next to Ganges Road has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "trees",
+    "severity": "medium",
+    "timestamp": "2026-07-20T17:34:38Z",
+    "lat": -41.3216,
+    "lng": 174.7776,
+    "description": "Dangerous tree — Britomart Street, Berhampore, Wellington",
+    "detail": "Large tree branch on Britomart Street near Berhampore shops is hanging precariously over the footpath after recent wind"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-21T00:05:02Z",
+    "lat": -41.34284,
+    "lng": 174.76776,
+    "description": "Water quality — The Parade, Island Bay, Wellington",
+    "detail": "Tap water on The Parade in Island Bay has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-21T02:56:44Z",
+    "lat": -41.28319,
+    "lng": 174.76253,
+    "description": "Road/footpath issue — Weld Street, Wadestown, Wellington",
+    "detail": "Faded and unclear road markings on Weld Street, Wadestown are causing confusion for drivers"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-21T03:04:27Z",
+    "lat": -41.31013,
+    "lng": 174.7858,
+    "description": "Road/footpath issue — Holloway Road, Aro Valley, Wellington",
+    "detail": "Deep pothole has formed on Holloway Road in Aro Valley, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-21T03:06:13Z",
+    "lat": -41.26193,
+    "lng": 174.78573,
+    "description": "Road/footpath issue — Cummings Park, Ngaio, Wellington",
+    "detail": "Footpath slabs on Cummings Park, Ngaio have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-21T07:01:35Z",
+    "lat": -41.30512,
+    "lng": 174.77955,
+    "description": "Weather event — Holloway Road, Aro Valley, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Holloway Road in Aro Valley"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-21T08:15:50Z",
+    "lat": -41.27155,
+    "lng": 174.76606,
+    "description": "Flooding — Pipitea Street, Pipitea, Wellington",
+    "detail": "Continuous rain has flooded the low section of Pipitea Street in Pipitea, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-21T09:04:50Z",
+    "lat": -41.27166,
+    "lng": 174.76614,
+    "description": "Slip — Pipitea Street, Pipitea, Wellington",
+    "detail": "Bank alongside Pipitea Street in Pipitea has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-21T12:48:47Z",
+    "lat": -41.28095,
+    "lng": 174.79276,
+    "description": "Slip — Murphy Street, Thorndon, Wellington",
+    "detail": "Hillside slip on Murphy Street in Thorndon has closed the footpath to pedestrians"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-21T14:18:21Z",
+    "lat": -41.23801,
+    "lng": 174.76839,
+    "description": "Weather event — Ottawa Road, Ngaio, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Ottawa Road in Ngaio"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-21T14:28:02Z",
+    "lat": -41.26436,
+    "lng": 174.80037,
+    "description": "Road/footpath issue — Ganges Road, Khandallah, Wellington",
+    "detail": "Footpath slabs on Ganges Road, Khandallah have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-21T16:00:56Z",
+    "lat": -41.31989,
+    "lng": 174.80944,
+    "description": "Weather event — Bay Road, Kilbirnie, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Bay Road, Kilbirnie"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-21T17:04:26Z",
+    "lat": -41.28766,
+    "lng": 174.74036,
+    "description": "Dangerous tree — Cleveland Street, Brooklyn, Wellington",
+    "detail": "A pohutukawa tree on Cleveland Street has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-21T18:15:14Z",
+    "lat": -41.31489,
+    "lng": 174.77683,
+    "description": "Flooding — Riddiford Street, Newtown, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Riddiford Street, Newtown, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-21T18:57:14Z",
+    "lat": -41.31547,
+    "lng": 174.77701,
+    "description": "Slip — Riddiford Street, Newtown, Wellington",
+    "detail": "Retaining wall next to Riddiford Street has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-21T19:00:13Z",
+    "lat": -41.31602,
+    "lng": 174.76719,
+    "description": "Weather event — Todman Street, Brooklyn, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Todman Street in Brooklyn"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-22T04:29:48Z",
+    "lat": -41.289,
+    "lng": 174.77183,
+    "description": "Water quality — Molesworth Street, Pipitea, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Molesworth Street, Pipitea"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-22T04:39:53Z",
+    "lat": -41.27628,
+    "lng": 174.72863,
+    "description": "Flooding — Beauchamp Street, Karori, Wellington",
+    "detail": "Continuous rain has flooded the low section of Beauchamp Street in Karori, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-22T05:34:53Z",
+    "lat": -41.27609,
+    "lng": 174.72811,
+    "description": "Slip — Beauchamp Street, Karori, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Beauchamp Street, Karori and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-22T06:52:22Z",
+    "lat": -41.31372,
+    "lng": 174.79816,
+    "description": "Flooding — Bay Road, Kilbirnie, Wellington",
+    "detail": "Continuous rain has flooded the low section of Bay Road in Kilbirnie, water is rising rapidly"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-22T17:51:00Z",
+    "lat": -41.30644,
+    "lng": 174.78706,
+    "description": "Water quality — Ellice Street, Mount Victoria, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Ellice Street, Mount Victoria"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-22T22:27:27Z",
+    "lat": -41.31341,
+    "lng": 174.7684,
+    "description": "Road/footpath issue — Rintoul Street, Berhampore, Wellington",
+    "detail": "Faded and unclear road markings on Rintoul Street, Berhampore are causing confusion for drivers"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-23T00:35:58Z",
+    "lat": -41.35018,
+    "lng": 174.76651,
+    "description": "Weather event — Medway Street, Island Bay, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Medway Street, Island Bay"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-23T01:15:46Z",
+    "lat": -41.3106,
+    "lng": 174.76228,
+    "description": "Flooding — Hankey Street, Mount Cook, Wellington",
+    "detail": "A nearby stream has burst its banks near Hankey Street, Mount Cook, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-23T01:27:46Z",
+    "lat": -41.31056,
+    "lng": 174.76256,
+    "description": "Slip — Hankey Street, Mount Cook, Wellington",
+    "detail": "Retaining wall next to Hankey Street has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-23T03:38:34Z",
+    "lat": -41.28966,
+    "lng": 174.77813,
+    "description": "Dangerous tree — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "A pohutukawa tree on Oriental Parade has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-23T11:06:36Z",
+    "lat": -41.29478,
+    "lng": 174.78507,
+    "description": "Road/footpath issue — Hankey Street, Mount Cook, Wellington",
+    "detail": "Deep pothole has formed on Hankey Street in Mount Cook, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-23T13:22:43Z",
+    "lat": -41.29352,
+    "lng": 174.72863,
+    "description": "Flooding — Donald Street, Karori, Wellington",
+    "detail": "Continuous rain has flooded the low section of Donald Street in Karori, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-23T14:04:07Z",
+    "lat": -41.27311,
+    "lng": 174.77523,
+    "description": "Slip — Cuba Street, CBD, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Cuba Street, CBD and injured their wrist"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-23T14:12:43Z",
+    "lat": -41.29393,
+    "lng": 174.72921,
+    "description": "Slip — Donald Street, Karori, Wellington",
+    "detail": "Retaining wall next to Donald Street has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-23T15:45:30Z",
+    "lat": -41.24343,
+    "lng": 174.76881,
+    "description": "Dangerous tree — Cummings Park, Ngaio, Wellington",
+    "detail": "A pohutukawa tree on Cummings Park has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-23T20:37:26Z",
+    "lat": -41.29755,
+    "lng": 174.7838,
+    "description": "Flooding — Buckle Street, Mount Cook, Wellington",
+    "detail": "Continuous rain has flooded the low section of Buckle Street in Mount Cook, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-23T23:28:09Z",
+    "lat": -41.29,
+    "lng": 174.78249,
+    "description": "Slip — Glasgow Street, Kelburn, Wellington",
+    "detail": "Retaining wall next to Glasgow Street has partially collapsed, spilling debris onto the road"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-24T15:41:04Z",
+    "lat": -41.3009,
+    "lng": 174.8178,
+    "description": "Road/footpath issue — Chelsea Street, Miramar, Wellington",
+    "detail": "Deep pothole has formed on Chelsea Street in Miramar, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-24T18:49:35Z",
+    "lat": -41.28229,
+    "lng": 174.77448,
+    "description": "Road/footpath issue — Jervois Quay, Waterfront, Wellington",
+    "detail": "Road surface on Jervois Quay near Waterfront has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-24T21:14:39Z",
+    "lat": -41.27409,
+    "lng": 174.7104,
+    "description": "Flooding — Beauchamp Street, Karori, Wellington",
+    "detail": "A nearby stream has burst its banks near Beauchamp Street, Karori, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-24T21:54:39Z",
+    "lat": -41.27428,
+    "lng": 174.71046,
+    "description": "Slip — Beauchamp Street, Karori, Wellington",
+    "detail": "Hillside slip on Beauchamp Street in Karori has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-24T22:25:37Z",
+    "lat": -41.29059,
+    "lng": 174.8016,
+    "description": "Flooding — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of Oriental Parade in Oriental Bay, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-24T22:49:37Z",
+    "lat": -41.29096,
+    "lng": 174.80103,
+    "description": "Slip — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Oriental Parade, Oriental Bay and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-24T23:55:32Z",
+    "lat": -41.28533,
+    "lng": 174.78766,
+    "description": "Slip — Hay Street, Mount Victoria, Wellington",
+    "detail": "Bank alongside Hay Street in Mount Victoria has slipped after heavy rain, covering part of the footpath with mud"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-25T02:18:05Z",
+    "lat": -41.32142,
+    "lng": 174.79173,
+    "description": "Water quality — The Parade, Island Bay, Wellington",
+    "detail": "Residents on The Parade report low water pressure and a metallic taste from the mains supply"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-25T02:19:45Z",
+    "lat": -41.31998,
+    "lng": 174.79738,
+    "description": "Water quality — Rongotai Road, Kilbirnie, Wellington",
+    "detail": "Tap water on Rongotai Road in Kilbirnie has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-25T03:04:37Z",
+    "lat": -41.23711,
+    "lng": 174.78631,
+    "description": "Flooding — Bendall Avenue, Ngaio, Wellington",
+    "detail": "A nearby stream has burst its banks near Bendall Avenue, Ngaio, flooding the road and adjoining properties"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-25T04:05:58Z",
+    "lat": -41.30596,
+    "lng": 174.7914,
+    "description": "Flooding — Hay Street, Mount Victoria, Wellington",
+    "detail": "A nearby stream has burst its banks near Hay Street, Mount Victoria, flooding the road and adjoining properties"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-25T04:08:38Z",
+    "lat": -41.30518,
+    "lng": 174.76623,
+    "description": "Water quality — Lambton Quay, CBD, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Lambton Quay, CBD"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-25T04:28:42Z",
+    "lat": -41.29102,
+    "lng": 174.76821,
+    "description": "Flooding — Lambton Quay, CBD, Wellington",
+    "detail": "Surface flooding on Lambton Quay near CBD is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-25T04:57:58Z",
+    "lat": -41.30608,
+    "lng": 174.79129,
+    "description": "Slip — Hay Street, Mount Victoria, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Hay Street, Mount Victoria and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-25T04:58:42Z",
+    "lat": -41.2905,
+    "lng": 174.76872,
+    "description": "Slip — Lambton Quay, CBD, Wellington",
+    "detail": "Bank alongside Lambton Quay in CBD has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-25T05:44:28Z",
+    "lat": -41.32786,
+    "lng": 174.7799,
+    "description": "Road/footpath issue — Reef Street, Island Bay, Wellington",
+    "detail": "Road surface on Reef Street near Island Bay has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-25T06:05:28Z",
+    "lat": -41.27887,
+    "lng": 174.76898,
+    "description": "Flooding — Holloway Road, Aro Valley, Wellington",
+    "detail": "Surface flooding on Holloway Road near Aro Valley is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-25T06:41:28Z",
+    "lat": -41.27859,
+    "lng": 174.76903,
+    "description": "Slip — Holloway Road, Aro Valley, Wellington",
+    "detail": "Hillside slip on Holloway Road in Aro Valley has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-25T07:27:06Z",
+    "lat": -41.24424,
+    "lng": 174.7599,
+    "description": "Weather event — Coppin Street, Wilton, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Coppin Street, Wilton"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-25T10:10:18Z",
+    "lat": -41.30249,
+    "lng": 174.78819,
+    "description": "Water quality — Waterfront Promenade, Waterfront, Wellington",
+    "detail": "Large tree branch on Waterfront Promenade near Waterfront shops is hanging precariously over the footpath after recent wind"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-25T12:12:07Z",
+    "lat": -41.31013,
+    "lng": 174.75873,
+    "description": "Road/footpath issue — Rintoul Street, Berhampore, Wellington",
+    "detail": "Road surface on Rintoul Street near Berhampore has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-25T22:54:43Z",
+    "lat": -41.28994,
+    "lng": 174.71112,
+    "description": "Road/footpath issue — Donald Street, Karori, Wellington",
+    "detail": "Faded and unclear road markings on Donald Street, Karori are causing confusion for drivers"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-26T02:41:23Z",
+    "lat": -41.31098,
+    "lng": 174.77355,
+    "description": "Flooding — Epuni Street, Aro Valley, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Epuni Street, Aro Valley, water is pooling across the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-26T04:10:28Z",
+    "lat": -41.24945,
+    "lng": 174.76394,
+    "description": "Flooding — Ottawa Road, Ngaio, Wellington",
+    "detail": "A nearby stream has burst its banks near Ottawa Road, Ngaio, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-26T04:55:28Z",
+    "lat": -41.24891,
+    "lng": 174.76335,
+    "description": "Slip — Ottawa Road, Ngaio, Wellington",
+    "detail": "Bank alongside Ottawa Road in Ngaio has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-26T06:54:32Z",
+    "lat": -41.2435,
+    "lng": 174.79095,
+    "description": "Flooding — Box Hill, Khandallah, Wellington",
+    "detail": "Surface flooding on Box Hill near Khandallah is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-26T07:44:32Z",
+    "lat": -41.24357,
+    "lng": 174.79064,
+    "description": "Slip — Box Hill, Khandallah, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Box Hill, Khandallah and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-26T11:26:13Z",
+    "lat": -41.28285,
+    "lng": 174.79644,
+    "description": "Weather event — Hill Street, Thorndon, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Hill Street, Thorndon"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-26T16:30:15Z",
+    "lat": -41.22643,
+    "lng": 174.76244,
+    "description": "Flooding — Cummings Park, Ngaio, Wellington",
+    "detail": "Continuous rain has flooded the low section of Cummings Park in Ngaio, water is rising rapidly"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-26T17:23:49Z",
+    "lat": -41.29209,
+    "lng": 174.7621,
+    "description": "Road/footpath issue — Kelburn Parade, Kelburn, Wellington",
+    "detail": "Deep pothole has formed on Kelburn Parade in Kelburn, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-26T19:08:56Z",
+    "lat": -41.32848,
+    "lng": 174.78282,
+    "description": "Flooding — Reef Street, Island Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of Reef Street in Island Bay, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-26T20:02:56Z",
+    "lat": -41.32803,
+    "lng": 174.78235,
+    "description": "Slip — Reef Street, Island Bay, Wellington",
+    "detail": "Retaining wall next to Reef Street has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-26T20:42:34Z",
+    "lat": -41.29886,
+    "lng": 174.77177,
+    "description": "Flooding — Adelaide Road, Newtown, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Adelaide Road, Newtown, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-26T20:58:34Z",
+    "lat": -41.29905,
+    "lng": 174.77189,
+    "description": "Slip — Adelaide Road, Newtown, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Adelaide Road, Newtown and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-26T21:14:51Z",
+    "lat": -41.30618,
+    "lng": 174.77573,
+    "description": "Weather event — Wakefield Park Terrace, Berhampore, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Wakefield Park Terrace, Berhampore"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-07-26T21:39:13Z",
+    "lat": -41.269,
+    "lng": 174.73669,
+    "description": "Dangerous tree — Makara Road, Karori, Wellington",
+    "detail": "Dead tree limb overhanging Makara Road in Karori looks close to falling onto parked cars"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-26T23:07:47Z",
+    "lat": -41.24242,
+    "lng": 174.79701,
+    "description": "Flooding — Ganges Road, Khandallah, Wellington",
+    "detail": "Continuous rain has flooded the low section of Ganges Road in Khandallah, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-26T23:49:47Z",
+    "lat": -41.24198,
+    "lng": 174.79751,
+    "description": "Slip — Ganges Road, Khandallah, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Ganges Road, Khandallah and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-27T00:13:16Z",
+    "lat": -41.33337,
+    "lng": 174.8283,
+    "description": "Water quality — Chelsea Street, Miramar, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Chelsea Street, Miramar"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-27T01:00:30Z",
+    "lat": -41.23973,
+    "lng": 174.76378,
+    "description": "Flooding — Bendall Avenue, Ngaio, Wellington",
+    "detail": "A nearby stream has burst its banks near Bendall Avenue, Ngaio, flooding the road and adjoining properties"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-27T04:38:56Z",
+    "lat": -41.27767,
+    "lng": 174.76705,
+    "description": "Road/footpath issue — Pipitea Street, Pipitea, Wellington",
+    "detail": "Footpath slabs on Pipitea Street, Pipitea have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-27T04:39:12Z",
+    "lat": -41.31363,
+    "lng": 174.75989,
+    "description": "Flooding — Ohiro Road, Brooklyn, Wellington",
+    "detail": "Surface flooding on Ohiro Road near Brooklyn is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-27T07:59:03Z",
+    "lat": -41.26744,
+    "lng": 174.7521,
+    "description": "Road/footpath issue — Croydon Street, Wilton, Wellington",
+    "detail": "Deep pothole has formed on Croydon Street in Wilton, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-27T12:48:36Z",
+    "lat": -41.30021,
+    "lng": 174.7528,
+    "description": "Road/footpath issue — Curtis Street, Kelburn, Wellington",
+    "detail": "Deep pothole has formed on Curtis Street in Kelburn, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-27T13:05:37Z",
+    "lat": -41.30537,
+    "lng": 174.78059,
+    "description": "Flooding — Buckle Street, Mount Cook, Wellington",
+    "detail": "Continuous rain has flooded the low section of Buckle Street in Mount Cook, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-27T13:22:37Z",
+    "lat": -41.30559,
+    "lng": 174.78086,
+    "description": "Slip — Buckle Street, Mount Cook, Wellington",
+    "detail": "Hillside slip on Buckle Street in Mount Cook has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-27T15:56:17Z",
+    "lat": -41.31786,
+    "lng": 174.77002,
+    "description": "Flooding — Cleveland Street, Brooklyn, Wellington",
+    "detail": "Surface flooding on Cleveland Street near Brooklyn is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "trees",
+    "severity": "medium",
+    "timestamp": "2026-07-27T17:36:18Z",
+    "lat": -41.25669,
+    "lng": 174.77214,
+    "description": "Dangerous tree — Fife Street, Khandallah, Wellington",
+    "detail": "Large tree branch on Fife Street near Khandallah shops is hanging precariously over the footpath after recent wind"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-28T02:00:09Z",
+    "lat": -41.28774,
+    "lng": 174.78929,
+    "description": "Flooding — Roxburgh Street, Oriental Bay, Wellington",
+    "detail": "Surface flooding on Roxburgh Street near Oriental Bay is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-28T02:51:09Z",
+    "lat": -41.2878,
+    "lng": 174.78954,
+    "description": "Slip — Roxburgh Street, Oriental Bay, Wellington",
+    "detail": "Bank alongside Roxburgh Street in Oriental Bay has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-28T04:42:17Z",
+    "lat": -41.29271,
+    "lng": 174.72954,
+    "description": "Flooding — Makara Road, Karori, Wellington",
+    "detail": "A nearby stream has burst its banks near Makara Road, Karori, flooding the road and adjoining properties"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-28T04:47:23Z",
+    "lat": -41.31841,
+    "lng": 174.76668,
+    "description": "Flooding — Riddiford Street, Newtown, Wellington",
+    "detail": "A nearby stream has burst its banks near Riddiford Street, Newtown, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-28T05:34:17Z",
+    "lat": -41.29266,
+    "lng": 174.72952,
+    "description": "Slip — Makara Road, Karori, Wellington",
+    "detail": "Hillside slip on Makara Road in Karori has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-28T06:10:52Z",
+    "lat": -41.26902,
+    "lng": 174.78952,
+    "description": "Flooding — Molesworth Street, Pipitea, Wellington",
+    "detail": "Continuous rain has flooded the low section of Molesworth Street in Pipitea, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-28T06:31:52Z",
+    "lat": -41.26959,
+    "lng": 174.78998,
+    "description": "Slip — Molesworth Street, Pipitea, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Molesworth Street, Pipitea and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-28T10:32:13Z",
+    "lat": -41.26398,
+    "lng": 174.77876,
+    "description": "Slip — Pipitea Street, Pipitea, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Pipitea Street, Pipitea and injured their wrist"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-28T13:53:49Z",
+    "lat": -41.28675,
+    "lng": 174.78724,
+    "description": "Flooding — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of Oriental Parade in Oriental Bay, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-28T14:03:49Z",
+    "lat": -41.28659,
+    "lng": 174.78673,
+    "description": "Slip — Oriental Parade, Oriental Bay, Wellington",
+    "detail": "Loose soil and rocks have come down onto Oriental Parade near Oriental Bay, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-28T14:22:39Z",
+    "lat": -41.29259,
+    "lng": 174.78962,
+    "description": "Road/footpath issue — Majoribanks Street, Mount Victoria, Wellington",
+    "detail": "Deep pothole has formed on Majoribanks Street in Mount Victoria, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-28T23:00:56Z",
+    "lat": -41.26131,
+    "lng": 174.75961,
+    "description": "Weather event — Thorndon Quay, Thorndon, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Thorndon Quay in Thorndon"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-29T00:38:19Z",
+    "lat": -41.276,
+    "lng": 174.80334,
+    "description": "Flooding — Hay Street, Mount Victoria, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Hay Street, Mount Victoria, water is pooling across the road"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-29T01:14:10Z",
+    "lat": -41.29119,
+    "lng": 174.7522,
+    "description": "Weather event — Ohiro Road, Brooklyn, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Ohiro Road in Brooklyn"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-29T02:28:23Z",
+    "lat": -41.30576,
+    "lng": 174.76882,
+    "description": "Flooding — Cleveland Street, Brooklyn, Wellington",
+    "detail": "Continuous rain has flooded the low section of Cleveland Street in Brooklyn, water is rising rapidly"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-29T03:04:09Z",
+    "lat": -41.2529,
+    "lng": 174.75191,
+    "description": "Flooding — Ottawa Road, Ngaio, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Ottawa Road, Ngaio, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-29T03:10:23Z",
+    "lat": -41.30545,
+    "lng": 174.76881,
+    "description": "Slip — Cleveland Street, Brooklyn, Wellington",
+    "detail": "Bank alongside Cleveland Street in Brooklyn has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-29T05:22:52Z",
+    "lat": -41.29093,
+    "lng": 174.76878,
+    "description": "Water quality — Majoribanks Street, Mount Victoria, Wellington",
+    "detail": "Discoloured tap water has been reported by multiple households along Majoribanks Street, Mount Victoria"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-29T13:48:37Z",
+    "lat": -41.29503,
+    "lng": 174.74996,
+    "description": "Flooding — Curtis Street, Kelburn, Wellington",
+    "detail": "Surface flooding on Curtis Street near Kelburn is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-29T20:47:31Z",
+    "lat": -41.29621,
+    "lng": 174.76003,
+    "description": "Flooding — Harbour View Road, Brooklyn, Wellington",
+    "detail": "A nearby stream has burst its banks near Harbour View Road, Brooklyn, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-29T21:29:31Z",
+    "lat": -41.29572,
+    "lng": 174.76002,
+    "description": "Slip — Harbour View Road, Brooklyn, Wellington",
+    "detail": "Bank alongside Harbour View Road in Brooklyn has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-07-29T21:40:55Z",
+    "lat": -41.29589,
+    "lng": 174.74579,
+    "description": "Water quality — Cleveland Street, Brooklyn, Wellington",
+    "detail": "Residents on Cleveland Street report low water pressure and a metallic taste from the mains supply"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-30T04:26:15Z",
+    "lat": -41.26924,
+    "lng": 174.78188,
+    "description": "Flooding — Thorndon Quay, Pipitea, Wellington",
+    "detail": "A nearby stream has burst its banks near Thorndon Quay, Pipitea, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-30T05:03:15Z",
+    "lat": -41.26904,
+    "lng": 174.78136,
+    "description": "Slip — Thorndon Quay, Pipitea, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Thorndon Quay, Pipitea and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-30T07:20:25Z",
+    "lat": -41.30325,
+    "lng": 174.79667,
+    "description": "Slip — Jervois Quay, Waterfront, Wellington",
+    "detail": "Hillside slip on Jervois Quay in Waterfront has closed the footpath to pedestrians"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-30T08:57:03Z",
+    "lat": -41.28944,
+    "lng": 174.7813,
+    "description": "Flooding — Epuni Street, Aro Valley, Wellington",
+    "detail": "Continuous rain has flooded the low section of Epuni Street in Aro Valley, water is rising rapidly"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-07-30T09:02:46Z",
+    "lat": -41.26237,
+    "lng": 174.77218,
+    "description": "Weather event — Box Hill, Khandallah, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Box Hill, Khandallah"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-07-30T13:15:29Z",
+    "lat": -41.24362,
+    "lng": 174.72947,
+    "description": "Weather event — Coppin Street, Wilton, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Coppin Street in Wilton"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-30T17:29:54Z",
+    "lat": -41.3022,
+    "lng": 174.78162,
+    "description": "Flooding — Curtis Street, Kelburn, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Curtis Street, Kelburn, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-30T18:17:54Z",
+    "lat": -41.30177,
+    "lng": 174.7811,
+    "description": "Slip — Curtis Street, Kelburn, Wellington",
+    "detail": "Retaining wall next to Curtis Street has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-07-30T19:34:08Z",
+    "lat": -41.24707,
+    "lng": 174.73168,
+    "description": "Road/footpath issue — Wilton Road, Wilton, Wellington",
+    "detail": "Deep pothole has formed on Wilton Road in Wilton, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-07-31T01:34:08Z",
+    "lat": -41.26369,
+    "lng": 174.75575,
+    "description": "Flooding — Pitt Street, Wadestown, Wellington",
+    "detail": "Surface flooding on Pitt Street near Wadestown is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-31T02:32:40Z",
+    "lat": -41.33342,
+    "lng": 174.76055,
+    "description": "Slip — The Parade, Island Bay, Wellington",
+    "detail": "Retaining wall next to The Parade has partially collapsed, spilling debris onto the road"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-07-31T06:00:23Z",
+    "lat": -41.30814,
+    "lng": 174.79539,
+    "description": "Road/footpath issue — Rongotai Road, Kilbirnie, Wellington",
+    "detail": "Faded and unclear road markings on Rongotai Road, Kilbirnie are causing confusion for drivers"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-31T08:10:01Z",
+    "lat": -41.22543,
+    "lng": 174.7698,
+    "description": "Flooding — Bendall Avenue, Ngaio, Wellington",
+    "detail": "Continuous rain has flooded the low section of Bendall Avenue in Ngaio, water is rising rapidly"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-07-31T17:36:48Z",
+    "lat": -41.26111,
+    "lng": 174.78392,
+    "description": "Flooding — Tinakori Road, Thorndon, Wellington",
+    "detail": "A nearby stream has burst its banks near Tinakori Road, Thorndon, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-07-31T18:19:48Z",
+    "lat": -41.2612,
+    "lng": 174.78437,
+    "description": "Slip — Tinakori Road, Thorndon, Wellington",
+    "detail": "Loose soil and rocks have come down onto Tinakori Road near Thorndon, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-07-31T21:46:55Z",
+    "lat": -41.27248,
+    "lng": 174.75677,
+    "description": "Flooding — Pitt Street, Wadestown, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Pitt Street, Wadestown, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-07-31T22:34:55Z",
+    "lat": -41.27306,
+    "lng": 174.75656,
+    "description": "Slip — Pitt Street, Wadestown, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Pitt Street, Wadestown and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-01T02:39:56Z",
+    "lat": -41.28269,
+    "lng": 174.75703,
+    "description": "Weather event — Pitt Street, Wadestown, Wellington",
+    "detail": "Storm damage reported to power lines near Pitt Street, Wadestown after last night's severe weather"
+  },
+  {
+    "type": "trees",
+    "severity": "medium",
+    "timestamp": "2026-08-01T06:55:22Z",
+    "lat": -41.31231,
+    "lng": 174.78289,
+    "description": "Dangerous tree — Buckle Street, Mount Cook, Wellington",
+    "detail": "Large tree branch on Buckle Street near Mount Cook shops is hanging precariously over the footpath after recent wind"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-01T08:27:43Z",
+    "lat": -41.30654,
+    "lng": 174.76065,
+    "description": "Flooding — Devon Street, Aro Valley, Wellington",
+    "detail": "Continuous rain has flooded the low section of Devon Street in Aro Valley, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-01T08:45:43Z",
+    "lat": -41.307,
+    "lng": 174.76062,
+    "description": "Slip — Devon Street, Aro Valley, Wellington",
+    "detail": "Loose soil and rocks have come down onto Devon Street near Aro Valley, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-08-01T10:19:50Z",
+    "lat": -41.33454,
+    "lng": 174.80963,
+    "description": "Weather event — Chelsea Street, Miramar, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Chelsea Street in Miramar"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-01T12:09:01Z",
+    "lat": -41.27582,
+    "lng": 174.79129,
+    "description": "Road/footpath issue — Jervois Quay, Waterfront, Wellington",
+    "detail": "Faded and unclear road markings on Jervois Quay, Waterfront are causing confusion for drivers"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-08-01T12:14:03Z",
+    "lat": -41.27308,
+    "lng": 174.73216,
+    "description": "Water quality — Makara Road, Karori, Wellington",
+    "detail": "Tap water on Makara Road in Karori has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-01T13:56:38Z",
+    "lat": -41.3079,
+    "lng": 174.77113,
+    "description": "Weather event — Riddiford Street, Newtown, Wellington",
+    "detail": "Storm damage reported to power lines near Riddiford Street, Newtown after last night's severe weather"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-08-01T14:12:40Z",
+    "lat": -41.25668,
+    "lng": 174.78182,
+    "description": "Water quality — Pitt Street, Wadestown, Wellington",
+    "detail": "Tap water on Pitt Street in Wadestown has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-01T18:02:49Z",
+    "lat": -41.25542,
+    "lng": 174.78444,
+    "description": "Weather event — Ganges Road, Khandallah, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Ganges Road, Khandallah"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-08-01T20:57:46Z",
+    "lat": -41.29504,
+    "lng": 174.75538,
+    "description": "Flooding — Hankey Street, Mount Cook, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Hankey Street, Mount Cook, water is pooling across the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-08-01T23:25:36Z",
+    "lat": -41.32039,
+    "lng": 174.78866,
+    "description": "Flooding — Riddiford Street, Newtown, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Riddiford Street, Newtown, water is pooling across the road"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-02T00:17:42Z",
+    "lat": -41.32178,
+    "lng": 174.81025,
+    "description": "Road/footpath issue — Rongotai Road, Kilbirnie, Wellington",
+    "detail": "Faded and unclear road markings on Rongotai Road, Kilbirnie are causing confusion for drivers"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-02T00:18:36Z",
+    "lat": -41.32034,
+    "lng": 174.78895,
+    "description": "Slip — Riddiford Street, Newtown, Wellington",
+    "detail": "Hillside slip on Riddiford Street in Newtown has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-02T02:20:28Z",
+    "lat": -41.30608,
+    "lng": 174.77605,
+    "description": "Road/footpath issue — Manners Street, CBD, Wellington",
+    "detail": "Road surface on Manners Street near CBD has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-02T05:32:23Z",
+    "lat": -41.30404,
+    "lng": 174.78262,
+    "description": "Flooding — Epuni Street, Aro Valley, Wellington",
+    "detail": "A nearby stream has burst its banks near Epuni Street, Aro Valley, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-02T05:49:23Z",
+    "lat": -41.30375,
+    "lng": 174.78309,
+    "description": "Slip — Epuni Street, Aro Valley, Wellington",
+    "detail": "Loose soil and rocks have come down onto Epuni Street near Aro Valley, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-08-02T08:00:18Z",
+    "lat": -41.30161,
+    "lng": 174.79403,
+    "description": "Dangerous tree — Hankey Street, Mount Cook, Wellington",
+    "detail": "A pohutukawa tree on Hankey Street has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-08-02T09:46:32Z",
+    "lat": -41.29025,
+    "lng": 174.79767,
+    "description": "Flooding — Hay Street, Mount Victoria, Wellington",
+    "detail": "Surface flooding on Hay Street near Mount Victoria is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-02T10:24:17Z",
+    "lat": -41.34289,
+    "lng": 174.78168,
+    "description": "Weather event — The Parade, Island Bay, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on The Parade, Island Bay"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-02T10:32:54Z",
+    "lat": -41.27534,
+    "lng": 174.77759,
+    "description": "Road/footpath issue — Majoribanks Street, Mount Victoria, Wellington",
+    "detail": "Road surface on Majoribanks Street near Mount Victoria has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-02T11:56:50Z",
+    "lat": -41.28631,
+    "lng": 174.75758,
+    "description": "Weather event — Aro Street, Aro Valley, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Aro Street, Aro Valley"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-08-02T20:36:26Z",
+    "lat": -41.24118,
+    "lng": 174.78512,
+    "description": "Flooding — Ganges Road, Khandallah, Wellington",
+    "detail": "Surface flooding on Ganges Road near Khandallah is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-02T20:54:26Z",
+    "lat": -41.24098,
+    "lng": 174.78548,
+    "description": "Slip — Ganges Road, Khandallah, Wellington",
+    "detail": "Hillside slip on Ganges Road in Khandallah has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-02T21:19:16Z",
+    "lat": -41.34996,
+    "lng": 174.76207,
+    "description": "Road/footpath issue — The Parade, Island Bay, Wellington",
+    "detail": "Faded and unclear road markings on The Parade, Island Bay are causing confusion for drivers"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-02T21:19:54Z",
+    "lat": -41.32018,
+    "lng": 174.77939,
+    "description": "Road/footpath issue — Constable Street, Newtown, Wellington",
+    "detail": "Road surface on Constable Street near Newtown has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-08-03T00:04:08Z",
+    "lat": -41.28381,
+    "lng": 174.7716,
+    "description": "Road/footpath issue — Queens Wharf, Waterfront, Wellington",
+    "detail": "Footpath slabs on Queens Wharf, Waterfront have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-08-03T04:27:19Z",
+    "lat": -41.29949,
+    "lng": 174.77248,
+    "description": "Road/footpath issue — Upland Road, Kelburn, Wellington",
+    "detail": "Footpath slabs on Upland Road, Kelburn have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-03T05:48:30Z",
+    "lat": -41.33825,
+    "lng": 174.77898,
+    "description": "Road/footpath issue — Rintoul Street, Berhampore, Wellington",
+    "detail": "Faded and unclear road markings on Rintoul Street, Berhampore are causing confusion for drivers"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-03T10:56:35Z",
+    "lat": -41.24167,
+    "lng": 174.77942,
+    "description": "Slip — Cummings Park, Ngaio, Wellington",
+    "detail": "Retaining wall next to Cummings Park has partially collapsed, spilling debris onto the road"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-03T11:08:13Z",
+    "lat": -41.33717,
+    "lng": 174.78679,
+    "description": "Road/footpath issue — Rongotai Road, Kilbirnie, Wellington",
+    "detail": "Faded and unclear road markings on Rongotai Road, Kilbirnie are causing confusion for drivers"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-03T17:45:42Z",
+    "lat": -41.27716,
+    "lng": 174.77567,
+    "description": "Slip — Grass Street, Oriental Bay, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Grass Street, Oriental Bay and injured their wrist"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-03T18:04:32Z",
+    "lat": -41.33688,
+    "lng": 174.78107,
+    "description": "Road/footpath issue — Coromandel Street, Berhampore, Wellington",
+    "detail": "Faded and unclear road markings on Coromandel Street, Berhampore are causing confusion for drivers"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-03T20:54:03Z",
+    "lat": -41.32964,
+    "lng": 174.78231,
+    "description": "Weather event — The Parade, Island Bay, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on The Parade, Island Bay"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-08-03T21:10:01Z",
+    "lat": -41.27143,
+    "lng": 174.80342,
+    "description": "Weather event — Grass Street, Oriental Bay, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Grass Street in Oriental Bay"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-08-03T23:20:06Z",
+    "lat": -41.35117,
+    "lng": 174.78282,
+    "description": "Flooding — Medway Street, Island Bay, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Medway Street, Island Bay, water is pooling across the road"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-08-03T23:34:07Z",
+    "lat": -41.28479,
+    "lng": 174.76694,
+    "description": "Water quality — Buckle Street, Mount Cook, Wellington",
+    "detail": "Residents on Buckle Street report low water pressure and a metallic taste from the mains supply"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-03T23:55:06Z",
+    "lat": -41.35081,
+    "lng": 174.78309,
+    "description": "Slip — Medway Street, Island Bay, Wellington",
+    "detail": "Bank alongside Medway Street in Island Bay has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-08-04T03:38:14Z",
+    "lat": -41.3147,
+    "lng": 174.81994,
+    "description": "Dangerous tree — Broadway, Miramar, Wellington",
+    "detail": "A pohutukawa tree on Broadway has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-04T10:08:35Z",
+    "lat": -41.31186,
+    "lng": 174.7529,
+    "description": "Road/footpath issue — Holloway Road, Aro Valley, Wellington",
+    "detail": "Road surface on Holloway Road near Aro Valley has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-04T11:42:59Z",
+    "lat": -41.27131,
+    "lng": 174.70566,
+    "description": "Road/footpath issue — Donald Street, Karori, Wellington",
+    "detail": "Road surface on Donald Street near Karori has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-04T14:36:39Z",
+    "lat": -41.27448,
+    "lng": 174.727,
+    "description": "Road/footpath issue — Makara Road, Karori, Wellington",
+    "detail": "Faded and unclear road markings on Makara Road, Karori are causing confusion for drivers"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-08-04T14:49:13Z",
+    "lat": -41.2842,
+    "lng": 174.77466,
+    "description": "Water quality — Jervois Quay, Waterfront, Wellington",
+    "detail": "Large tree branch on Jervois Quay near Waterfront shops is hanging precariously over the footpath after recent wind"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-08-04T18:28:57Z",
+    "lat": -41.32655,
+    "lng": 174.78378,
+    "description": "Flooding — Constable Street, Newtown, Wellington",
+    "detail": "Surface flooding on Constable Street near Newtown is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-04T18:57:03Z",
+    "lat": -41.31597,
+    "lng": 174.77985,
+    "description": "Weather event — Bay Road, Kilbirnie, Wellington",
+    "detail": "Storm damage reported to power lines near Bay Road, Kilbirnie after last night's severe weather"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-04T19:20:57Z",
+    "lat": -41.32652,
+    "lng": 174.78388,
+    "description": "Slip — Constable Street, Newtown, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Constable Street, Newtown and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-04T19:52:21Z",
+    "lat": -41.25926,
+    "lng": 174.78469,
+    "description": "Weather event — Bendall Avenue, Ngaio, Wellington",
+    "detail": "Storm damage reported to power lines near Bendall Avenue, Ngaio after last night's severe weather"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-04T20:07:13Z",
+    "lat": -41.27761,
+    "lng": 174.78718,
+    "description": "Flooding — Grass Street, Oriental Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of Grass Street in Oriental Bay, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-04T20:26:13Z",
+    "lat": -41.27738,
+    "lng": 174.78686,
+    "description": "Slip — Grass Street, Oriental Bay, Wellington",
+    "detail": "Loose soil and rocks have come down onto Grass Street near Oriental Bay, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-08-04T22:14:29Z",
+    "lat": -41.31064,
+    "lng": 174.76363,
+    "description": "Flooding — Britomart Street, Berhampore, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Britomart Street, Berhampore, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-04T22:55:29Z",
+    "lat": -41.31007,
+    "lng": 174.76401,
+    "description": "Slip — Britomart Street, Berhampore, Wellington",
+    "detail": "Hillside slip on Britomart Street in Berhampore has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-05T01:27:28Z",
+    "lat": -41.31553,
+    "lng": 174.77379,
+    "description": "Flooding — Wakefield Park Terrace, Berhampore, Wellington",
+    "detail": "Continuous rain has flooded the low section of Wakefield Park Terrace in Berhampore, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-05T01:43:28Z",
+    "lat": -41.31577,
+    "lng": 174.77403,
+    "description": "Slip — Wakefield Park Terrace, Berhampore, Wellington",
+    "detail": "Hillside slip on Wakefield Park Terrace in Berhampore has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-08-05T02:12:26Z",
+    "lat": -41.27042,
+    "lng": 174.76702,
+    "description": "Weather event — Murphy Street, Thorndon, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Murphy Street in Thorndon"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-05T02:20:05Z",
+    "lat": -41.29121,
+    "lng": 174.77313,
+    "description": "Flooding — Thorndon Quay, Pipitea, Wellington",
+    "detail": "Continuous rain has flooded the low section of Thorndon Quay in Pipitea, water is rising rapidly"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-08-05T02:46:33Z",
+    "lat": -41.27482,
+    "lng": 174.78187,
+    "description": "Dangerous tree — Glasgow Street, Kelburn, Wellington",
+    "detail": "A pohutukawa tree on Glasgow Street has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-05T03:04:05Z",
+    "lat": -41.29137,
+    "lng": 174.77257,
+    "description": "Slip — Thorndon Quay, Pipitea, Wellington",
+    "detail": "Hillside slip on Thorndon Quay in Pipitea has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-05T04:38:43Z",
+    "lat": -41.23882,
+    "lng": 174.79835,
+    "description": "Flooding — Fife Street, Khandallah, Wellington",
+    "detail": "Continuous rain has flooded the low section of Fife Street in Khandallah, water is rising rapidly"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-08-05T04:39:36Z",
+    "lat": -41.31063,
+    "lng": 174.77834,
+    "description": "Road/footpath issue — Holloway Road, Aro Valley, Wellington",
+    "detail": "Deep pothole has formed on Holloway Road in Aro Valley, causing vehicles to swerve into oncoming traffic"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-05T05:20:43Z",
+    "lat": -41.2383,
+    "lng": 174.79807,
+    "description": "Slip — Fife Street, Khandallah, Wellington",
+    "detail": "Bank alongside Fife Street in Khandallah has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "roads",
+    "severity": "low",
+    "timestamp": "2026-08-05T11:40:03Z",
+    "lat": -41.31331,
+    "lng": 174.79775,
+    "description": "Road/footpath issue — Ellice Street, Mount Victoria, Wellington",
+    "detail": "Footpath slabs on Ellice Street, Mount Victoria have cracked and lifted, creating a tripping hazard"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-08-05T13:52:10Z",
+    "lat": -41.32157,
+    "lng": 174.81119,
+    "description": "Flooding — Rongotai Road, Kilbirnie, Wellington",
+    "detail": "Surface flooding on Rongotai Road near Kilbirnie is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-05T15:35:02Z",
+    "lat": -41.30127,
+    "lng": 174.78195,
+    "description": "Weather event — Epuni Street, Aro Valley, Wellington",
+    "detail": "Storm damage reported to power lines near Epuni Street, Aro Valley after last night's severe weather"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-08-05T15:59:06Z",
+    "lat": -41.27686,
+    "lng": 174.78789,
+    "description": "Flooding — Tinakori Road, Thorndon, Wellington",
+    "detail": "Surface flooding on Tinakori Road near Thorndon is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-08-05T16:28:18Z",
+    "lat": -41.30811,
+    "lng": 174.78521,
+    "description": "Weather event — Mansfield Street, Newtown, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Mansfield Street in Newtown"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-05T16:33:06Z",
+    "lat": -41.2769,
+    "lng": 174.78801,
+    "description": "Slip — Tinakori Road, Thorndon, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Tinakori Road, Thorndon and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-05T19:27:15Z",
+    "lat": -41.24314,
+    "lng": 174.76215,
+    "description": "Weather event — Croydon Street, Wilton, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Croydon Street, Wilton"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-08-05T19:32:56Z",
+    "lat": -41.29747,
+    "lng": 174.75945,
+    "description": "Dangerous tree — Queens Wharf, Waterfront, Wellington",
+    "detail": "A pohutukawa tree on Queens Wharf has partially uprooted and is leaning dangerously toward the road"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-05T19:47:50Z",
+    "lat": -41.33813,
+    "lng": 174.78733,
+    "description": "Slip — Evans Bay Parade, Kilbirnie, Wellington",
+    "detail": "Bank alongside Evans Bay Parade in Kilbirnie has slipped after heavy rain, covering part of the footpath with mud"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-05T20:02:03Z",
+    "lat": -41.27482,
+    "lng": 174.80373,
+    "description": "Weather event — Hay Street, Mount Victoria, Wellington",
+    "detail": "Strong northerly gusts overnight have brought down fence panels and outdoor furniture on Hay Street, Mount Victoria"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-05T21:41:06Z",
+    "lat": -41.32686,
+    "lng": 174.77134,
+    "description": "Flooding — Medway Street, Island Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of Medway Street in Island Bay, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-05T22:15:06Z",
+    "lat": -41.32699,
+    "lng": 174.77074,
+    "description": "Slip — Medway Street, Island Bay, Wellington",
+    "detail": "Retaining wall next to Medway Street has partially collapsed, spilling debris onto the road following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-05T22:43:55Z",
+    "lat": -41.25543,
+    "lng": 174.78393,
+    "description": "Slip — Ganges Road, Khandallah, Wellington",
+    "detail": "Hillside slip on Ganges Road in Khandallah has closed the footpath to pedestrians"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-08-05T23:10:23Z",
+    "lat": -41.25795,
+    "lng": 174.76601,
+    "description": "Water quality — Croydon Street, Wilton, Wellington",
+    "detail": "Tap water on Croydon Street in Wilton has a strong chlorine smell and cloudy appearance since this morning"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-08-05T23:23:52Z",
+    "lat": -41.27866,
+    "lng": 174.78017,
+    "description": "Flooding — Jervois Quay, Waterfront, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Jervois Quay, Waterfront, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-06T00:10:52Z",
+    "lat": -41.27816,
+    "lng": 174.78014,
+    "description": "Slip — Jervois Quay, Waterfront, Wellington",
+    "detail": "Hillside slip on Jervois Quay in Waterfront has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-08-06T00:14:17Z",
+    "lat": -41.32801,
+    "lng": 174.80707,
+    "description": "Water quality — Broadway, Miramar, Wellington",
+    "detail": "Residents on Broadway report low water pressure and a metallic taste from the mains supply"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-06T00:49:40Z",
+    "lat": -41.28135,
+    "lng": 174.78683,
+    "description": "Flooding — Roxburgh Street, Oriental Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of Roxburgh Street in Oriental Bay, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-06T01:01:40Z",
+    "lat": -41.28147,
+    "lng": 174.7872,
+    "description": "Slip — Roxburgh Street, Oriental Bay, Wellington",
+    "detail": "Bank alongside Roxburgh Street in Oriental Bay has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-08-06T04:37:57Z",
+    "lat": -41.27917,
+    "lng": 174.76368,
+    "description": "Weather event — Waterfront Promenade, Waterfront, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Waterfront Promenade in Waterfront"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-06T05:18:58Z",
+    "lat": -41.29527,
+    "lng": 174.756,
+    "description": "Flooding — Ohiro Road, Brooklyn, Wellington",
+    "detail": "A nearby stream has burst its banks near Ohiro Road, Brooklyn, flooding the road and adjoining properties"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-06T05:42:58Z",
+    "lat": -41.29493,
+    "lng": 174.75618,
+    "description": "Slip — Ohiro Road, Brooklyn, Wellington",
+    "detail": "Bank alongside Ohiro Road in Brooklyn has slipped after heavy rain, covering part of the footpath with mud following the earlier flooding"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-06T09:54:15Z",
+    "lat": -41.24011,
+    "lng": 174.75756,
+    "description": "Slip — Coppin Street, Wilton, Wellington",
+    "detail": "Retaining wall next to Coppin Street has partially collapsed, spilling debris onto the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-06T19:31:09Z",
+    "lat": -41.28027,
+    "lng": 174.76795,
+    "description": "Flooding — Hill Street, Thorndon, Wellington",
+    "detail": "A nearby stream has burst its banks near Hill Street, Thorndon, flooding the road and adjoining properties"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-06T19:41:07Z",
+    "lat": -41.27939,
+    "lng": 174.77848,
+    "description": "Flooding — Manners Street, CBD, Wellington",
+    "detail": "Continuous rain has flooded the low section of Manners Street in CBD, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-06T19:54:09Z",
+    "lat": -41.28007,
+    "lng": 174.76817,
+    "description": "Slip — Hill Street, Thorndon, Wellington",
+    "detail": "A pedestrian slipped on the muddy footpath outside Hill Street, Thorndon and injured their wrist following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-06T22:00:43Z",
+    "lat": -41.29664,
+    "lng": 174.70762,
+    "description": "Weather event — Beauchamp Street, Karori, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Beauchamp Street, Karori"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-06T23:24:48Z",
+    "lat": -41.28049,
+    "lng": 174.78551,
+    "description": "Weather event — Pitt Street, Wadestown, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Pitt Street, Wadestown"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-07T03:26:49Z",
+    "lat": -41.29077,
+    "lng": 174.75629,
+    "description": "Flooding — Todman Street, Brooklyn, Wellington",
+    "detail": "A nearby stream has burst its banks near Todman Street, Brooklyn, flooding the road and adjoining properties"
+  },
+  {
+    "type": "roads",
+    "severity": "medium",
+    "timestamp": "2026-08-07T03:54:27Z",
+    "lat": -41.29102,
+    "lng": 174.73059,
+    "description": "Road/footpath issue — Makara Road, Karori, Wellington",
+    "detail": "Road surface on Makara Road near Karori has deteriorated badly and needs resurfacing"
+  },
+  {
+    "type": "water",
+    "severity": "medium",
+    "timestamp": "2026-08-07T03:58:19Z",
+    "lat": -41.339,
+    "lng": 174.77947,
+    "description": "Water quality — Medway Street, Island Bay, Wellington",
+    "detail": "Residents on Medway Street report low water pressure and a metallic taste from the mains supply"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-07T07:40:12Z",
+    "lat": -41.29015,
+    "lng": 174.77251,
+    "description": "Slip — Cleveland Street, Brooklyn, Wellington",
+    "detail": "Hillside slip on Cleveland Street in Brooklyn has closed the footpath to pedestrians"
+  },
+  {
+    "type": "flooding",
+    "severity": "low",
+    "timestamp": "2026-08-07T08:11:02Z",
+    "lat": -41.29132,
+    "lng": 174.78368,
+    "description": "Flooding — Grass Street, Oriental Bay, Wellington",
+    "detail": "Surface flooding on Grass Street near Oriental Bay is making the intersection impassable for small vehicles"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-07T08:42:02Z",
+    "lat": -41.29096,
+    "lng": 174.78388,
+    "description": "Slip — Grass Street, Oriental Bay, Wellington",
+    "detail": "Loose soil and rocks have come down onto Grass Street near Oriental Bay, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-08-07T23:46:17Z",
+    "lat": -41.30323,
+    "lng": 174.79815,
+    "description": "Weather event — Evans Bay Parade, Kilbirnie, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Evans Bay Parade in Kilbirnie"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-08T00:26:42Z",
+    "lat": -41.29052,
+    "lng": 174.76549,
+    "description": "Slip — Willis Street, CBD, Wellington",
+    "detail": "Loose soil and rocks have come down onto Willis Street near CBD, blocking one lane"
+  },
+  {
+    "type": "weather",
+    "severity": "high",
+    "timestamp": "2026-08-08T01:30:58Z",
+    "lat": -41.30071,
+    "lng": 174.76515,
+    "description": "Weather event — Lambton Quay, CBD, Wellington",
+    "detail": "Hail and gale-force wind have damaged shopfront awnings along Lambton Quay in CBD"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-08T03:37:20Z",
+    "lat": -41.28015,
+    "lng": 174.79788,
+    "description": "Weather event — Ellice Street, Mount Victoria, Wellington",
+    "detail": "Storm damage reported to power lines near Ellice Street, Mount Victoria after last night's severe weather"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-08-08T08:11:30Z",
+    "lat": -41.2553,
+    "lng": 174.79133,
+    "description": "Flooding — Ganges Road, Khandallah, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Ganges Road, Khandallah, water is pooling across the road"
+  },
+  {
+    "type": "flooding",
+    "severity": "high",
+    "timestamp": "2026-08-08T10:25:43Z",
+    "lat": -41.34445,
+    "lng": 174.77038,
+    "description": "Flooding — The Parade, Island Bay, Wellington",
+    "detail": "Continuous rain has flooded the low section of The Parade in Island Bay, water is rising rapidly"
+  },
+  {
+    "type": "slips",
+    "severity": "high",
+    "timestamp": "2026-08-08T11:19:43Z",
+    "lat": -41.34472,
+    "lng": 174.77029,
+    "description": "Slip — The Parade, Island Bay, Wellington",
+    "detail": "Loose soil and rocks have come down onto The Parade near Island Bay, blocking one lane following the earlier flooding"
+  },
+  {
+    "type": "flooding",
+    "severity": "medium",
+    "timestamp": "2026-08-08T11:32:24Z",
+    "lat": -41.32727,
+    "lng": 174.81469,
+    "description": "Flooding — Broadway, Miramar, Wellington",
+    "detail": "Heavy overnight rain has caused stormwater to back up on Broadway, Miramar, water is pooling across the road"
+  },
+  {
+    "type": "slips",
+    "severity": "medium",
+    "timestamp": "2026-08-08T12:09:24Z",
+    "lat": -41.32691,
+    "lng": 174.81435,
+    "description": "Slip — Broadway, Miramar, Wellington",
+    "detail": "Hillside slip on Broadway in Miramar has closed the footpath to pedestrians following the earlier flooding"
+  },
+  {
+    "type": "trees",
+    "severity": "high",
+    "timestamp": "2026-08-08T12:48:56Z",
+    "lat": -41.29752,
+    "lng": 174.78448,
+    "description": "Dangerous tree — Majoribanks Street, Mount Victoria, Wellington",
+    "detail": "Dead tree limb overhanging Majoribanks Street in Mount Victoria looks close to falling onto parked cars"
+  },
+  {
+    "type": "weather",
+    "severity": "medium",
+    "timestamp": "2026-08-08T16:36:06Z",
+    "lat": -41.23806,
+    "lng": 174.75351,
+    "description": "Weather event — Bendall Avenue, Ngaio, Wellington",
+    "detail": "Flying debris from the storm has broken several windows on Bendall Avenue, Ngaio"
   }
 ]
