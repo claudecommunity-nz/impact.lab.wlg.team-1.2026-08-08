@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wellington City Council — local alerts & weather</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #f4f4f2;
+    font-family: 'Public Sans', -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #14140f;
+  }
+
+  .topbar {
+    background: #fff;
+    color: #14140f;
+    padding: 8px 32px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 12.5px;
+    border-bottom: 1px solid #e3e3df;
+  }
+  .topbar a {
+    color: #14140f; background: transparent; text-decoration: none;
+    font-weight: 600; padding: 6px 14px; border-radius: 999px;
+    border: 1px solid #cfcfca;
+  }
+  .topbar a.ghost { background: transparent; border: 1px solid #cfcfca; }
+
+  .header {
+    background: #fff;
+    color: #14140f;
+    padding: 14px 32px 22px;
+    border-bottom: 1px solid #e3e3df;
+  }
+  .header .row { display: flex; align-items: center; justify-content: space-between; }
+  .wordmark { display: flex; align-items: center; gap: 10px; }
+  .wordmark .crest {
+    width: 34px; height: 34px; border-radius: 6px;
+    background: #14140f; color: #fff; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px;
+  }
+  .wordmark .text { line-height: 1.2; }
+  .wordmark .en { font-weight: 700; font-size: 16px; }
+  .wordmark .mi { font-size: 12px; color: #757570; }
+  .header h1 { font-size: 26px; font-weight: 700; margin: 18px 0 2px; }
+  .header p { margin: 0; color: #55554f; font-size: 14px; }
+
+  .notice {
+    background: #FFDD00;
+    color: #14140f;
+    font-size: 13.5px;
+    text-align: center;
+    padding: 9px 20px;
+    font-weight: 600;
+  }
+  .notice a { color: #14140f; text-decoration: underline; font-weight: 700; }
+
+  .app {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 32px 32px;
+  }
+  .panel { display: flex; flex-direction: column; gap: 14px; }
+
+  .search-bar {
+    display: flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid #dcdcd8; border-radius: 4px;
+    padding: 11px 14px; font-size: 14px; color: #55554f;
+  }
+  .search-bar svg { flex-shrink: 0; opacity: .55; }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e3e3df;
+    border-radius: 4px;
+    padding: 16px 18px;
+  }
+
+  .info-card .title { font-weight: 700; font-size: 14px; }
+  .info-card .title-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .info-card select {
+    font-family: inherit; font-size: 12px; font-weight: 600;
+    border: 1px solid #dcdcd8; border-radius: 3px; padding: 4px 6px;
+    background: #fff; color: #3a3a36;
+  }
+  .info-card .row {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13.5px; padding: 8px 0; border-top: 1px solid #eeeeec;
+  }
+  .info-card .row:first-of-type { border-top: none; }
+  .info-card .label { color: #3a3a36; }
+  .pill { font-size: 11.5px; font-weight: 700; padding: 3px 10px; border-radius: 3px; white-space: nowrap; }
+  .pill.safe { background: #e7f2e5; color: #1e5e17; }
+  .pill.check { background: #fdeee0; color: #a3450c; }
+  .pill.avoid { background: #fbe3e1; color: #a3231a; }
+
+  .weather-card { display: flex; justify-content: space-between; align-items: flex-start; }
+  .weather-card .temp { font-size: 42px; font-weight: 800; line-height: 1; color: #14140f; }
+  .weather-card .desc { font-size: 13.5px; color: #3a3a36; margin: 8px 0 6px; max-width: 190px; line-height: 1.4; }
+  .weather-card .range { font-size: 12px; color: #757570; }
+  .weather-card .icon {
+    width: 44px; height: 44px; border-radius: 4px;
+    background: #f0f0ee; color: #14140f;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat-card { display: flex; flex-direction: column; gap: 6px; }
+  .stat-card .top { display: flex; align-items: center; gap: 6px; color: #55554f; font-size: 12.5px; font-weight: 600; }
+  .stat-card .value { font-size: 20px; font-weight: 800; }
+  .stat-card .sub { font-size: 11.5px; color: #757570; }
+
+  .map-panel {
+    background: #fff;
+    border: 1px solid #e3e3df;
+    border-radius: 4px;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex; flex-direction: column;
+  }
+  .map-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px; border-bottom: 1px solid #eeeeec;
+    font-size: 13.5px; color: #3a3a36; font-weight: 600;
+  }
+  .map-toolbar .live {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11.5px; font-weight: 700; color: #1e5e17;
+  }
+  .map-toolbar .dot { width: 7px; height: 7px; border-radius: 50%; background: #3f9c2f; }
+  .map-frame { flex: 1; position: relative; }
+  .map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  .footnote {
+    grid-column: 1 / -1;
+    font-size: 11.5px; color: #8a8a86; text-align: center; margin-top: 4px;
+  }
+
+  .footer {
+    background: #fff; color: #757570; font-size: 12px;
+    text-align: center; padding: 16px; margin-top: 8px;
+    border-top: 1px solid #e3e3df;
+  }
+
+  .felt-card .title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .felt-card .desc { font-size: 12.5px; color: #55554f; margin-bottom: 12px; }
+  .felt-options { display: flex; flex-direction: column; gap: 6px; }
+  .felt-option {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; text-align: left;
+    background: #fff; border: 1px solid #e3e3df; border-radius: 4px;
+    padding: 8px 10px; font-family: inherit; font-size: 13px; font-weight: 600;
+    color: #14140f; cursor: pointer;
+  }
+  .felt-option:hover { border-color: #b9b9b3; }
+  .felt-option.selected { border-color: #14140f; background: #f4f4f2; }
+  .felt-option .swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+  .sw-notfelt { background: #dcdcd8; }
+  .sw-weak { background: #ffe9a8; }
+  .sw-light { background: #ffc774; }
+  .sw-moderate { background: #ff9d52; }
+  .sw-strong { background: #f0673f; }
+  .sw-severe { background: #cf2b1e; }
+
+  .felt-confirm {
+    display: none;
+    margin-top: 12px; padding: 10px 12px;
+    background: #eaf3de; border: 1px solid #c9e0a9; border-radius: 4px;
+    font-size: 12.5px; color: #1e5e17;
+  }
+  .felt-confirm.show { display: block; }
+
+  .nearby-card {
+    background: #fff4e6; border: 1px solid #f0c98a; border-radius: 4px;
+    padding: 12px 14px;
+  }
+  .nearby-card .tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; color: #854f0b;
+    text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 6px;
+  }
+  .nearby-card .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: #d88a1f; }
+  .nearby-card .msg { font-size: 13.5px; font-weight: 600; color: #14140f; margin-bottom: 2px; }
+  .nearby-card .loc { font-size: 12px; color: #6b5a3f; margin-bottom: 10px; }
+  .nearby-card .actions { display: flex; gap: 8px; }
+  .nearby-card button {
+    font-family: inherit; font-size: 12.5px; font-weight: 600;
+    padding: 6px 14px; border-radius: 999px; cursor: pointer;
+  }
+  .nearby-card .yes { background: #14140f; color: #fff; border: 1px solid #14140f; }
+  .nearby-card .no { background: transparent; color: #14140f; border: 1px solid #cfcfca; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="ghost" href="#">Contact us</a>
+  <a class="ghost" href="#">Report a problem</a>
+  <a href="#">Pay online</a>
+</div>
+
+<div class="header">
+  <div class="row">
+    <div class="wordmark">
+      <div class="crest">W</div>
+      <div class="text">
+        <div class="en">Wellington City Council</div>
+        <div class="mi">Te Kaunihera o Pōneke</div>
+      </div>
+    </div>
+  </div>
+  <h1>Kia ora, local alerts &amp; weather</h1>
+  <p>Live hazard and weather information for your part of Pōneke | Wellington City.</p>
+</div>
+
+<div class="notice">Heavy rain warning in effect &mdash; <a href="#">see current watches and warnings</a></div>
+
+<div class="app">
+
+  <div class="panel">
+    <div class="search-bar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      Search an address or suburb
+    </div>
+
+    <div class="nearby-card">
+      <div class="tag"><span class="dot"></span>Reported near you</div>
+      <div class="msg">A tree came down on Te Aro Street</div>
+      <div class="loc" id="nearbyLoc">You're viewing Te Aro &middot; reported 12 minutes ago &middot; 4 people confirmed</div>
+      <div class="actions" id="nearbyActions">
+        <button class="yes" id="nearbyYes">Yes, I saw it</button>
+        <button class="no" id="nearbyNo">No</button>
+      </div>
+    </div>
+
+    <div class="card info-card">
+      <div class="title-row">
+        <div class="title">What does this mean for your day?</div>
+        <select id="alertType">
+          <option value="rain">Heavy rain</option>
+          <option value="water">Water quality</option>
+          <option value="wind">High wind</option>
+          <option value="heat">Heat / UV</option>
+        </select>
+      </div>
+      <div id="alertRows"></div>
+    </div>
+
+    <div class="card weather-card">
+      <div>
+        <div class="temp">15&deg;</div>
+        <div class="desc">Cloudy, breezy showers easing to afternoon spots</div>
+        <div class="range">Feels like 12&deg; &middot; H:16&deg; L:11&deg;</div>
+      </div>
+      <div class="icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17.5 19a4.5 4.5 0 0 0 0-9h-1.8a6.5 6.5 0 0 0-12.4 2.6A4 4 0 0 0 4 19h13.5Z"/></svg>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="card stat-card">
+        <div class="top">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.6 4.6A2 2 0 1 1 11 8H2m10.6 11.4A2 2 0 1 0 14 16H2m15.6-8.4A2 2 0 1 1 19 12H2"/></svg>
+          Wind
+        </div>
+        <div class="value">35 km/h</div>
+        <div class="sub">Southerly, gusting 55</div>
+      </div>
+      <div class="card stat-card">
+        <div class="top">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.7s6 6.5 6 10.8a6 6 0 1 1-12 0c0-4.3 6-10.8 6-10.8Z"/></svg>
+          Rain chance
+        </div>
+        <div class="value">70%</div>
+        <div class="sub">Heaviest before noon</div>
+      </div>
+    </div>
+
+    <div class="card stat-card">
+      <div class="top">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 15c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0M2 19c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0M12 3v9"/></svg>
+        Sea temp
+      </div>
+      <div class="value">14&deg;</div>
+      <div class="sub">Swell 2.5m, south coast</div>
+    </div>
+
+    <div class="card felt-card">
+      <div class="title">Have you felt it?</div>
+      <div class="desc">Choose the shaking that best describes what you felt.</div>
+      <div class="felt-options" id="feltOptions">
+        <button class="felt-option" data-level="Not felt"><span class="swatch sw-notfelt"></span>Not felt</button>
+        <button class="felt-option" data-level="Weak shaking"><span class="swatch sw-weak"></span>Weak shaking</button>
+        <button class="felt-option" data-level="Light shaking"><span class="swatch sw-light"></span>Light shaking</button>
+        <button class="felt-option" data-level="Moderate shaking"><span class="swatch sw-moderate"></span>Moderate shaking</button>
+        <button class="felt-option" data-level="Strong shaking"><span class="swatch sw-strong"></span>Strong shaking</button>
+        <button class="felt-option" data-level="Severe shaking"><span class="swatch sw-severe"></span>Severe shaking</button>
+      </div>
+      <div class="felt-confirm" id="feltConfirm"></div>
+    </div>
+  </div>
+
+  <div class="map-panel">
+    <div class="map-toolbar">
+      <span>Wellington region &mdash; live incident map</span>
+      <span class="live"><span class="dot"></span>Live</span>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://claudecommunity-nz.github.io/impact.lab.wlg.team-1.2026-08-08/" title="Live incident map"></iframe>
+    </div>
+  </div>
+
+  <div class="footnote">Map is embedded live from claudecommunity-nz.github.io/impact.lab.wlg.team-1.2026-08-08</div>
+</div>
+
+<div class="footer">&copy; Wellington City Council &middot; PO Box 2199, Wellington 6140 &middot; 04 499 4444</div>
+
+<script>
+  var scenarios = {
+    rain: {
+      notice: "Heavy rain warning in effect &mdash; see current watches and warnings",
+      rows: [
+        ["Driving low-lying streets", "avoid", "Avoid, check closures"],
+        ["Outdoor sport / school pickup", "check", "Delays likely"],
+        ["Washing clothes", "check", "Wait until 2pm"],
+        ["Walking the dog", "safe", "Fine outside"]
+      ]
+    },
+    water: {
+      notice: "Water quality alert in parts of the city &mdash; see affected areas",
+      rows: [
+        ["Drinking tap water", "check", "Boil first"],
+        ["Swimming at the beach", "avoid", "Avoid for 48hrs"],
+        ["Washing clothes", "safe", "Fine as normal"],
+        ["Walking the dog", "safe", "Fine outside"]
+      ]
+    },
+    wind: {
+      notice: "Strong wind watch &mdash; gusts up to 100 km/h expected",
+      rows: [
+        ["Bins out today", "check", "Bring them in"],
+        ["Cycling to work", "avoid", "Take care, exposed routes"],
+        ["Drinking water", "safe", "Safe"],
+        ["Walking the dog", "check", "Keep to sheltered streets"]
+      ]
+    },
+    heat: {
+      notice: "High UV and heat &mdash; take precautions outdoors",
+      rows: [
+        ["Being outside midday", "check", "Slip, slop, slap"],
+        ["Leaving pets in the car", "avoid", "Never, even briefly"],
+        ["Drinking water", "safe", "Safe"],
+        ["Walking the dog", "check", "Early morning or evening"]
+      ]
+    }
+  };
+
+  function render(key) {
+    var s = scenarios[key];
+    document.querySelector(".notice").innerHTML = s.notice;
+    var html = "";
+    s.rows.forEach(function (r) {
+      html += '<div class="row"><span class="label">' + r[0] + '</span><span class="pill ' + r[1] + '">' + r[2] + "</span></div>";
+    });
+    document.getElementById("alertRows").innerHTML = html;
+  }
+
+  document.getElementById("alertType").addEventListener("change", function (e) {
+    render(e.target.value);
+  });
+  render("rain");
+
+  var feltButtons = document.querySelectorAll(".felt-option");
+  var feltConfirm = document.getElementById("feltConfirm");
+  feltButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      feltButtons.forEach(function (b) { b.classList.remove("selected"); });
+      btn.classList.add("selected");
+      feltConfirm.textContent = "Thanks — you reported “" + btn.dataset.level + "”. Your report helps GeoNet map shaking across the city.";
+      feltConfirm.classList.add("show");
+    });
+  });
+
+  var confirmedCount = 4;
+  document.getElementById("nearbyYes").addEventListener("click", function () {
+    confirmedCount += 1;
+    document.getElementById("nearbyLoc").textContent =
+      "You're viewing Te Aro · reported 12 minutes ago · " + confirmedCount + " people confirmed";
+    document.getElementById("nearbyActions").innerHTML =
+      '<span style="font-size:12.5px;font-weight:600;color:#1e5e17;">Thanks — you’ve confirmed this report.</span>';
+  });
+  document.getElementById("nearbyNo").addEventListener("click", function () {
+    document.getElementById("nearbyActions").innerHTML =
+      '<span style="font-size:12.5px;font-weight:600;color:#55554f;">Thanks for letting us know.</span>';
+  });
+</script>
+
+</body>
+</html>
