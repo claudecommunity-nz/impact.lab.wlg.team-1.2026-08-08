@@ -24,8 +24,10 @@ export default function InfoPanel({
       position: 'absolute',
       top: 16,
       left: 16,
+      bottom: 42,
       width: 280,
       zIndex: 5,
+      overflowY: 'auto',
     }}>
       <AreaPicker
         areaId={areaId}

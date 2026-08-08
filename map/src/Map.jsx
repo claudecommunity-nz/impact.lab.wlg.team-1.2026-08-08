@@ -102,6 +102,7 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
       style: STYLE,
       center: WELLINGTON,
       zoom: 12,
+      attributionControl: false,
     })
 
     map.on('load', () => {
@@ -295,5 +296,5 @@ export default function Map({ locationFeature, incidentPins, incidentRadii, laye
     })
   }, [layers])
 
-  return <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
+  return <div ref={containerRef} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 26 }} />
 }

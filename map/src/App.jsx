@@ -79,7 +79,7 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
   const rafRef = useRef(null)
   const lastRef = useRef(null)
 
-  const { pins, radii } = useIncidents(currentTime)
+  const { pins, radii, allIncidents } = useIncidents(currentTime)
   const weather = useWeather(currentTime)
 
   useEffect(() => {
@@ -143,6 +143,7 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
           playing={playing}
           onSeek={t => { setCurrentTime(t); setPlaying(false) }}
           onTogglePlay={onTogglePlay}
+          allIncidents={allIncidents}
         />
       </div>
     </>

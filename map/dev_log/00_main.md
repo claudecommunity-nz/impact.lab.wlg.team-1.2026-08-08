@@ -79,6 +79,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | d7v3mq | done    | 19 Location Selector | Region search + per-suburb checkboxes; outlines the area and opens on the user's own region | 19_location_selector.md |
 | j4q7ha | done    | 20 Share Alert | Share button on the incident panel opens a mock share modal with source and time attached | 20_share_alert.md |
 | p9q3vw | done    | 21 Data 1000      | Conversion script maps 389 relevant tickets to incidents.json          | 21_data_1000.md       |
+| k8n2tv | done    | 22 Visual Timeline | Full-width heatmap bar showing incident density and category colour over time | 22_visual_timeline.md |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.
