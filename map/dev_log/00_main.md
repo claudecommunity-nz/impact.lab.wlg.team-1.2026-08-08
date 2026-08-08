@@ -61,6 +61,9 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | 7f3k2q | done    | 01 Foundation | Scaffold the project (Vite + React + maplibre-gl) with a working dev server   | 01_foundation.md |
 | m9x1lb | done    | 02 Basemap    | Render an interactive base map centered on Wellington                        | 02_basemap.md    |
 | p4r8nt | done    | 03 Location   | Show user position as a pin with a legend toggle to turn the layer on/off   | 03_location.md   |
+| k2m7vw | done    | 04 Incidents  | Six incident categories as map layers with blast radii and legend toggles   | 04_incidents.md  |
+| h6t3pz | done    | 05 Panel      | Click a pin to open a right-side panel with severity, detail and sources    | 05_incident_panel.md |
+| r9w2cx | done    | 06 JSON Data  | Extract hardcoded incidents to a static JSON file fetched at runtime        | 06_json_data.md      |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.
