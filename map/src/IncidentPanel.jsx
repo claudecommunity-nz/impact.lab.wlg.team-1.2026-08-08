@@ -68,36 +68,45 @@ export default function IncidentPanel({ incident, onClose }) {
           }}>×</button>
         </div>
 
-        {/* Severity badge + share */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 6,
-            background: sev.bg, color: sev.text,
-            borderRadius: 6, padding: '4px 10px',
-            fontSize: 11, fontWeight: 500,
-          }}>
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: sev.dot, display: 'inline-block' }} />
-            {sev.label}
-          </div>
-          <button
-            onClick={() => setSharing(true)}
-            style={{
-              marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 5,
-              background: 'none', border: '1px solid rgba(0,0,0,0.14)', borderRadius: 6,
-              padding: '4px 10px', cursor: 'pointer',
-              fontSize: 11, fontWeight: 500, color: '#374151',
-              fontFamily: 'inherit', flexShrink: 0,
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.04)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'none'}
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
-              <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" />
-            </svg>
-            Share
-          </button>
+        {/* Severity badge */}
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 6,
+          background: sev.bg, color: sev.text,
+          borderRadius: 6, padding: '4px 10px', marginBottom: 12,
+          fontSize: 11, fontWeight: 500,
+        }}>
+          <span style={{ width: 7, height: 7, borderRadius: '50%', background: sev.dot, display: 'inline-block' }} />
+          {sev.label}
         </div>
+
+        {/* Share — the primary action on this panel, in WCC yellow */}
+        <button
+          onClick={() => setSharing(true)}
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+            width: '100%', marginBottom: 14,
+            background: '#FFDD00', border: 'none', borderRadius: 8,
+            padding: '10px 12px', cursor: 'pointer',
+            fontSize: 13, fontWeight: 700, color: '#14140f',
+            fontFamily: 'inherit',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.12)',
+            transition: 'background 0.15s, box-shadow 0.15s',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = '#F2CE00'
+            e.currentTarget.style.boxShadow = '0 3px 8px rgba(0,0,0,0.18)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = '#FFDD00'
+            e.currentTarget.style.boxShadow = '0 1px 2px rgba(0,0,0,0.12)'
+          }}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+            <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" />
+          </svg>
+          Share this alert
+        </button>
 
         <div style={{ height: 1, background: 'rgba(0,0,0,0.08)', marginBottom: 14 }} />
 

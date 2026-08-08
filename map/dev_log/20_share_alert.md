@@ -11,10 +11,13 @@ only, nothing is posted anywhere.
 
 ## Design
 
-**Share button** (incident panel, on the severity row):
+**Share button** (incident panel, under the severity badge):
 
-- Sits to the right of the severity badge, `margin-left: auto`
-- Outlined, not filled — the panel's own content is the point, not this
+- Full width, above the divider, so it reads before the body copy
+- Filled WCC yellow `#FFDD00` on near-black text, the same accent as the header
+  crest and the warning banner. Yellow rather than red or amber — those two are
+  spoken for by the severity coding and must not be diluted
+- Hover darkens to `#F2CE00` and lifts the shadow
 - Three-node share glyph, the platform-neutral one, not any brand's
 
 **ShareModal**:
