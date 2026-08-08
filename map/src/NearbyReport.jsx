@@ -93,19 +93,27 @@ export default function NearbyReport({ pins, activeSuburbs, regionLabel, current
   const features = pins?.features
   const suburbKey = activeSuburbs.join('|')
 
+  // Until a region is chosen — the app now opens on "Select region" — the card
+  // falls back to the newest report anywhere in the city, and says so. Without
+  // it there is nothing on screen on a first load, which reads as an app with
+  // no reports in it rather than one waiting to be pointed at a suburb.
+  const cityWide = activeSuburbs.length === 0
+
   const report = useMemo(() => {
-    if (!features?.length || !activeSuburbs.length) return null
+    if (!features?.length) return null
     const inView = new Set(activeSuburbs.map(fold))
     let newest = null
     for (const f of features) {
-      const suburb = suburbOf(f.properties.description)
-      if (!suburb || !inView.has(fold(suburb))) continue
+      if (!cityWide) {
+        const suburb = suburbOf(f.properties.description)
+        if (!suburb || !inView.has(fold(suburb))) continue
+      }
       if (!newest || Date.parse(f.properties.timestamp) > Date.parse(newest.properties.timestamp)) {
         newest = f
       }
     }
     return newest
-  }, [features, suburbKey])
+  }, [features, suburbKey, cityWide])
 
   useEffect(() => {
     if (!answer) return
@@ -181,7 +189,7 @@ export default function NearbyReport({ pins, activeSuburbs, regionLabel, current
       </div>
 
       <div style={{ fontSize: 11.5, color: '#6b5a3f', margin: '4px 0 2px' }}>
-        You're viewing {regionLabel} · reported {agoText(p.timestamp, currentTime)} · {confirmed} {confirmed === 1 ? 'person has' : 'people have'} confirmed
+        {cityWide ? 'Across Wellington' : `You're viewing ${regionLabel}`} · reported {agoText(p.timestamp, currentTime)} · {confirmed} {confirmed === 1 ? 'person has' : 'people have'} confirmed
       </div>
 
       <div style={{ fontSize: 10.5, color: '#8a7a5f', marginBottom: 10 }}>

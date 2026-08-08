@@ -83,6 +83,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | z2r8gv | done    | 23 Dynamic Notice  | Notice bar text driven by current weather + incidents; click for detail modal | 23_dynamic_notice.md  |
 | z6b4nk | done    | 24 Responsive     | Phone layout — bottom sheets, stacked header, touch targets            | 24_responsive.md      |
 | s8g5tv | done    | 25 Nearby Report  | Newest community report for the area on screen, with a confirmation that collapses after 3s | 25_nearby_report.md |
+| h3v7qd | planned | 26 Alert List     | Right sidebar lists every active alert in the selected area, collapsed, most serious first, expanding on map selection | 26_alertlist.md |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.
