@@ -74,6 +74,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | f2p8ks | done    | 14 Filter Modal | Filter button + modal replaces legend bar and search bar                 | 14_filter_modal.md    |
 | w3c9br | done    | 15 WCC Branding | WCC yellow on header crest and timeline interactive accents              | 15_wcc_branding.md    |
 | d8r2nf | done    | 16 Real Data    | Replace synthetic incidents with 12 tickets from CSV, expand timeline   | 16_real_data.md       |
+| y5w1kp | done    | 17 Dynamic Weather | Left panel weather updates as timeline scrubs — 21 synthetic snapshots | 17_dynamic_weather.md |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.

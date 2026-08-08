@@ -6,6 +6,7 @@ import Header from './Header.jsx'
 import InfoPanel from './InfoPanel.jsx'
 import useGeolocation from './useGeolocation.js'
 import useIncidents from './useIncidents.js'
+import useWeather from './useWeather.js'
 import { CATEGORIES, EVENT_WINDOW } from './incidents.js'
 
 const defaultLayers = {
@@ -30,6 +31,7 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
   const lastRef = useRef(null)
 
   const { pins, radii } = useIncidents(currentTime)
+  const weather = useWeather(currentTime)
 
   useEffect(() => {
     if (!playing) {
@@ -73,7 +75,7 @@ const [currentTime, setCurrentTime] = useState(WIN.end)
           layers={layers}
           onIncidentClick={setSelectedIncident}
         />
-        <InfoPanel layers={layers} onToggle={onToggle} />
+        <InfoPanel layers={layers} onToggle={onToggle} weather={weather} />
         <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
         <Timeline
           currentTime={currentTime}
