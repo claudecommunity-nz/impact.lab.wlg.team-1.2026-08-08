@@ -36,11 +36,12 @@ attaches to.
 ## Project Status
 
 ### Overall Completion
-Units 01–02 complete. Interactive Wellington basemap rendering in browser.
+Units 01–03 complete. Interactive Wellington basemap with live location pin and legend toggle.
 
 ### Completed Features
 - Vite 6 + React 19 scaffold with maplibre-gl 5
 - Full-viewport interactive map centred on Wellington (CARTO Positron basemap)
+- Live user location pin (browser Geolocation API) with legend toggle
 
 ## Units
 
@@ -59,6 +60,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 |--------|---------|---------------|-------------------------------------------------------------------------------|------------------|
 | 7f3k2q | done    | 01 Foundation | Scaffold the project (Vite + React + maplibre-gl) with a working dev server   | 01_foundation.md |
 | m9x1lb | done    | 02 Basemap    | Render an interactive base map centered on Wellington                        | 02_basemap.md    |
+| p4r8nt | done    | 03 Location   | Show user position as a pin with a legend toggle to turn the layer on/off   | 03_location.md   |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.
