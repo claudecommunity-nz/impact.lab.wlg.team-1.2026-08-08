@@ -9,8 +9,6 @@
     "preview": "bunx --bun vite preview",
     "typecheck": "bunx tsc --noEmit",
     "sources:build": "python3 scripts/build_sources.py",
-    "gauges:discover": "python3 scripts/discover_gauges.py",
-    "scenario:build": "python3 scripts/build_scenario.py",
     "types": "supabase gen types typescript --local > src/integrations/supabase/types.ts",
     "ingest": "bun scripts/ingest.mjs"
   },
