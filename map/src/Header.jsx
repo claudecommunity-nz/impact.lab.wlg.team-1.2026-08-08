@@ -12,8 +12,8 @@ export default function Header() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
           <div style={{
             width: 30, height: 30, borderRadius: 5,
-            background: '#cf2b1e', display: 'flex', alignItems: 'center',
-            justifyContent: 'center', fontWeight: 800, fontSize: 14,
+            background: '#FFDD00', display: 'flex', alignItems: 'center',
+            justifyContent: 'center', fontWeight: 800, fontSize: 14, color: '#000',
           }}>W</div>
           <div style={{ lineHeight: 1.2 }}>
             <div style={{ fontWeight: 700, fontSize: 14 }}>Wellington City Council</div>

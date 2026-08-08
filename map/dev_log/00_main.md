@@ -72,6 +72,7 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | n4w9xc | done    | 12 Layout     | Compact header, legend moved to horizontal bar above timeline              | 12_layout.md         |
 | t6h1rx | done    | 13 Legend Width | Legend bar spans full width, pills distributed with space-evenly         | 13_legendbar_width.md |
 | f2p8ks | done    | 14 Filter Modal | Filter button + modal replaces legend bar and search bar                 | 14_filter_modal.md    |
+| w3c9br | done    | 15 WCC Branding | WCC yellow on header crest and timeline interactive accents              | 15_wcc_branding.md    |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.
