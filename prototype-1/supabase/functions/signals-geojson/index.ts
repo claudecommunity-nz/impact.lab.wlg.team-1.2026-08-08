@@ -119,15 +119,29 @@ async function scenarioFeatures(
   // Playback position. Everything at or before this offset has "happened".
   const at = Number(url.searchParams.get('at') ?? '360');
 
+  const clock = Number.isFinite(at) ? at : 360;
+
   const { data, error } = await supabase
     .from('scenario_signals')
     .select('*')
     .eq('scenario_id', scenarioId)
-    .lte('offset_minutes', Number.isFinite(at) ? at : 360)
+    .lte('offset_minutes', clock)
     .order('offset_minutes', { ascending: true });
   if (error) throw error;
 
-  return (data ?? []).map((r: Record<string, unknown>) => toFeature(r, true));
+  // Give each row a timestamp relative to the playback position, so "now" in
+  // the scenario is the scrubber position. Without this every card reads "no
+  // timestamp" and greys out as stale, which hides the very thing the scenario
+  // exists to show — an event unfolding, with recent items ranked above old
+  // ones exactly as they would be in live data.
+  const nowMs = Date.now();
+  return (data ?? []).map((r: Record<string, any>) => {
+    const minutesAgo = clock - Number(r.offset_minutes ?? 0);
+    return toFeature(
+      { ...r, observed_at: new Date(nowMs - minutesAgo * 60_000).toISOString() },
+      true,
+    );
+  });
 }
 
 function parseBbox(raw: string | null): [number, number, number, number] | null {

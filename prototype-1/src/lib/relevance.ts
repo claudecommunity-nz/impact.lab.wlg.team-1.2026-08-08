@@ -256,6 +256,24 @@ function actionFor(s: Signal, p: Profile): string | null {
       'medical equipment now, and check your backup plan.';
   }
 
+  // Official warnings carry no numeric value, so they must be handled before
+  // the category branches below, which reason about readings. Without this a
+  // Red Severe Wind Warning falls through to the wind case, finds no number,
+  // and is described as "normal for Wellington, nothing to do" — advice that
+  // is not merely unhelpful but the opposite of what the publisher issued.
+  if (s.tier === 'official') {
+    const severe = (s.severity ?? 0) >= 3 || /severe|red|extreme/i.test(s.severityLabel ?? '');
+    if (s.category === 'emergency_alert') {
+      return 'This is an official emergency broadcast. Follow the instruction it contains.';
+    }
+    return severe
+      ? `${s.publisher} has issued a severe warning covering ${where}. ` +
+        'Secure anything loose, avoid exposed routes, and read the full text on ' +
+        'the publisher’s site.'
+      : `${s.publisher} has a warning in force for ${where}. ` +
+        'Worth reading before you travel.';
+  }
+
   switch (s.category) {
     case 'road':
     case 'road_blocked':
@@ -292,9 +310,9 @@ function actionFor(s: Signal, p: Profile): string | null {
     case 'emergency_alert':
       return 'This is an official emergency broadcast. Follow the instruction it contains.';
     default:
-      return s.tier === 'official'
-        ? 'Official warning in force for your area. Read the full text on the publisher’s site.'
-        : null;
+      // Official items never reach here — they return above, before any branch
+      // that reasons about a numeric reading.
+      return null;
   }
 }
 
