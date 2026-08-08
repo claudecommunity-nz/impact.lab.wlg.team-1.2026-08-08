@@ -1,3 +1,4 @@
+import { CATEGORIES } from './incidents.js'
 import { overlay } from './styles.js'
 
 const font = "'Public Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -9,7 +10,12 @@ const card = {
   marginBottom: 10,
 }
 
-export default function InfoPanel() {
+const ALL_ITEMS = [
+  { id: 'location', label: 'Your location', colour: '#3b82f6' },
+  ...CATEGORIES.map(c => ({ id: c.id, label: c.label, colour: c.colour })),
+]
+
+export default function InfoPanel({ layers, onToggle }) {
   return (
     <div style={{
       position: 'absolute',
@@ -18,7 +24,7 @@ export default function InfoPanel() {
       width: 280,
       zIndex: 5,
     }}>
-      <SearchBar />
+      <FilterBar layers={layers} onToggle={onToggle} />
       <ConditionsCard />
       <WeatherCard />
       <StatsRow />
@@ -27,17 +33,40 @@ export default function InfoPanel() {
   )
 }
 
-function SearchBar() {
+function FilterBar({ layers, onToggle }) {
   return (
     <div style={{
       ...card,
-      display: 'flex', alignItems: 'center', gap: 8,
-      color: '#55554f', fontSize: 13,
+      display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6,
+      minHeight: 44,
     }}>
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, opacity: 0.5 }}>
-        <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
-      </svg>
-      Search an address or suburb
+      {ALL_ITEMS.map(item => {
+        const on = layers && layers[item.id]
+        return (
+          <button
+            key={item.id}
+            onClick={() => onToggle(item.id)}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 4,
+              background: on ? 'rgba(0,0,0,0.06)' : 'rgba(0,0,0,0.03)',
+              border: 'none', borderRadius: 20,
+              padding: '3px 10px 3px 7px',
+              fontSize: 11,
+              color: on ? '#3a3a36' : 'rgba(0,0,0,0.3)',
+              cursor: 'pointer',
+              transition: 'color 0.15s, background 0.15s',
+              fontFamily: font,
+            }}
+          >
+            <span style={{
+              width: 7, height: 7, borderRadius: '50%', flexShrink: 0,
+              background: on ? item.colour : 'rgba(0,0,0,0.18)',
+              transition: 'background 0.15s',
+            }} />
+            {item.label}
+          </button>
+        )
+      })}
     </div>
   )
 }

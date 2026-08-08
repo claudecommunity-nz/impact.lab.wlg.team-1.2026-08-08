@@ -70,6 +70,8 @@ workflow: planned→doing, doing→done, doing→planned, done→doing
 | x8k2pn | done    | 10 UI Style   | Unified floating overlay style — rounded, gray, no elevation               | 10_ui_style.md       |
 | b2j5qt | done    | 11 Info Cards | WCC header + floating info cards (weather, conditions, stats) over the map | 11_info_cards.md     |
 | n4w9xc | done    | 12 Layout     | Compact header, legend moved to horizontal bar above timeline              | 12_layout.md         |
+| t6h1rx | done    | 13 Legend Width | Legend bar spans full width, pills distributed with space-evenly         | 13_legendbar_width.md |
+| f2p8ks | done    | 14 Filter Modal | Filter button + modal replaces legend bar and search bar                 | 14_filter_modal.md    |
 ```
 
 More units (data layers, draw annotations) get added to this board as we go.

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import Map from './Map.jsx'
-import LegendBar from './LegendBar.jsx'
 import IncidentPanel from './IncidentPanel.jsx'
 import Timeline from './Timeline.jsx'
 import Header from './Header.jsx'
@@ -25,7 +24,7 @@ export default function App() {
   const locationFeature = useGeolocation()
   const [layers, setLayers] = useState(defaultLayers)
   const [selectedIncident, setSelectedIncident] = useState(null)
-  const [currentTime, setCurrentTime] = useState(WIN.end)
+const [currentTime, setCurrentTime] = useState(WIN.end)
   const [playing, setPlaying] = useState(false)
   const rafRef = useRef(null)
   const lastRef = useRef(null)
@@ -74,8 +73,7 @@ export default function App() {
           layers={layers}
           onIncidentClick={setSelectedIncident}
         />
-        <InfoPanel />
-        <LegendBar layers={layers} onToggle={onToggle} />
+        <InfoPanel layers={layers} onToggle={onToggle} />
         <IncidentPanel incident={selectedIncident} onClose={() => setSelectedIncident(null)} />
         <Timeline
           currentTime={currentTime}
