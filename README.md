@@ -23,6 +23,11 @@ Official sources forecast the event. They do not show what is happening at
 street level — surface flooding, a slip, a road becoming unsafe. Residents watch
 MetService, WCC, WREMO, news and Facebook without knowing which to rely on.
 
+![WCC Alert Dashboard screenshot](wcc-demo.png)
+
+Demo video: https://youtu.be/bKIfeBEj7oo?si=_hj46nEh13GjnqHb
+
+
 ## What the app does
 
 A full-screen Wellington map with a time scrubber. Everything on the page moves
